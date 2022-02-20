@@ -70,7 +70,7 @@ Mesh * Mesh::createRGBAxes(GLdouble l)
 }
 //-------------------------------------------------------------------------
 
-static Mesh* generaRectangulo(GLdouble w, GLdouble h)
+Mesh* Mesh::generaRectangulo(GLdouble w, GLdouble h)
 {
     Mesh* mesh = new Mesh();
 
@@ -79,12 +79,187 @@ static Mesh* generaRectangulo(GLdouble w, GLdouble h)
     mesh->mNumVertices = 4;
     mesh->vVertices.reserve(mesh->mNumVertices);
 
-    // X axis vertice
-    mesh->vVertices.emplace_back(w, 0.0, 0.0);
-    // Y axis vertice
-    mesh->vVertices.emplace_back(0.0, w, 0.0);
-    // Z axis vertice
-    mesh->vVertices.emplace_back(0.0, 0.0, h);
+    GLdouble w2 = w / 2, h2 = h / 2;
+
+    mesh->vVertices.emplace_back(w2, h2, 0.0);
+    mesh->vVertices.emplace_back(-w2, h2, 0.0);
+    mesh->vVertices.emplace_back(w2, -h2, 0.0);
+    mesh->vVertices.emplace_back(-w2, -h2, 0.0);
+
+
+    return mesh;
+}
+
+Mesh* Mesh::generaRectangulo2(GLdouble w, GLdouble h, dvec4 color)
+{
+    Mesh* mesh = new Mesh();
+
+    mesh->mPrimitive = GL_TRIANGLE_STRIP;
+
+    mesh->mNumVertices = 4;
+    mesh->vVertices.reserve(mesh->mNumVertices);
+
+    GLdouble w2 = w / 2, h2 = h / 2;
+
+    mesh->vVertices.emplace_back(w2, h2, z);
+    mesh->vVertices.emplace_back(-w2, h2, z);
+    mesh->vVertices.emplace_back(w2, -h2, z);
+    mesh->vVertices.emplace_back(-w2, -h2, z);
+
+
+    return mesh;
+}
+
+Mesh* Mesh::generaRectanguloRGB(GLdouble w, GLdouble h)
+{
+    Mesh* mesh = generaRectangulo(w, h);
+
+    mesh->vColors.reserve(mesh->mNumVertices);
+    // Red
+    mesh->vColors.emplace_back(255, 0, 0, 1.0);
+    // Green  (Alpha = 1 : fully opaque)
+    mesh->vColors.emplace_back(0, 255, 0, 1.0);
+    // Green
+    mesh->vColors.emplace_back(0, 255, 0, 1.0);
+    // Blue
+    mesh->vColors.emplace_back(0, 0, 255, 1.0);
+
+    return mesh;
+}
+
+static const GLfloat cube_strip[] = { +0.5, +0.5, -0.5, // Back-top-right
+                                    -0.5, +0.5, -0.5, // Back-top-left
+                                    +0.5, -0.5, -0.5, // Back-bottom-right
+                                    -0.5, -0.5, -0.5, // Back-bottom-left
+                                    -0.5, -0.5, +0.5, // Front-bottom-left
+                                    -0.5, +0.5, -0.5, // Back-top-left
+                                    -0.5, +0.5, +0.5, // Front-top-left
+                                    +0.5, +0.5, -0.5, // Back-top-right
+                                    +0.5, +0.5, +0.5, // Front-top-right
+                                    +0.5, -0.5, -0.5, // Back-bottom-right
+                                    +0.5, -0.5, +0.5, // Front-bottom-right
+                                    -0.5, -0.5, +0.5, // Front-bottom-left
+                                    +0.5, +0.5, +0.5, // Front-top-right
+                                    -0.5, +0.5, +0.5, // Front-top-left
+                                    };
+
+static const GLfloat g_vertex_buffer_data[] = {
+    -1.0f,-1.0f,-1.0f, // triangle 1 : begin
+    -1.0f,-1.0f, 1.0f,
+    -1.0f, 1.0f, 1.0f, // triangle 1 : end
+    1.0f, 1.0f,-1.0f, // triangle 2 : begin
+    -1.0f,-1.0f,-1.0f,
+    -1.0f, 1.0f,-1.0f, // triangle 2 : end
+    1.0f,-1.0f, 1.0f,
+    -1.0f,-1.0f,-1.0f,
+    1.0f,-1.0f,-1.0f,
+    1.0f, 1.0f,-1.0f,
+    1.0f,-1.0f,-1.0f,
+    -1.0f,-1.0f,-1.0f,
+    -1.0f,-1.0f,-1.0f,
+    -1.0f, 1.0f, 1.0f,
+    -1.0f, 1.0f,-1.0f,
+    1.0f,-1.0f, 1.0f,
+    -1.0f,-1.0f, 1.0f,
+    -1.0f,-1.0f,-1.0f,
+    -1.0f, 1.0f, 1.0f,
+    -1.0f,-1.0f, 1.0f,
+    1.0f,-1.0f, 1.0f,
+    1.0f, 1.0f, 1.0f,
+    1.0f,-1.0f,-1.0f,
+    1.0f, 1.0f,-1.0f,
+    1.0f,-1.0f,-1.0f,
+    1.0f, 1.0f, 1.0f,
+    1.0f,-1.0f, 1.0f,
+    1.0f, 1.0f, 1.0f,
+    1.0f, 1.0f,-1.0f,
+    -1.0f, 1.0f,-1.0f,
+    1.0f, 1.0f, 1.0f,
+    -1.0f, 1.0f,-1.0f,
+    -1.0f, 1.0f, 1.0f,
+    1.0f, 1.0f, 1.0f,
+    -1.0f, 1.0f, 1.0f,
+    1.0f,-1.0f, 1.0f
+};
+
+
+//static const GLfloat cube_colors[] = { 0, 0, 255, // Back-top-right
+//                                       0, 0, 255, // Back-top-left
+//                                    0, 255, 0, // Back-bottom-right
+//                                    255, 0, 0, // Back-bottom-left
+//                                    255, 0, 0, // Front-bottom-left
+//                                    0, 0, 255, // Back-top-left
+//                                    0, 0, 255, // Front-top-left
+//                                    0, 255, 0, // Back-top-right
+//                                    0, 0, 255, // Front-top-right
+//                                    0, 255, 0, // Back-bottom-right
+//                                    255, 0, 0, // Front-bottom-right
+//                                    255, 0, 0, // Front-bottom-left
+//                                    255, 0, 0, // Front-top-right
+//                                    255, 0, 0, // Front-top-left
+//};
+
+static const GLfloat cube_colors[] = { 255, 0, 0, // Back-top-right
+                                       255, 0, 0, // Back-top-left
+                                    255, 0, 0, // Back-bottom-right
+                                    255, 0, 0, // Back-bottom-left
+                                    0, 255, 0, // Front-bottom-left
+                                    0, 255, 0, // Back-top-left
+                                    0, 255, 0, // Front-top-left
+                                    0, 0, 0, // Back-top-right
+                                    0, 0, 0, // Front-top-right
+                                    0, 0, 0, // Back-bottom-right
+                                    0, 0, 0, // Front-bottom-right
+                                    0, 0, 0, // Front-bottom-left
+                                    0, 0, 0, // Front-top-right
+                                    0, 0, 0, // Front-top-left
+};
+
+Mesh* Mesh::generaCubo(GLdouble l)
+{
+    Mesh* mesh = new Mesh();
+
+    mesh->mPrimitive = GL_TRIANGLE_STRIP;
+
+    mesh->mNumVertices = sizeof(cube_strip) / sizeof(GLfloat);
+    mesh->vVertices.reserve(mesh->mNumVertices);
+
+    for (int i = 0; i < mesh->mNumVertices; i += 3)
+    {
+        mesh->vVertices.emplace_back(l*cube_strip[i], l * cube_strip[i + 1], l * cube_strip[i + 2]);
+    }
+
+    //mesh->vVertices.insert(mesh->vVertices.end(), cube_strip, cube_strip + sizeof(GLfloat) * 14);
+
+    return mesh;
+}
+
+//Mesh* Mesh::generaCuboRGB(GLdouble l)
+//{
+//    Mesh* mesh = generaCubo(l);
+//
+//    mesh->vColors.reserve(mesh->mNumVertices);
+//
+//    for (int i = 0; i < mesh->mNumVertices; i += 3)
+//    {
+//        mesh->vColors.emplace_back(l * cube_colors[i], l * cube_colors[i + 1], l * cube_colors[i + 2], 1.0);
+//    }
+//
+//    return mesh;
+//}
+
+vector<Mesh*> Mesh::generaCuboRGB(GLdouble l)
+{
+    
+
+    mesh->vColors.reserve(mesh->mNumVertices);
+
+    for (int i = 0; i < mesh->mNumVertices; i += 3)
+    {
+        mesh->vColors.emplace_back(l * cube_colors[i], l * cube_colors[i + 1], l * cube_colors[i + 2], 1.0);
+    }
+
+    return mesh;
 }
 
 Mesh* Mesh::generaPoligonoRegular(GLuint num, GLdouble r)

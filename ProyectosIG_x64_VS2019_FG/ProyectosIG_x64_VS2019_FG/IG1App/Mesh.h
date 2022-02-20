@@ -18,6 +18,16 @@ public:
 	static Mesh* generaPoligonoRegular(GLuint num, GLdouble r);
 
 	static Mesh* createTriangleRGB(float r);
+
+	static Mesh* generaRectangulo(GLdouble w, GLdouble h);
+
+	static Mesh* generaRectangulo2(GLdouble w, GLdouble h, GLdouble z, dvec4 color);
+
+	static Mesh* generaRectanguloRGB(GLdouble w, GLdouble h);
+
+	static Mesh* generaCubo(GLdouble l);
+
+	static vector<Mesh*> generaCuboRGB(GLdouble l);
 	
 	Mesh() {};
 	virtual ~Mesh() {};
