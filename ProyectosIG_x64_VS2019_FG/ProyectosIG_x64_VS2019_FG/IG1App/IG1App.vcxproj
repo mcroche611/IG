@@ -130,6 +130,7 @@
     <ClInclude Include="Poligono.h" />
     <ClInclude Include="RectanguloRGB.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="Scene2D.h" />
     <ClInclude Include="TrianguloRGB.h" />
     <ClInclude Include="Viewport.h" />
   </ItemGroup>
@@ -144,6 +145,7 @@
     <ClCompile Include="Poligono.cpp" />
     <ClCompile Include="RectanguloRGB.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Scene2D.cpp" />
     <ClCompile Include="TrianguloRGB.cpp" />
     <ClCompile Include="Viewport.cpp" />
   </ItemGroup>

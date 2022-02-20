@@ -20,6 +20,8 @@ public:
 
 	virtual void render(glm::dmat4 const& modelViewMat) const = 0;  // abstract method
 
+	virtual void update() = 0;
+
 	// modeling matrix
 	glm::dmat4 const& modelMat() const { return mModelMat; };
 	void setModelMat(glm::dmat4 const& aMat) { mModelMat = aMat; };
@@ -45,8 +47,18 @@ public:
 	explicit EjesRGB(GLdouble l);
 	~EjesRGB();
 	virtual void render(glm::dmat4 const& modelViewMat) const;
+	void update() override;
 };
 
 //-------------------------------------------------------------------------
+
+class Ejes2D : public Abs_Entity
+{
+public:
+	explicit Ejes2D(GLdouble l);
+	~Ejes2D();
+	virtual void render(glm::dmat4 const& modelViewMat) const;
+	void update() override;
+};
 
 #endif //_H_Entities_H_

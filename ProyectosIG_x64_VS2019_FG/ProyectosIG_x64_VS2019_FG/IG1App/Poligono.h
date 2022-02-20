@@ -11,5 +11,7 @@ class Poligono : public Abs_Entity
 public:
 	Poligono(float num, float r);
 	void render(dmat4 const& modelViewMat)const override; //No necesita 'override' pq el render de Abs_Entity es virtual
+	void update() override;
+	float getR() { return r_;  };
 };
 

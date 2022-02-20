@@ -44,3 +44,7 @@ void Poligono::render(dmat4 const& modelViewMat)const
     //    glDisableClientState(GL_VERTEX_ARRAY);
     //}
 }
+
+void Poligono::update()
+{
+}

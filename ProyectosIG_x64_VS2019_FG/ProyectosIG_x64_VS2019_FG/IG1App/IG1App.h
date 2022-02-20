@@ -13,6 +13,7 @@
 #include "Viewport.h"
 #include "Camera.h"
 #include "Scene.h"
+#include "Scene2D.h"
 
 //-------------------------------------------------------------------------
 
@@ -32,6 +33,8 @@ public:
 	// Graphics objects of the scene
 	Scene const& scene() { return *mScene; };
 
+	//Scene2D const& scene2D() { return *mScene2D; };
+
 	void run();    // the main event processing loop
 	void close();  // the application
 	
@@ -49,11 +52,14 @@ protected:
 	void key(unsigned char key, int x, int y);  // keypress event
 	void specialKey(int key, int x, int y);     // keypress event for special characters
 
+	void update();
+
 	// static callbacks 
 	static void s_display() { s_ig1app.display(); };
 	static void s_resize(int newWidth, int newHeight) { s_ig1app.resize(newWidth, newHeight); };
 	static void s_key(unsigned char key, int x, int y) { s_ig1app.key(key, x, y); };
 	static void s_specialKey(int key, int x, int y) { s_ig1app.specialKey(key, x, y); };
+	static void s_update() { s_ig1app.update(); };
 
 	// Viewport position and size
 	Viewport *mViewPort = nullptr;
@@ -61,6 +67,7 @@ protected:
 	Camera *mCamera = nullptr;
 	// Graphics objects of the scene
 	Scene *mScene = nullptr;
+	//Scene2D* mScene2D = nullptr;
 	
 	bool mStop = false; // main event processing loop
 	int mWinId = 0;	    // window's identifier

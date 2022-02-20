@@ -1,5 +1,6 @@
 #include "CuboRGB.h"
 #include "Mesh.h"
+#include <gtc/matrix_transform.hpp> 
 
 CuboRGB::CuboRGB(GLdouble longitud)
 {
@@ -11,14 +12,19 @@ CuboRGB::CuboRGB(GLdouble longitud)
     setColor(color);
 }
 
+void CuboRGB::update()
+{
+    setModelMat(rotate(modelMat(), radians(1.0), dvec3(1, 0, 0)));
+}
+
 void CuboRGB::render(dmat4 const& modelViewMat)const
 {
     glColor3d(mColor.r, mColor.g, mColor.b);
 
     if (myMesh != nullptr)
     {
-        glPolygonMode(GL_BACK, GL_LINE);
-        glPolygonMode(GL_FRONT, GL_FILL);
+        //glPolygonMode(GL_BACK, GL_LINE);
+        //glPolygonMode(GL_FRONT, GL_FILL);
         dmat4 aMat = modelViewMat * mModelMat;
         upload(aMat);
         glLineWidth(2);

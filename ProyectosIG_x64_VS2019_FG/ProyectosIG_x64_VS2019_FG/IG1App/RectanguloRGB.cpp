@@ -31,3 +31,7 @@ void RectanguloRGB::render(dmat4 const& modelViewMat)const
 
     glColor3d(255, 255, 255);
 }
+
+void RectanguloRGB::update()
+{
+}

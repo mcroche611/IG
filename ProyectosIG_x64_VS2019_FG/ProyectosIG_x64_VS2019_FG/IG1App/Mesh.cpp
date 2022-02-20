@@ -68,6 +68,34 @@ Mesh * Mesh::createRGBAxes(GLdouble l)
  
   return mesh;
 }
+
+Mesh* Mesh::create2DAxes(GLdouble l)
+{
+    Mesh* mesh = new Mesh();
+
+    mesh->mPrimitive = GL_LINES;
+
+    mesh->mNumVertices = 4;
+    mesh->vVertices.reserve(mesh->mNumVertices);
+
+    // X axis vertices
+    mesh->vVertices.emplace_back(0.0, 0.0, 0.0);
+    mesh->vVertices.emplace_back(l, 0.0, 0.0);
+    // Y axis vertices
+    mesh->vVertices.emplace_back(0, 0.0, 0.0);
+    mesh->vVertices.emplace_back(0.0, l, 0.0);
+
+    mesh->vColors.reserve(mesh->mNumVertices);
+    // X axis color: red  (Alpha = 1 : fully opaque)
+    mesh->vColors.emplace_back(1.0, 0.0, 0.0, 1.0);
+    mesh->vColors.emplace_back(1.0, 0.0, 0.0, 1.0);
+    // Y axis color: green
+    mesh->vColors.emplace_back(0.0, 1.0, 0.0, 1.0);
+    mesh->vColors.emplace_back(0.0, 1.0, 0.0, 1.0);
+
+    return mesh;
+}
+
 //-------------------------------------------------------------------------
 
 Mesh* Mesh::generaRectangulo(GLdouble w, GLdouble h)
