@@ -8,7 +8,7 @@ using namespace glm;
 class CuboRGB : public Abs_Entity
 {
 	GLdouble l_;
-	vector<Mesh*> meshVec;
+    Mesh* myMesh;
 
 public:
 	CuboRGB(GLdouble longitud);

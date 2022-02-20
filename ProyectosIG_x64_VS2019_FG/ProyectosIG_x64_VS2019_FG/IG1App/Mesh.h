@@ -21,13 +21,11 @@ public:
 
 	static Mesh* generaRectangulo(GLdouble w, GLdouble h);
 
-	static Mesh* generaRectangulo2(GLdouble w, GLdouble h, GLdouble z, dvec4 color);
-
 	static Mesh* generaRectanguloRGB(GLdouble w, GLdouble h);
 
 	static Mesh* generaCubo(GLdouble l);
 
-	static vector<Mesh*> generaCuboRGB(GLdouble l);
+	static Mesh* generaCuboRGB(GLdouble l);
 	
 	Mesh() {};
 	virtual ~Mesh() {};

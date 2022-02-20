@@ -5,7 +5,7 @@ CuboRGB::CuboRGB(GLdouble longitud)
 {
     l_ = longitud;
     
-    meshVec = Mesh::generaCuboRGB(l_);
+    myMesh = Mesh::generaCuboRGB(l_);
 
     dvec4 color = { 0, 0, 0, 1.0 };
     setColor(color);
@@ -18,6 +18,7 @@ void CuboRGB::render(dmat4 const& modelViewMat)const
     if (myMesh != nullptr)
     {
         glPolygonMode(GL_BACK, GL_LINE);
+        glPolygonMode(GL_FRONT, GL_FILL);
         dmat4 aMat = modelViewMat * mModelMat;
         upload(aMat);
         glLineWidth(2);
