@@ -13,7 +13,6 @@
 #include "Viewport.h"
 #include "Camera.h"
 #include "Scene.h"
-#include "Scene2D.h"
 
 //-------------------------------------------------------------------------
 
@@ -32,8 +31,6 @@ public:
 	Camera const& camera() { return *mCamera; };
 	// Graphics objects of the scene
 	Scene const& scene() { return *mScene; };
-
-	//Scene2D const& scene2D() { return *mScene2D; };
 
 	void run();    // the main event processing loop
 	void close();  // the application
@@ -67,7 +64,6 @@ protected:
 	Camera *mCamera = nullptr;
 	// Graphics objects of the scene
 	Scene *mScene = nullptr;
-	//Scene2D* mScene2D = nullptr;
 	
 	bool mStop = false; // main event processing loop
 	int mWinId = 0;	    // window's identifier

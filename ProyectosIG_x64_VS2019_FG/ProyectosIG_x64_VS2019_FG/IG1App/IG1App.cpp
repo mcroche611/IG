@@ -73,7 +73,7 @@ void IG1App::iniWinOpenGL()
 	glutKeyboardFunc(s_key);
 	glutSpecialFunc(s_specialKey);
 	glutDisplayFunc(s_display);
-	glutIdleFunc(s_update); //Lo comento porque con esto parece que el triangulo rota demasiado rápido
+	glutIdleFunc(s_update);
 
 	cout << glGetString(GL_VERSION) << '\n';
 	cout << glGetString(GL_VENDOR) << '\n';
