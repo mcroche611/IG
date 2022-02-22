@@ -8,6 +8,10 @@ class TrianguloRGB : public Abs_Entity
 	float r_;
 	float radio = 200;
 	int angulo = 0;
+	float anguloActual = 0.0;
+	float trasIncrease = 0.1;
+	float triangleRot = 0.0;
+	float rotIncrease = 0.1;
 	Mesh* myMesh;
 
 	dmat4 initMat;
