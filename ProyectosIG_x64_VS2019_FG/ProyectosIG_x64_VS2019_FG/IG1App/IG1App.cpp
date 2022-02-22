@@ -42,10 +42,10 @@ void IG1App::init()
 	mViewPort = new Viewport(mWinW, mWinH); //glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT)
 	mCamera = new Camera(mViewPort);
 	mScene = new Scene;
-	//mScene2D = new Scene2D;
 	
 	mCamera->set2D();
 	mScene->init();
+	mLastUpdateTime = glutGet(GLUT_ELAPSED_TIME);
 }
 //-------------------------------------------------------------------------
 
@@ -73,8 +73,8 @@ void IG1App::iniWinOpenGL()
 	glutKeyboardFunc(s_key);
 	glutSpecialFunc(s_specialKey);
 	glutDisplayFunc(s_display);
-	//glutIdleFunc(s_update); //Lo comento porque con esto parece que el triangulo rota demasiado rápido
-	
+	glutIdleFunc(s_update); //Lo comento porque con esto parece que el triangulo rota demasiado rápido
+
 	cout << glGetString(GL_VERSION) << '\n';
 	cout << glGetString(GL_VENDOR) << '\n';
 }
@@ -85,7 +85,6 @@ void IG1App::free()
 	delete mScene; mScene = nullptr;
 	delete mCamera; mCamera = nullptr;
 	delete mViewPort; mViewPort = nullptr;
-	//delete mScene2D; mScene2D = nullptr;
 }
 //-------------------------------------------------------------------------
 
@@ -95,8 +94,6 @@ void IG1App::display() const
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);  // clears the back buffer
 
 	mScene->render(*mCamera);  // uploads the viewport and camera to the GPU
-
-	//mScene2D->render(*mCamera);
 	
 	glutSwapBuffers();	// swaps the front and back buffer
 }
@@ -140,7 +137,7 @@ void IG1App::key(unsigned char key, int x, int y)
 		mScene->setState(1);
 		break;
 	case 'u':
-		update();
+		activeAnim = !activeAnim;
 		break;
 	default:
 		need_redisplay = false;
@@ -186,7 +183,11 @@ void IG1App::specialKey(int key, int x, int y)
 }
 void IG1App::update()
 {
-	mScene->update();
+	if (activeAnim)
+	{
+		mScene->update();
+		glutPostRedisplay();
+	}
 }
 //-------------------------------------------------------------------------
 
