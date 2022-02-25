@@ -38,5 +38,5 @@ void TrianguloRGB::update()
     mModelMat = translate(dmat4(1.0), dvec3(cos(radians(anguloActual)) * radio, sin(radians(anguloActual)) * radio, 0));
 
     triangleRot -= rotIncrease;
-    mModelMat = rotate(mModelMat, radians(triangleRot + 0.1), dvec3(0, 0, 1));    
+    mModelMat = rotate(mModelMat, radians(triangleRot), dvec3(0, 0, 1));    
 }
