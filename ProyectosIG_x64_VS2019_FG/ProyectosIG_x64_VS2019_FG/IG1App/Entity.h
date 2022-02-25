@@ -6,6 +6,7 @@
 #include <glm.hpp>
 
 #include "Mesh.h"
+#include "Texture.h"
 
 //-------------------------------------------------------------------------
 
@@ -30,9 +31,11 @@ public:
 	glm::dvec4 const& color() { return mColor; };
 	void setColor(glm::dvec4 const& aColor) { mColor = aColor; };
 	
+	void setTexture(Texture* tex) { mTexture = tex; };
 protected:
 
 	Mesh* mMesh = nullptr;   // the mesh
+	Texture* mTexture = nullptr; //the texture
 	glm::dmat4 mModelMat;    // modeling matrix
 	glm::dvec4 mColor;       // color de la entidad
 	

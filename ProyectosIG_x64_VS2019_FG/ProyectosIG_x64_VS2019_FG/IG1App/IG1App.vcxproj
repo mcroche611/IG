@@ -127,9 +127,11 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="IG1App.h" />
     <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Pixmap32RGBA.h" />
     <ClInclude Include="Poligono.h" />
     <ClInclude Include="RectanguloRGB.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="TrianguloRGB.h" />
     <ClInclude Include="Viewport.h" />
   </ItemGroup>
@@ -141,9 +143,11 @@
     <ClCompile Include="IG1App.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="Pixmap32RGBA.cpp" />
     <ClCompile Include="Poligono.cpp" />
     <ClCompile Include="RectanguloRGB.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TrianguloRGB.cpp" />
     <ClCompile Include="Viewport.cpp" />
   </ItemGroup>
