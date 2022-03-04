@@ -33,6 +33,13 @@ void Mesh::render() const
     glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_VERTEX_ARRAY);
   }
+
+  if (vTexCoords.size() > 0)
+  {
+      glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+      glTexCoordPointer(2, GL_DOUBLE, 0, vTexCoords.data());
+      glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+  }
 }
 //-------------------------------------------------------------------------
 
