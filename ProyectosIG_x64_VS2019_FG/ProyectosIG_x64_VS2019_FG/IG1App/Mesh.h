@@ -23,6 +23,8 @@ public:
 
 	static Mesh* generaRectangulo(GLdouble w, GLdouble h);
 
+	static Mesh* generaRectanguloTexCor(GLdouble w, GLdouble h);
+
 	static Mesh* generaRectanguloRGB(GLdouble w, GLdouble h);
 
 	static Mesh* generaCubo(GLdouble l);

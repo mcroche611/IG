@@ -5,6 +5,7 @@
 #include "RectanguloRGB.h"
 #include "Cubo.h"
 #include "CuboRGB.h"
+#include "Suelo.h"
 #include <gtc/matrix_transform.hpp>  
 #include <gtc/type_ptr.hpp>
 
@@ -46,7 +47,14 @@ void Scene::init()
 		CuboRGB* cubo = new CuboRGB(200);
 		gObjects.push_back(cubo);
 	}
+	else if (mId == 2)
+	{
+		gObjects.push_back(new EjesRGB(400.0));
 
+		Suelo* suelo = new Suelo(300, 300);
+		suelo->setTexture(t);
+		gObjects.push_back(suelo);
+	}
 }
 
 //-------------------------------------------------------------------------
