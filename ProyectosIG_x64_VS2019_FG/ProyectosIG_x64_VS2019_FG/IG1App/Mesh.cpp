@@ -130,10 +130,12 @@ Mesh* Mesh::generaRectanguloTexCor(GLdouble w, GLdouble h, GLuint rw, GLuint rh)
 {
 	Mesh* mesh = generaRectangulo(w, h);
 
-    mesh->vTexCoords.reserve(mesh->mNumVertices * w/rw);
+    GLuint numBaldosas = w / rw;
 
-    //add these to the mesh???
-    for (int i = 0; i < w / rw && i < h / rh; i++)
+    mesh->vTexCoords.reserve(mesh->mNumVertices * numBaldosas);
+
+    //Vertices de cada baldosa
+    for (int i = 0; i < numBaldosas; i++)
     {
 		mesh->vTexCoords.emplace_back(i * rw + rw, i * rh);
 		mesh->vTexCoords.emplace_back(i * rw, i * rh);
