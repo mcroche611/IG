@@ -23,7 +23,7 @@ public:
 
 	static Mesh* generaRectangulo(GLdouble w, GLdouble h);
 
-	static Mesh* generaRectanguloTexCor(GLdouble w, GLdouble h);
+	static Mesh* generaRectanguloTexCor(GLdouble w, GLdouble h, GLuint rw, GLuint rh);
 
 	static Mesh* generaRectanguloRGB(GLdouble w, GLdouble h);
 

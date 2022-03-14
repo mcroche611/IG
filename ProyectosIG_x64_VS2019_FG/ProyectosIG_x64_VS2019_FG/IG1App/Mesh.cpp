@@ -126,23 +126,26 @@ Mesh* Mesh::generaRectangulo(GLdouble w, GLdouble h)
 	return mesh;
 }
 
-Mesh* Mesh::generaRectanguloTexCor(GLdouble w, GLdouble h)
+Mesh* Mesh::generaRectanguloTexCor(GLdouble w, GLdouble h, GLuint rw, GLuint rh)
 {
 	Mesh* mesh = generaRectangulo(w, h);
 
-    mesh->vTexCoords.reserve(mesh->mNumVertices);
+    mesh->vTexCoords.reserve(mesh->mNumVertices * w/rw);
 
-    // 
-    mesh->vTexCoords.emplace_back(1, 0);
-    // 
-    mesh->vTexCoords.emplace_back(0, 0);
-    // R U
-    mesh->vTexCoords.emplace_back(1, 1);
-    // 
-    mesh->vTexCoords.emplace_back(0, 1);
+    //add these to the mesh???
+    for (int i = 0; i < w / rw && i < h / rh; i++)
+    {
+		mesh->vTexCoords.emplace_back(i * rw + rw, i * rh);
+		mesh->vTexCoords.emplace_back(i * rw, i * rh);
+		mesh->vTexCoords.emplace_back(i * rw + rw, i * rh + rh);
+		mesh->vTexCoords.emplace_back(i * rw, i * rh + rh);
+    }
 
-
-
+    // Old method of matching vertices
+    //mesh->vTexCoords.emplace_back(1, 0);
+    //mesh->vTexCoords.emplace_back(0, 0);
+    //mesh->vTexCoords.emplace_back(1, 1);
+    //mesh->vTexCoords.emplace_back(0, 1);
 
 
     return mesh;
