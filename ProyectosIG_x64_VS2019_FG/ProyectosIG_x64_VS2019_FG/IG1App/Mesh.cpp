@@ -4,6 +4,7 @@
 #include "CheckML.h"
 #include <fstream>
 #include <cmath>
+#include <iostream>
 using namespace std;
 using namespace glm;
 
@@ -360,6 +361,29 @@ Mesh* Mesh::generaContCajaTexCor(GLdouble l)
         mesh->vTexCoords.emplace_back(4, 1);
 
    
+
+    return mesh;
+}
+
+Mesh* Mesh::generaEstrella3D(GLdouble re, GLuint np, GLdouble h)
+{
+    Mesh* mesh = new Mesh();
+
+    mesh->mPrimitive = GL_TRIANGLE_FAN;
+
+    mesh->mNumVertices = np * 2 + 2;
+    mesh->vVertices.reserve(mesh->mNumVertices);
+
+    mesh->vVertices.emplace_back(0, 0, 0);
+
+    float aumento = 0.0;
+    for (int i = 0; i < (np * 2); i++) {
+        mesh->vVertices.emplace_back(re / 2 * cos(radians(90.0 + aumento)), re / 2 * sin(radians(90.0 + aumento)), h);
+        aumento += (360.0 / (np * 2));
+        mesh->vVertices.emplace_back(re * cos(radians(90.0 + aumento)), re * sin(radians(90.0 + aumento)), h);
+        aumento += (360.0 / (np * 2));
+    }
+    cout << "aumento " << aumento << endl;
 
     return mesh;
 }

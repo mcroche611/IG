@@ -35,6 +35,9 @@ public:
 
 	static Mesh* generaContCajaTexCor(GLdouble l);
 
+	static Mesh* generaEstrella3D(GLdouble re, GLuint np,
+		GLdouble h);
+
 
 	Mesh() {};
 	virtual ~Mesh() {};

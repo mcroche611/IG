@@ -7,6 +7,7 @@
 #include "CuboRGB.h"
 #include "Suelo.h"
 #include "ContornoCaja.h"
+#include "Estrella3D.h"
 #include <gtc/matrix_transform.hpp>  
 #include <gtc/type_ptr.hpp>
 
@@ -62,9 +63,9 @@ void Scene::init()
 		
 
 		gObjects.push_back(new EjesRGB(400.0));
-		Suelo* suelo = new Suelo(300, 300);
-		suelo->setTexture(baldosaC);
-		gObjects.push_back(suelo);
+		//Suelo* suelo = new Suelo(300, 300);
+		//suelo->setTexture(baldosaC);
+		//gObjects.push_back(suelo);
 
 		
 		ContornoCaja* caja = new ContornoCaja(290);
@@ -72,6 +73,12 @@ void Scene::init()
 		caja->setTexture2(papelE);
 
 		gObjects.push_back(caja);
+		//
+		//ContornoCaja* caja = new ContornoCaja(290);
+		//caja->setTexture(container);
+		//gObjects.push_back(caja);
+
+		
 	}
 }
 
