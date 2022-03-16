@@ -6,6 +6,7 @@
 #include "Cubo.h"
 #include "CuboRGB.h"
 #include "Suelo.h"
+#include "ContornoCaja.h"
 #include <gtc/matrix_transform.hpp>  
 #include <gtc/type_ptr.hpp>
 
@@ -15,10 +16,13 @@ using namespace glm;
 void Scene::init()
 { 
 	setGL();  // OpenGL settings
-	Texture* t = new Texture();
-	t->load("..\\Bmps\\baldosaC.bmp");
-	gTextures.push_back(t);
+	Texture* baldosaC = new Texture();
+	baldosaC->load("..\\Bmps\\baldosaC.bmp");
+	gTextures.push_back(baldosaC);
 
+	Texture* container = new Texture();
+	container->load("..\\Bmps\\container.bmp");
+	gTextures.push_back(container);
 	// allocate memory and load resources
     // Lights
     // Textures
@@ -43,16 +47,21 @@ void Scene::init()
 	{
 		// Graphics objects (entities) of the scene
 		gObjects.push_back(new EjesRGB(400.0));
+		ContornoCaja* caja = new ContornoCaja(290);
+		gObjects.push_back(caja);
 
 		CuboRGB* cubo = new CuboRGB(200);
 		gObjects.push_back(cubo);
 	}
 	else if (mId == 2)
 	{
-		gObjects.push_back(new EjesRGB(400.0));
+		ContornoCaja* caja = new ContornoCaja(290);
+		gObjects.push_back(caja);
+		caja->setTexture(container);
 
+		gObjects.push_back(new EjesRGB(400.0));
 		Suelo* suelo = new Suelo(300, 300);
-		suelo->setTexture(t);
+		suelo->setTexture(baldosaC);
 		gObjects.push_back(suelo);
 	}
 }

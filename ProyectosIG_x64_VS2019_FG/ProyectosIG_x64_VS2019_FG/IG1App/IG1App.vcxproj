@@ -122,6 +122,7 @@
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CheckML.h" />
+    <ClInclude Include="ContornoCaja.h" />
     <ClInclude Include="Cubo.h" />
     <ClInclude Include="CuboRGB.h" />
     <ClInclude Include="Entity.h" />
@@ -138,6 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="ContornoCaja.cpp" />
     <ClCompile Include="Cubo.cpp" />
     <ClCompile Include="CuboRGB.cpp" />
     <ClCompile Include="Entity.cpp" />

@@ -31,6 +31,11 @@ public:
 
 	static Mesh* generaCuboRGB(GLdouble l);
 	
+	static Mesh* generaContCaja(GLdouble l);
+
+	static Mesh* generaContCajaTexCor(GLdouble l);
+
+
 	Mesh() {};
 	virtual ~Mesh() {};
 

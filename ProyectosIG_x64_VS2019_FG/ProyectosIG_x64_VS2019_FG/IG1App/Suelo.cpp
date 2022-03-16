@@ -16,7 +16,7 @@ void Suelo::render(dmat4 const& modelViewMat)const
 {
 	glColor3d(mColor.r, mColor.g, mColor.b);
 
-	if (myMesh != nullptr) {
+	if (myMesh != nullptr) {  
 
 		dmat4 aMat = modelViewMat * mModelMat;
 		upload(aMat);
