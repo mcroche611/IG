@@ -356,17 +356,17 @@ Mesh* Mesh::generaContCajaTexCor(GLdouble l)
         mesh->vTexCoords.emplace_back((0+i)/4, 1 / 3);
         mesh->vTexCoords.emplace_back((0+i)/4, 2 / 3);
         mesh->vTexCoords.emplace_back((1+i)/4, 2 / 3);
-    }*/
+	}*/
 
-    // Old method of matching vertices
-    
-    for (int i = 0; i < 5; i++)
-   {
-        mesh->vTexCoords.emplace_back(1+i, 0);
-        mesh->vTexCoords.emplace_back(0+i, 0);
-        mesh->vTexCoords.emplace_back(1+i, 1);
-        mesh->vTexCoords.emplace_back(0+i, 1);
-   }
+	// Old method of matching vertices
+
+	for (int i = 0; i < 5; i++)
+	{
+		mesh->vTexCoords.emplace_back(1 + i, 0);
+		mesh->vTexCoords.emplace_back(0 + i, 0);
+		mesh->vTexCoords.emplace_back(1 + i, 1);
+		mesh->vTexCoords.emplace_back(0 + i, 1);
+	}
 
     return mesh;
 }
@@ -389,7 +389,24 @@ Mesh* Mesh::generaEstrella3D(GLdouble re, GLuint np, GLdouble h)
         mesh->vVertices.emplace_back(re * cos(radians(90.0 + aumento)), re * sin(radians(90.0 + aumento)), h);
         aumento += (360.0 / (np * 2));
     }
-    cout << "aumento " << aumento << endl;
+
+    return mesh;
+}
+
+Mesh* Mesh::generaEstrella3DTexCor(GLdouble re, GLuint np, GLdouble h)
+{
+    Mesh* mesh = generaEstrella3D(re, np, h);
+
+
+    mesh->vTexCoords.reserve(mesh->mNumVertices);
+
+    float aumento = 0.0;
+    for (int i = 0; i < (np * 2); i++) {
+        mesh->vVertices.emplace_back(re / 2 * cos(radians(90.0 + aumento)), re / 2 * sin(radians(90.0 + aumento)), h);
+        aumento += (1.0 / (np * 2));
+        mesh->vVertices.emplace_back(re * cos(radians(90.0 + aumento)), re * sin(radians(90.0 + aumento)), h);
+        aumento += (1.0 / (np * 2));
+    }
 
     return mesh;
 }
