@@ -69,6 +69,8 @@ void Scene::init()
 		
 		ContornoCaja* caja = new ContornoCaja(290);
 		caja->setTexture(container);
+		caja->setTexture2(papelE);
+
 		gObjects.push_back(caja);
 	}
 }

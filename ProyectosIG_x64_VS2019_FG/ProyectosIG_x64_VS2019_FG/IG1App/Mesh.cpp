@@ -302,23 +302,19 @@ Mesh* Mesh::createTriangleRGB(float r)
 
 
 static const GLfloat box_strip[] = { 
-                                    -0.5, +0.5, +0.5, // left-top-front Red
                                     -0.5, -0.5, +0.5, // left-bottom-front Red
-                                    +0.5, +0.5, +0.5, // right-top-front Red
+                                    -0.5, +0.5, +0.5, // left-top-front Red
                                     +0.5, -0.5, +0.5, // right-bottom-front Red
-                                    +0.5, +0.5, +0.5, // right-top-front Green
-                                    +0.5, -0.5, +0.5, // right-bottom-front Green
-                                    +0.5, +0.5, -0.5, // right-top-back Green
-                                    +0.5, -0.5, -0.5, // right-bottom-back Green
-                                    +0.5, +0.5, -0.5, // right-top-back Blue
+                                    +0.5, +0.5, +0.5, // right-top-front Red
 
-                                    +0.5, -0.5, -0.5, // right-bottom-back Blue
-                                    -0.5, +0.5, -0.5, // left-top-back Blue
+                                    +0.5, -0.5, -0.5, // right-bottom-back Green
+                                    +0.5, +0.5, -0.5, // right-top-back Green
+
                                     -0.5, -0.5, -0.5, // left-bottom-back Blue
-                                    -0.5, +0.5, -0.5, // left-top-back Green
-                                    -0.5, -0.5, -0.5, // left-bottom-back Green
-                                    -0.5, +0.5, +0.5, // left-top-front Green
+                                    -0.5, +0.5, -0.5, // left-top-back Blue
+
                                     -0.5, -0.5, +0.5, // left-bottom-front Green
+                                    -0.5, +0.5, +0.5, // left-top-front Green
 
 
 
@@ -348,24 +344,22 @@ Mesh* Mesh::generaContCajaTexCor(GLdouble l)
 
     mesh->vTexCoords.reserve(mesh->mNumVertices);
 
-    //Vertices de cada baldosa
-    /*for (int i = 0; i < 5; i++)
-    {
-        mesh->vTexCoords.emplace_back((1+i)/4 , 1/3);
-        mesh->vTexCoords.emplace_back((0+i)/4, 1 / 3);
-        mesh->vTexCoords.emplace_back((0+i)/4, 2 / 3);
-        mesh->vTexCoords.emplace_back((1+i)/4, 2 / 3);
-    }*/
-
-    // Old method of matching vertices
     
-    for (int i = 0; i < 5; i++)
-   {
-        mesh->vTexCoords.emplace_back(1+i, 0);
-        mesh->vTexCoords.emplace_back(0+i, 0);
-        mesh->vTexCoords.emplace_back(1+i, 1);
-        mesh->vTexCoords.emplace_back(0+i, 1);
-   }
+        mesh->vTexCoords.emplace_back(0, 0);
+        mesh->vTexCoords.emplace_back(0, 1);
+        mesh->vTexCoords.emplace_back(1, 0);
+        mesh->vTexCoords.emplace_back(1, 1);
+
+        mesh->vTexCoords.emplace_back(2, 0);
+        mesh->vTexCoords.emplace_back(2, 1);
+
+        mesh->vTexCoords.emplace_back(3, 0);
+        mesh->vTexCoords.emplace_back(3, 1);
+
+        mesh->vTexCoords.emplace_back(4, 0);
+        mesh->vTexCoords.emplace_back(4, 1);
+
+   
 
     return mesh;
 }
