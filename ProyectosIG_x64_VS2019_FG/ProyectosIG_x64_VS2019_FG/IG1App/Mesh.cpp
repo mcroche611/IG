@@ -301,22 +301,25 @@ Mesh* Mesh::createTriangleRGB(float r)
 
 
 
-static const GLfloat box_strip[] = { +0.5, +0.5, -0.5, // Back-top-right Red
-                                    -0.5, +0.5, -0.5, // Back-top-left Red
-                                    +0.5, -0.5, -0.5, // Back-bottom-right Red
-                                    -0.5, -0.5, -0.5, // Back-bottom-left Red
-                                    -0.5, -0.5, -0.5, // Back-bottom-left Green*
-                                    -0.5, -0.5, +0.5, // Front-bottom-left Green
-                                    -0.5, +0.5, -0.5, // Back-top-left Green
-                                    -0.5, +0.5, +0.5, // Front-top-left Green
-                                    -0.5, +0.5, +0.5, // Front-top-left Blue*
-                                    +0.5, +0.5, +0.5, // Front-top-right Blue*
-                                    -0.5, -0.5, +0.5, // Front-bottom-left Blue
-                                    +0.5, -0.5, +0.5, // Front-bottom-right Blue
-                                    +0.5, -0.5, +0.5, // Front-bottom-right Green
-                                    +0.5, -0.5, -0.5, // Back-bottom-right Green
-                                    +0.5, +0.5, +0.5, // Front-top-right Green*
-                                    +0.5, +0.5, -0.5, // Back-top-right Green*
+static const GLfloat box_strip[] = { 
+                                    -0.5, +0.5, +0.5, // left-top-front Red
+                                    -0.5, -0.5, +0.5, // left-bottom-front Red
+                                    +0.5, +0.5, +0.5, // right-top-front Red
+                                    +0.5, -0.5, +0.5, // right-bottom-front Red
+                                    +0.5, +0.5, +0.5, // right-top-front Green
+                                    +0.5, -0.5, +0.5, // right-bottom-front Green
+                                    +0.5, +0.5, -0.5, // right-top-back Green
+                                    +0.5, -0.5, -0.5, // right-bottom-back Green
+                                    +0.5, +0.5, -0.5, // right-top-back Blue
+
+                                    +0.5, -0.5, -0.5, // right-bottom-back Blue
+                                    -0.5, +0.5, -0.5, // left-top-back Blue
+                                    -0.5, -0.5, -0.5, // left-bottom-back Blue
+                                    -0.5, +0.5, -0.5, // left-top-back Green
+                                    -0.5, -0.5, -0.5, // left-bottom-back Green
+                                    -0.5, +0.5, +0.5, // left-top-front Green
+                                    -0.5, -0.5, +0.5, // left-bottom-front Green
+
 
 
 };

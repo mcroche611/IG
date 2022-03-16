@@ -17,6 +17,8 @@ void ContornoCaja::render(dmat4 const& modelViewMat)const
 
     if (myMesh != nullptr)
     {
+        glPolygonMode(GL_BACK, GL_LINE);
+
         dmat4 aMat = modelViewMat * mModelMat;
         upload(aMat);
         glLineWidth(2);

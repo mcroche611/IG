@@ -23,6 +23,10 @@ void Scene::init()
 	Texture* container = new Texture();
 	container->load("..\\Bmps\\container.bmp");
 	gTextures.push_back(container);
+
+	Texture* papelE = new Texture();
+	papelE->load("..\\Bmps\\papelE.bmp");
+	gTextures.push_back(papelE);
 	// allocate memory and load resources
     // Lights
     // Textures
