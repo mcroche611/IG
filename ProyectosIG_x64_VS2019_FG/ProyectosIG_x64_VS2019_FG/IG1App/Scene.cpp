@@ -55,14 +55,17 @@ void Scene::init()
 	}
 	else if (mId == 2)
 	{
-		ContornoCaja* caja = new ContornoCaja(290);
-		gObjects.push_back(caja);
-		caja->setTexture(container);
+		
 
 		gObjects.push_back(new EjesRGB(400.0));
 		Suelo* suelo = new Suelo(300, 300);
 		suelo->setTexture(baldosaC);
 		gObjects.push_back(suelo);
+
+		
+		ContornoCaja* caja = new ContornoCaja(290);
+		caja->setTexture(container);
+		gObjects.push_back(caja);
 	}
 }
 

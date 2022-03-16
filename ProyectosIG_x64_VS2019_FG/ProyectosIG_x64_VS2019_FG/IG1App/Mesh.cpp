@@ -321,39 +321,12 @@ static const GLfloat box_strip[] = { +0.5, +0.5, -0.5, // Back-top-right Red
 
 };
 
-static const GLfloat box_colors[] = { 255, 0, 0, // Back-top-right Red
-                                       255, 0, 0, // Back-top-left Red
-                                    255, 0, 0, // // Back-bottom-right Red
-                                    255, 0, 0, // // Back-bottom-left Red
-                                    0, 255, 0, // // Back-bottom-left Green
-                                    0, 255, 0, // // Front-bottom-left Green
-                                    0, 255, 0, // // Back-top-left Green
-                                    0, 255, 0, // // Front-top-left Green
-                                    0, 0, 255, // // Front-top-left Blue*
-                                    0, 0, 255, // // Front-top-right Blue2
-                                    0, 0, 255, // // Back-top-left Blue2
-                                    0, 0, 255, // // Back-top-right Blue
-                                    0, 255, 0, // // Back-top-right Green2
-                                    0, 255, 0, // // Front-top-right Green*
-                                    0, 255, 0, // // Back-bottom-right Green
-                                    0, 255, 0, // // Front-bottom-right Green
-                                    255, 0, 0, // // Front-bottom-right Red*
-                                    255, 0, 0, // // Front-top-right Red2
-                                    255, 0, 0, // // Front-bottom-left Red
-                                    255, 0, 0, // // Front-top-left Red
-                                    255, 0, 0, // // Front-bottom-right Red2
-                                    0, 0, 255, // // Front-bottom-right Blue2
-                                    0, 0, 255, // // Front-bottom-left Blue2
-                                    0, 0, 255, // // Back-bottom-right Blue2
-                                    0, 0, 255 // // Back-bottom-left Blue2  
-};
-
 Mesh* Mesh::generaContCaja (GLdouble l)
 {
     Mesh* mesh = new Mesh();
 
     mesh->mPrimitive = GL_TRIANGLE_STRIP;
-
+    
     mesh->mNumVertices = sizeof(box_strip) / sizeof(GLfloat);
     mesh->vVertices.reserve(mesh->mNumVertices);
 
@@ -373,20 +346,23 @@ Mesh* Mesh::generaContCajaTexCor(GLdouble l)
     mesh->vTexCoords.reserve(mesh->mNumVertices);
 
     //Vertices de cada baldosa
-    for (int i = 0; i < 5; i++)
+    /*for (int i = 0; i < 5; i++)
     {
         mesh->vTexCoords.emplace_back((1+i)/4 , 1/3);
         mesh->vTexCoords.emplace_back((0+i)/4, 1 / 3);
         mesh->vTexCoords.emplace_back((0+i)/4, 2 / 3);
         mesh->vTexCoords.emplace_back((1+i)/4, 2 / 3);
-    }
+    }*/
 
     // Old method of matching vertices
-    //mesh->vTexCoords.emplace_back(1, 0);
-    //mesh->vTexCoords.emplace_back(0, 0);
-    //mesh->vTexCoords.emplace_back(1, 1);
-    //mesh->vTexCoords.emplace_back(0, 1);
-
+    
+    for (int i = 0; i < 5; i++)
+   {
+        mesh->vTexCoords.emplace_back(1+i, 0);
+        mesh->vTexCoords.emplace_back(0+i, 0);
+        mesh->vTexCoords.emplace_back(1+i, 1);
+        mesh->vTexCoords.emplace_back(0+i, 1);
+   }
 
     return mesh;
 }

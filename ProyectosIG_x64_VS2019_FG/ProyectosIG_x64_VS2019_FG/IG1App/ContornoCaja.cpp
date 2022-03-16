@@ -20,6 +20,7 @@ void ContornoCaja::render(dmat4 const& modelViewMat)const
         dmat4 aMat = modelViewMat * mModelMat;
         upload(aMat);
         glLineWidth(2);
+        mTexture->setWrap(GL_REPEAT);
         mTexture->bind(GL_MODULATE);
 
         myMesh->render();
