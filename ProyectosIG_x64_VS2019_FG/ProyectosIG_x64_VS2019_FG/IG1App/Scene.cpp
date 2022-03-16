@@ -17,6 +17,7 @@ using namespace glm;
 void Scene::init()
 { 
 	setGL();  // OpenGL settings
+	//glEnable(GL_DEPTH_TEST);
 	Texture* baldosaC = new Texture();
 	baldosaC->load("..\\Bmps\\baldosaC.bmp");
 	gTextures.push_back(baldosaC);
@@ -28,6 +29,10 @@ void Scene::init()
 	Texture* papelE = new Texture();
 	papelE->load("..\\Bmps\\papelE.bmp");
 	gTextures.push_back(papelE);
+
+	Texture* windowV = new Texture();
+	windowV->load("..\\Bmps\\windowV.bmp", 0.5);
+	gTextures.push_back(windowV);
 	// allocate memory and load resources
     // Lights
     // Textures
@@ -67,13 +72,18 @@ void Scene::init()
 		//suelo->setTexture(baldosaC);
 		//gObjects.push_back(suelo);
 
+		
+		ContornoCaja* caja = new ContornoCaja(290);
+		caja->setTexture(container);
+		caja->setTexture2(papelE);
+
+		gObjects.push_back(caja);
 		//
 		//ContornoCaja* caja = new ContornoCaja(290);
 		//caja->setTexture(container);
 		//gObjects.push_back(caja);
 
-		Estrella3D* estrella = new Estrella3D(300, 6, 100);
-		gObjects.push_back(estrella);
+		
 	}
 }
 
@@ -89,6 +99,11 @@ void Scene::free()
 	for (Texture* e : gTextures)
 	{
 		delete e;  e = nullptr;
+	}
+
+	for (Abs_Entity* elem : gTranslucidObjects)
+	{
+		delete elem;  elem = nullptr;
 	}
 }
 //-------------------------------------------------------------------------
@@ -116,11 +131,21 @@ void Scene::render(Camera const& cam) const
 	{
 	  el->render(cam.viewMat());
 	}
+
+	for (Abs_Entity* el : gTranslucidObjects)
+	{
+		el->render(cam.viewMat());
+	}
 }
 
 void Scene::update()
 {
 	for (Abs_Entity* el : gObjects)
+	{
+		el->update();
+	}
+
+	for (Abs_Entity* el : gTranslucidObjects)
 	{
 		el->update();
 	}

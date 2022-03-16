@@ -38,6 +38,7 @@ protected:
 	int mId = 2;
 
 	std::vector<Abs_Entity*> gObjects;  // Entities (graphic objects) of the scene
+	std::vector<Abs_Entity*> gTranslucidObjects;  // entidades traslucidas
 	std::vector<Texture*> gTextures; //to manage objects texture
 
 };
