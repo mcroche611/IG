@@ -24,7 +24,7 @@ void Estrella3D::render(dmat4 const& modelViewMat)const
         mTexture->bind(GL_MODULATE);
         myMesh->render();
         mTexture->unbind();
-        aMat = aMat * rotate(modelMat(), radians(180.0), dvec3(0, 1, 0));
+        aMat = aMat * rotate(dmat4(1.0), radians(180.0), dvec3(0, 1, 0));
         upload(aMat);
         mTexture->bind(GL_MODULATE);
         myMesh->render();
@@ -35,8 +35,8 @@ void Estrella3D::render(dmat4 const& modelViewMat)const
 
 void Estrella3D::update()
 {
-    //setModelMat(rotate(mModelMat, radians(0.5), dvec3(0, 1, 0)));
-    //setModelMat(rotate(mModelMat, radians(0.5), dvec3(0, 0, 1)));
+    setModelMat(rotate(mModelMat, radians(0.5), dvec3(0, 1, 0)));
+    setModelMat(rotate(mModelMat, radians(0.5), dvec3(0, 0, 1)));
 
     //mModelMat = rotate(mModelMat, radians(0.5), dvec3(0, 1, 0));
 
