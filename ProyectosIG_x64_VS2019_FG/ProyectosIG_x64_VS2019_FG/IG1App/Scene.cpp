@@ -7,6 +7,7 @@
 #include "CuboRGB.h"
 #include "Suelo.h"
 #include "ContornoCaja.h"
+#include "Cristalera.h"
 #include "Estrella3D.h"
 #include <gtc/matrix_transform.hpp>  
 #include <gtc/type_ptr.hpp>
@@ -35,7 +36,7 @@ void Scene::init()
 	gTextures.push_back(papelE);
 
 	Texture* windowV = new Texture();
-	windowV->load("..\\Bmps\\windowV.bmp", 0.5);
+	windowV->load("..\\Bmps\\windowV.bmp", 100);
 	gTextures.push_back(windowV);
 	// allocate memory and load resources
     // Lights
@@ -90,6 +91,10 @@ void Scene::init()
 		Estrella3D* estrella = new Estrella3D(300, 8, 200);
 		estrella->setTexture(baldosaP);
 		gObjects.push_back(estrella);
+
+		Cristalera* cristalera = new Cristalera(200);
+		cristalera->setTexture(windowV);
+		gTranslucidObjects.push_back(cristalera);
 		
 	}
 }
@@ -138,11 +143,15 @@ void Scene::render(Camera const& cam) const
 	{
 	  el->render(cam.viewMat());
 	}
-
+	glEnable(GL_BLEND);
+	glDepthMask(GL_FALSE);
 	for (Abs_Entity* el : gTranslucidObjects)
 	{
 		el->render(cam.viewMat());
 	}
+
+	glDisable(GL_BLEND);
+	glDepthMask(GLU_TRUE);
 }
 
 void Scene::update()

@@ -17,21 +17,18 @@ void Cristalera::render(dmat4 const& modelViewMat)const
 
     if (myMesh != nullptr)
     {
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-        glEnable(GL_CULL_FACE);
         //glPolygonMode(GL_BACK, GL_LINE);
-        glCullFace(GL_FRONT); //culling a las frontales
         mTexture->setWrap(GL_REPEAT);
-        mTexture->bind(GL_REPLACE);
+        mTexture->bind(GL_MODULATE);
 
         dmat4 aMat = modelViewMat * mModelMat;
         upload(aMat);
         //culling a las traseras
         myMesh->render();
 
-        glCullFace(GL_BACK);
         //se renderiza lo de fuera
-        myMesh->render();
 
 
         //glEnable(GL_CULL_FACE);
