@@ -1,6 +1,8 @@
 #include "Estrella3D.h"
 #include "Mesh.h"
 #include <ext/matrix_transform.hpp>
+#include <iostream>
+#include <gtc/type_ptr.hpp>
 
 Estrella3D::Estrella3D(GLdouble re, GLdouble np, GLdouble h)
 {
@@ -9,7 +11,7 @@ Estrella3D::Estrella3D(GLdouble re, GLdouble np, GLdouble h)
     h_ = h;
 
     myMesh = new Mesh();
-    myMesh = Mesh::generaEstrella3D(re_, np_, h_);
+    myMesh = Mesh::generaEstrella3DTexCor(re_, np_, h_);
 }
 
 void Estrella3D::render(dmat4 const& modelViewMat)const
@@ -18,19 +20,19 @@ void Estrella3D::render(dmat4 const& modelViewMat)const
 
     if (myMesh != nullptr)
     {
-        glPolygonMode(GL_FRONT, GL_LINE);
-        glPolygonMode(GL_BACK, GL_LINE);
         dmat4 aMat = modelViewMat * mModelMat;
         upload(aMat);
+        glColor4dv(value_ptr(mColor));
+        mTexture->bind(GL_MODULATE);
         myMesh->render();
+        mTexture->unbind();
         aMat = aMat * rotate(modelMat(), radians(180.0), dvec3(0, 1, 0));
-        
         upload(aMat);
-        glLineWidth(2);
+        glColor4dv(value_ptr(mColor));
+        mTexture->bind(GL_MODULATE);
         myMesh->render();
-        glLineWidth(1);
-
-        glPolygonMode(GL_FRONT, GL_FILL);
+        mTexture->unbind();
+        glColor4d(1, 1, 1, 1);
     }
 
     glColor3d(255, 255, 255);

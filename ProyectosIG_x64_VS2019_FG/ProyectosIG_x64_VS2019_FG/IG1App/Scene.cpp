@@ -22,6 +22,10 @@ void Scene::init()
 	baldosaC->load("..\\Bmps\\baldosaC.bmp");
 	gTextures.push_back(baldosaC);
 
+	Texture* baldosaP = new Texture();
+	baldosaP->load("..\\Bmps\\baldosaP.bmp");
+	gTextures.push_back(baldosaP);
+
 	Texture* container = new Texture();
 	container->load("..\\Bmps\\container.bmp");
 	gTextures.push_back(container);
@@ -73,16 +77,19 @@ void Scene::init()
 		//gObjects.push_back(suelo);
 
 		
-		ContornoCaja* caja = new ContornoCaja(290);
-		caja->setTexture(container);
-		caja->setTexture2(papelE);
+		//ContornoCaja* caja = new ContornoCaja(290);
+		//caja->setTexture(container);
+		//caja->setTexture2(papelE);
 
-		gObjects.push_back(caja);
+		//gObjects.push_back(caja);
 		//
 		//ContornoCaja* caja = new ContornoCaja(290);
 		//caja->setTexture(container);
 		//gObjects.push_back(caja);
 
+		Estrella3D* estrella = new Estrella3D(300, 8, 200);
+		estrella->setTexture(baldosaP);
+		gObjects.push_back(estrella);
 		
 	}
 }
