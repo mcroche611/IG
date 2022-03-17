@@ -12,6 +12,7 @@ Estrella3D::Estrella3D(GLdouble re, GLdouble np, GLdouble h)
 
     myMesh = new Mesh();
     myMesh = Mesh::generaEstrella3DTexCor(re_, np_, h_);
+    //setModelMat(translate(modelMat(), dvec3(195, 150, 195)));
 }
 
 void Estrella3D::render(dmat4 const& modelViewMat)const
@@ -40,4 +41,10 @@ void Estrella3D::render(dmat4 const& modelViewMat)const
 
 void Estrella3D::update()
 {
+    setModelMat(rotate(mModelMat, radians(0.5), dvec3(0, 1, 0)));
+    setModelMat(rotate(mModelMat, radians(0.5), dvec3(0, 0, 1)));
+
+    //mModelMat = rotate(mModelMat, radians(0.5), dvec3(0, 1, 0));
+
+    //mModelMat = rotate(mModelMat, radians(0.5), dvec3(0, 0, 1));
 }

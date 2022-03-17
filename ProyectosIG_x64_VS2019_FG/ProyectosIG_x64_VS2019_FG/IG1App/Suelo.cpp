@@ -7,7 +7,7 @@
 
 Suelo::Suelo(GLdouble w, GLdouble h)
 {
-	myMesh = Mesh::generaRectanguloTexCor(w, h, 2, 2);
+	myMesh = Mesh::generaRectanguloTexCor(w, h, 4, 4);
 
 	setModelMat(rotate(mModelMat, radians(90.0), dvec3(1, 0, 0)));
 }

@@ -79,26 +79,29 @@ void Scene::init()
 
 		gObjects.push_back(new EjesRGB(400.0));
 
+		Suelo* suelo = new Suelo(500, 500);
+		suelo->setTexture(baldosaC);
+		gObjects.push_back(suelo);
 		
-		//ContornoCaja* caja = new ContornoCaja(290);
-		//caja->setTexture(container);
-		//caja->setTexture2(papelE);
+		ContornoCaja* caja = new ContornoCaja(100);
+		caja->setTexture(container);
+		caja->setTexture2(papelE);
+		caja->setModelMat(translate(caja->modelMat(), dvec3(195, 50, 195)));
+		gObjects.push_back(caja);
 
-		//gObjects.push_back(caja);
-		//
-		//ContornoCaja* caja = new ContornoCaja(290);
-		//caja->setTexture(container);
-		//gObjects.push_back(caja);
 
-		/*Estrella3D* estrella = new Estrella3D(300, 8, 200);
+		Estrella3D* estrella = new Estrella3D(50, 8, 50);
 		estrella->setTexture(baldosaP);
-		gObjects.push_back(estrella);*/
+		//estrella->setModelMat(translate(estrella->modelMat(), dvec3(195, 150, 195)));
+		gObjects.push_back(estrella);
 
 		Foto* foto = new Foto(100,100);
 		foto->setTexture(fotoTex);
 		gObjects.push_back(foto);
-		Cristalera* cristalera = new Cristalera(200);
+
+		Cristalera* cristalera = new Cristalera(500);
 		cristalera->setTexture(windowV);
+		cristalera->setModelMat(translate(cristalera->modelMat(), dvec3(0, 250, 0)));
 		gTranslucidObjects.push_back(cristalera);
 		
 	}
