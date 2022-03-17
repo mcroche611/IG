@@ -25,7 +25,6 @@ void Foto::render(dmat4 const& modelViewMat)const
 		mTexture->bind(GL_MODULATE);
 		myMesh->render();
 		mTexture->unbind();
-		glColor4d(1, 1, 1, 1);
 	}
 
 }
