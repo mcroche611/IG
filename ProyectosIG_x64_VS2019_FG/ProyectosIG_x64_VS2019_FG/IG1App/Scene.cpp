@@ -41,7 +41,7 @@ void Scene::init()
 	gTextures.push_back(windowV);
 
 	Texture* fotoTex = new Texture();
-	fotoTex->loadColorBuffer(100, 100);
+	fotoTex->loadColorBuffer(800, 600);
 	gTextures.push_back(fotoTex);
 	// allocate memory and load resources
     // Lights

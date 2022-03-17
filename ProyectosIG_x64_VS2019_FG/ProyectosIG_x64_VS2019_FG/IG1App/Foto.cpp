@@ -20,7 +20,7 @@ void Foto::render(dmat4 const& modelViewMat)const
 
 		dmat4 aMat = modelViewMat * mModelMat;
 		upload(aMat);
-		mTexture->bind(GL_MODULATE);
+		mTexture->bind(GL_REPLACE);
 		myMesh->render();
 		mTexture->unbind();
 	}
@@ -29,5 +29,5 @@ void Foto::render(dmat4 const& modelViewMat)const
 
 void Foto::update()
 {
-    mTexture->loadColorBuffer(w_, h_);
+    mTexture->loadColorBuffer(800, 600);
 }
