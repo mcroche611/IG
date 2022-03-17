@@ -78,9 +78,6 @@ void Scene::init()
 		
 
 		gObjects.push_back(new EjesRGB(400.0));
-		Suelo* suelo = new Suelo(300, 300);
-		suelo->setTexture(baldosaC);
-		gObjects.push_back(suelo);
 
 		
 		//ContornoCaja* caja = new ContornoCaja(290);
