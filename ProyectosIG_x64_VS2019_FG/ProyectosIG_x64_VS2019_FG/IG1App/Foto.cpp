@@ -2,6 +2,7 @@
 #include "Mesh.h"
 #include <ext/matrix_transform.hpp>
 
+
 Foto::Foto(GLdouble w, GLdouble h)
 {
     w_ = w;
