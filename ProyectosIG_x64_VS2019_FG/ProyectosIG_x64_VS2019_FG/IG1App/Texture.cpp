@@ -11,10 +11,12 @@ Texture::~Texture()
 
 void Texture::init()
 {
-  glGenTextures(1, &mId);
-  glBindTexture(GL_TEXTURE_2D, mId);
- 
-  //Filters and clamping
+
+	glGenTextures(1, &mId);
+	glBindTexture(GL_TEXTURE_2D, mId);
+
+
+	//Filters and clamping
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); // GL_NEAREST
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); // GL_NEAREST
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);     // GL_CLAMP
@@ -25,8 +27,8 @@ void Texture::init()
 
 void Texture::bind(GLuint mixMode) // GL_REPLACE, GL_MODULATE, GL_ADD
 {
-  glBindTexture(GL_TEXTURE_2D, mId);
-  glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, mixMode);  
+	glBindTexture(GL_TEXTURE_2D, mId);
+	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, mixMode);
 }
 //-------------------------------------------------------------------------
 
@@ -69,7 +71,7 @@ void Texture::loadColorBuffer(GLsizei width, GLsizei height, GLuint buffer)
 
 void Texture::setWrap(GLuint wp) // GL_REPEAT, GL_CLAMP
 {
-  glBindTexture(GL_TEXTURE_2D, mId);
+  glBindTexture(GL_TEXTURE_2D, 2);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wp);  
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wp);  
   glBindTexture(GL_TEXTURE_2D, 0); 

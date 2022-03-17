@@ -144,13 +144,6 @@ Mesh* Mesh::generaRectanguloTexCor(GLdouble w, GLdouble h, GLuint rw, GLuint rh)
 		mesh->vTexCoords.emplace_back(i * rw, i * rh + rh);
     }
 
-    // Old method of matching vertices
-    //mesh->vTexCoords.emplace_back(1, 0);
-    //mesh->vTexCoords.emplace_back(0, 0);
-    //mesh->vTexCoords.emplace_back(1, 1);
-    //mesh->vTexCoords.emplace_back(0, 1);
-
-
     return mesh;
 }
 
@@ -161,7 +154,7 @@ Mesh* Mesh::generaRectanguloTexCorSinBaldosas(GLdouble w, GLdouble h)
 
     mesh->vTexCoords.reserve(mesh->mNumVertices);
 
-        mesh->vTexCoords.emplace_back(1, 0);
+    mesh->vTexCoords.emplace_back(1, 0);
     mesh->vTexCoords.emplace_back(0, 0);
     mesh->vTexCoords.emplace_back(1, 1);
     mesh->vTexCoords.emplace_back(0, 1);
@@ -319,22 +312,19 @@ Mesh* Mesh::createTriangleRGB(float r)
 
 
 static const GLfloat box_strip[] = { 
-                                    -0.5, -0.5, +0.5, // left-bottom-front Red
-                                    -0.5, +0.5, +0.5, // left-top-front Red
-                                    +0.5, -0.5, +0.5, // right-bottom-front Red
-                                    +0.5, +0.5, +0.5, // right-top-front Red
+                                    -0.5, -0.5, +0.5, // left-bottom-front 
+                                    -0.5, +0.5, +0.5, // left-top-front 
+                                    +0.5, -0.5, +0.5, // right-bottom-front
+                                    +0.5, +0.5, +0.5, // right-top-front 
 
-                                    +0.5, -0.5, -0.5, // right-bottom-back Green
-                                    +0.5, +0.5, -0.5, // right-top-back Green
+                                    +0.5, -0.5, -0.5, // right-bottom-back 
+                                    +0.5, +0.5, -0.5, // right-top-back 
 
-                                    -0.5, -0.5, -0.5, // left-bottom-back Blue
-                                    -0.5, +0.5, -0.5, // left-top-back Blue
+                                    -0.5, -0.5, -0.5, // left-bottom-back
+                                    -0.5, +0.5, -0.5, // left-top-back 
 
-                                    -0.5, -0.5, +0.5, // left-bottom-front Green
-                                    -0.5, +0.5, +0.5, // left-top-front Green
-
-
-
+                                    -0.5, -0.5, +0.5, // left-bottom-front 
+                                    -0.5, +0.5, +0.5, // left-top-front
 };
 
 Mesh* Mesh::generaContCaja (GLdouble l)
@@ -401,107 +391,6 @@ Mesh* Mesh::generaEstrella3D(GLdouble re, GLuint np, GLdouble h)
     return mesh;
 }
 
-
-//static const GLfloat star_colors[] = {
-//                                    0, 1,
-//                                    0, 1,
-//                                    0, 0.5,
-//                                    0, 0.5,
-//                                    0, 0.5,
-//                                    0, 0.5,
-//                                    0, 1,
-//                                    0, 1,
-//                                    0, 1,
-//                                    0, 1,
-//                                    0, 0.5,
-//                                    0, 0.5,
-//                                    0, 0.5,
-//                                    0, 0.5,
-//                                    0, 1,
-//                                    0, 1,
-//                                    0, 1,
-//                                    0, 1,
-//                                    0, 0.5,
-//                                    0, 0.5,
-//                                    0, 0.5,
-//                                    0, 0.5,
-//                                    0, 1,
-//                                    0, 1,
-//                                    0, 1,
-//                                    0, 1,
-//                                    0, 0.5,
-//                                    0, 0.5,
-//                                    0, 1,
-//                                    0, 1,
-//                                    0, 1,
-//                                    0, 1,
-//                                    0, 0.5,
-//                                    0, 0.5,
-//                                    0, 0.5,
-//                                    0, 0.5,
-//                                    0, 1,
-//                                    0, 1,
-//                                    0, 1,
-//                                    0, 1,
-//                                    0, 0.5,
-//                                    0, 0.5,
-//                                    0, 0.5,
-//                                    0, 0.5,
-//                                    0, 1,
-//                                    0, 1,
-//                                    0, 1,
-//                                    0, 1,
-//                                    0, 0.5,
-//                                    0, 0.5,
-//                                    0, 0.5,
-//                                    0, 0.5,
-//                                    0, 1,
-//                                    0, 1,
-//                                    0, 1,
-//                                    0, 1,
-//                                    0, 0.5,
-//                                    0, 0.5,
-//                                    0, 0.5,
-//                                    0, 0.5,
-//                                    0, 1,
-//                                    0, 1
-//};
-
-static const GLfloat star_colors0[] = {
-                                    0, 1,
-                                    0, 1,
-                                    0, 0.5,
-                                    0, 0.5,
-                                    0, 1,
-                                    0, 1,
-                                    0, 0.5,
-                                    0, 0.5,
-                                    0, 1,
-                                    0, 1,
-                                    0, 0.5,
-                                    0, 0.5,
-                                    0, 1,
-                                    0, 1,
-                                    0, 0.5,
-                                    0, 0.5,
-                                    0, 1,
-                                    0, 1,
-                                    0, 0.5,
-                                    0, 0.5,
-                                    0, 1,
-                                    0, 1,
-                                    0, 0.5,
-                                    0, 0.5,
-                                    0, 1,
-                                    0, 1,
-                                    0, 0.5,
-                                    0, 0.5,
-                                    0, 1,
-                                    0, 1,
-                                    0, 0.5,
-                                    0, 0.5,
-};
-
 static const GLfloat star_colors[] = {
                                     0, 1,
                                     0.25, 1,
@@ -534,14 +423,6 @@ Mesh* Mesh::generaEstrella3DTexCor(GLdouble re, GLuint np, GLdouble h)
     {
         mesh->vTexCoords.emplace_back(star_colors[i], star_colors[i + 1]);
     }
-
-
-    //for (int i = 0; i < np / 2; i++) {
-    //    mesh->vTexCoords.emplace_back(i * 0.5 + 0.5, i * 0.5);
-    //    mesh->vTexCoords.emplace_back(i * 0.5, i * 0.5);
-    //    mesh->vTexCoords.emplace_back(i * 0.5 + 0.5, i * 0.5 + 0.5);
-    //    mesh->vTexCoords.emplace_back(i * 0.5, i * 0.5 + 0.5);
-    //}
 
     return mesh;
 }

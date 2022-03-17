@@ -11,8 +11,6 @@ Foto::Foto(GLdouble w, GLdouble h)
     myMesh = new Mesh();
     myMesh = Mesh::generaRectanguloTexCorSinBaldosas(w_, h_);
     setModelMat(rotate(mModelMat, radians(90.0), dvec3(1, 0, 0)));
-
-   
 }
 
 void Foto::render(dmat4 const& modelViewMat)const

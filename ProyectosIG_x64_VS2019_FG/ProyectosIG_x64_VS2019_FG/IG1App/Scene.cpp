@@ -45,7 +45,6 @@ void Scene::init()
 	gTextures.push_back(fotoTex);
 	// allocate memory and load resources
     // Lights
-    // Textures
 
 	if (mId == 0)
 	{
@@ -67,41 +66,37 @@ void Scene::init()
 	{
 		// Graphics objects (entities) of the scene
 		gObjects.push_back(new EjesRGB(400.0));
-		ContornoCaja* caja = new ContornoCaja(290);
-		gObjects.push_back(caja);
 
 		CuboRGB* cubo = new CuboRGB(200);
 		gObjects.push_back(cubo);
 	}
 	else if (mId == 2)
 	{
-		
-
 		gObjects.push_back(new EjesRGB(400.0));
 
 		Suelo* suelo = new Suelo(500, 500);
 		suelo->setTexture(baldosaC);
+		suelo->setModelMat(translate(suelo->modelMat(), dvec3(0, 0, 20)));
 		gObjects.push_back(suelo);
 		
 		ContornoCaja* caja = new ContornoCaja(100);
 		caja->setTexture(container);
 		caja->setTexture2(papelE);
-		caja->setModelMat(translate(caja->modelMat(), dvec3(195, 50, 195)));
+		caja->setModelMat(translate(caja->modelMat(), dvec3(195, 30, 195)));
 		gObjects.push_back(caja);
 
 
-		Estrella3D* estrella = new Estrella3D(50, 8, 50);
+		Estrella3D* estrella = new Estrella3D(50, 8, 40);
 		estrella->setTexture(baldosaP);
-		//estrella->setModelMat(translate(dmat4(1.0), dvec3(195, 150, 195)));
 		gObjects.push_back(estrella);
 
-		Foto* foto = new Foto(100,100);
+		Foto* foto = new Foto(200, 100);
 		foto->setTexture(fotoTex);
 		gObjects.push_back(foto);
 
 		Cristalera* cristalera = new Cristalera(500);
 		cristalera->setTexture(windowV);
-		cristalera->setModelMat(translate(cristalera->modelMat(), dvec3(0, 250, 0)));
+		cristalera->setModelMat(translate(cristalera->modelMat(), dvec3(0, 230, 0)));
 		gTranslucidObjects.push_back(cristalera);
 		
 	}
@@ -116,14 +111,23 @@ void Scene::free()
 		delete el;  el = nullptr;
 	}
 
-	for (Texture* e : gTextures)
+	if (mId == 2)
 	{
-		delete e;  e = nullptr;
-	}
+		for (Texture* e : gTextures)
+		{
 
-	for (Abs_Entity* elem : gTranslucidObjects)
-	{
-		delete elem;  elem = nullptr;
+			{
+				delete e;  e = nullptr;
+			}
+		}
+
+		for (Abs_Entity* elem : gTranslucidObjects)
+		{
+
+			{
+				delete elem;  elem = nullptr;
+			}
+		}
 	}
 }
 //-------------------------------------------------------------------------
@@ -152,10 +156,13 @@ void Scene::render(Camera const& cam) const
 	  el->render(cam.viewMat());
 	}
 	glEnable(GL_BLEND);
-	glDepthMask(GL_FALSE);
-	for (Abs_Entity* el : gTranslucidObjects)
+
+	if (mId == 2)
 	{
-		el->render(cam.viewMat());
+		for (Abs_Entity* el : gTranslucidObjects)
+		{
+			el->render(cam.viewMat());
+		}
 	}
 
 	glDisable(GL_BLEND);
@@ -169,10 +176,14 @@ void Scene::update()
 		el->update();
 	}
 
-	for (Abs_Entity* el : gTranslucidObjects)
+	if (mId == 2)
 	{
-		el->update();
+		for (Abs_Entity* el : gTranslucidObjects)
+		{
+			el->update();
+		}
 	}
+
 }
 
 void Scene::setState(int id)
