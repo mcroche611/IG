@@ -361,26 +361,6 @@ Mesh* Mesh::generaContCajaTexCor(GLdouble l)
 
     mesh->vTexCoords.reserve(mesh->mNumVertices);
 
-    //Vertices de cada baldosa
-    /*for (int i = 0; i < 5; i++)
-    {
-        mesh->vTexCoords.emplace_back((1+i)/4 , 1/3);
-        mesh->vTexCoords.emplace_back((0+i)/4, 1 / 3);
-        mesh->vTexCoords.emplace_back((0+i)/4, 2 / 3);
-        mesh->vTexCoords.emplace_back((1+i)/4, 2 / 3);
-	}*/
-
-	// Old method of matching vertices
-
-
-    //CHECK WHAT IS THE RIGHT METHOD; I HAD A CONFLICT
-	//for (int i = 0; i < 5; i++)
-	//{
-	//	mesh->vTexCoords.emplace_back(1 + i, 0);
-	//	mesh->vTexCoords.emplace_back(0 + i, 0);
-	//	mesh->vTexCoords.emplace_back(1 + i, 1);
-	//	mesh->vTexCoords.emplace_back(0 + i, 1);
-	//}
     
         mesh->vTexCoords.emplace_back(0, 0);
         mesh->vTexCoords.emplace_back(0, 1);
