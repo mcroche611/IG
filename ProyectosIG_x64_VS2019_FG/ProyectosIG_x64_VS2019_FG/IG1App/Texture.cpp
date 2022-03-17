@@ -52,6 +52,13 @@ void Texture::load(const std::string & BMP_Name, GLubyte alpha)
 		
     glBindTexture(GL_TEXTURE_2D, 0); 
 }
+void Texture::loadColorBuffer(GLsizei width, GLsizei height, GLuint buffer)
+{
+	glReadBuffer(buffer);
+	glBindTexture(buffer, width);
+	//glCopyTexImage2D();
+	glReadBuffer(buffer);
+}
 //-------------------------------------------------------------------------
 
 void Texture::setWrap(GLuint wp) // GL_REPEAT, GL_CLAMP
