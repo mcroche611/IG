@@ -54,11 +54,16 @@ void Texture::load(const std::string & BMP_Name, GLubyte alpha)
 }
 void Texture::loadColorBuffer(GLsizei width, GLsizei height, GLuint buffer)
 {
+	if (mId == 0) init();
+
 	glReadBuffer(buffer);
-	glBindTexture(buffer, 1);
-	glCopyTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA,
-		0, 0, width, height, 0);
-	glReadBuffer(buffer);
+	glBindTexture(GL_TEXTURE_2D, mId);
+	GLint level = 0;
+	GLint border = 0;
+
+	glCopyTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 0, 0, width, height, border);
+	glBindTexture(GL_TEXTURE_2D, 0);
+	glReadBuffer(GL_BACK);
 }
 //-------------------------------------------------------------------------
 

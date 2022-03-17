@@ -154,6 +154,22 @@ Mesh* Mesh::generaRectanguloTexCor(GLdouble w, GLdouble h, GLuint rw, GLuint rh)
     return mesh;
 }
 
+Mesh* Mesh::generaRectanguloTexCorSinBaldosas(GLdouble w, GLdouble h)
+{
+    Mesh* mesh = generaRectangulo(w, h);
+
+
+    mesh->vTexCoords.reserve(mesh->mNumVertices);
+
+        mesh->vTexCoords.emplace_back(1, 0);
+    mesh->vTexCoords.emplace_back(0, 0);
+    mesh->vTexCoords.emplace_back(1, 1);
+    mesh->vTexCoords.emplace_back(0, 1);
+
+
+    return mesh;
+}
+
 Mesh* Mesh::generaRectanguloRGB(GLdouble w, GLdouble h)
 {
     Mesh* mesh = generaRectangulo(w, h);

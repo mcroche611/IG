@@ -8,6 +8,7 @@
 #include "Suelo.h"
 #include "ContornoCaja.h"
 #include "Cristalera.h"
+#include "Foto.h"
 #include "Estrella3D.h"
 #include <gtc/matrix_transform.hpp>  
 #include <gtc/type_ptr.hpp>
@@ -38,6 +39,10 @@ void Scene::init()
 	Texture* windowV = new Texture();
 	windowV->load("..\\Bmps\\windowV.bmp", 100);
 	gTextures.push_back(windowV);
+
+	Texture* fotoTex = new Texture();
+	fotoTex->loadColorBuffer(100, 100);
+	gTextures.push_back(fotoTex);
 	// allocate memory and load resources
     // Lights
     // Textures
@@ -73,9 +78,9 @@ void Scene::init()
 		
 
 		gObjects.push_back(new EjesRGB(400.0));
-		//Suelo* suelo = new Suelo(300, 300);
-		//suelo->setTexture(baldosaC);
-		//gObjects.push_back(suelo);
+		Suelo* suelo = new Suelo(300, 300);
+		suelo->setTexture(baldosaC);
+		gObjects.push_back(suelo);
 
 		
 		//ContornoCaja* caja = new ContornoCaja(290);
@@ -88,10 +93,13 @@ void Scene::init()
 		//caja->setTexture(container);
 		//gObjects.push_back(caja);
 
-		Estrella3D* estrella = new Estrella3D(300, 8, 200);
+		/*Estrella3D* estrella = new Estrella3D(300, 8, 200);
 		estrella->setTexture(baldosaP);
-		gObjects.push_back(estrella);
+		gObjects.push_back(estrella);*/
 
+		Foto* foto = new Foto(100,100);
+		foto->setTexture(fotoTex);
+		gObjects.push_back(foto);
 		Cristalera* cristalera = new Cristalera(200);
 		cristalera->setTexture(windowV);
 		gTranslucidObjects.push_back(cristalera);
