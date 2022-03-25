@@ -33,6 +33,8 @@ void Camera::uploadVM() const
 void Camera::setVM() 
 {
 	mViewMat = lookAt(mEye, mLook, mUp);  // glm::lookAt defines the view matrix 
+	setAxes();
+
 }
 //-------------------------------------------------------------------------
 
@@ -91,6 +93,10 @@ void Camera::setScale(GLdouble s)
 	if (mScaleFact < 0) mScaleFact = 0.01;
 	setPM();
 }
+void Camera::changePrj()
+{
+	bOrto = !bOrto;
+}
 //-------------------------------------------------------------------------
 
 void Camera::setPM() 
@@ -99,6 +105,31 @@ void Camera::setPM()
 		mProjMat = ortho(xLeft*mScaleFact, xRight*mScaleFact, yBot*mScaleFact, yTop*mScaleFact, mNearVal, mFarVal);
 		// glm::ortho defines the orthogonal projection matrix
 	}
+	else {
+		mProjMat = frustum(xLeft * mScaleFact, xRight * mScaleFact, yBot * mScaleFact, yTop * mScaleFact, mNearVal, mFarVal);
+
+	}
+}
+
+void Camera::moveLR(GLdouble cs)
+{
+	mEye += mRight * cs;
+	mLook += mRight * cs;
+	setVM();
+}
+
+void Camera::moveFB(GLdouble cs)
+{
+	mEye += mFront * cs;
+	mLook += mFront * cs;
+	setVM();
+}
+
+void Camera::moveUD(GLdouble cs)
+{
+	mEye += mUpward * cs;
+	mLook += mUpward * cs;
+	setVM();
 }
 //-------------------------------------------------------------------------
 
