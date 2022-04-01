@@ -119,6 +119,12 @@ void Camera::setPM()
 	}
 }
 
+void Camera::orbit(double incAng, double incY)
+{
+	mAng += incAng;
+	mEye.y += incY;
+}
+
 void Camera::moveLR(GLdouble cs)
 {
 	mEye += mRight * cs;

@@ -58,6 +58,8 @@ protected:
 	glm::dvec3 mUpward;
 	glm::dvec3 mFront;
 
+	double mAng = 0;
+
 	void setAxes();
 
 	glm::dmat4 mViewMat;    // view matrix = inverse of modeling matrix 
@@ -80,6 +82,8 @@ protected:
 	//void moveFB(GLdouble cs); // Adelante/Atr�s
 	//void moveUD(GLdouble cs); // Arriba/Abajo
 	GLdouble fovy = 60.0;   // scale factor
+
+	void orbit(double incAng, double incY);
 
 };
 //-------------------------------------------------------------------------
