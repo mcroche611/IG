@@ -93,21 +93,26 @@ void Camera::setScale(GLdouble s)
 	if (mScaleFact < 0) mScaleFact = 0.01;
 	setPM();
 }
+
 void Camera::changePrj()
 {
 	bOrto = !bOrto;
+	setPM();
 }
 //-------------------------------------------------------------------------
 
 void Camera::setPM() 
 {
-	if (bOrto) { //  if orthogonal projection
+	if (bOrto) 
+	{ //  if orthogonal projection
+		mNearVal = 1;
 		mProjMat = ortho(xLeft*mScaleFact, xRight*mScaleFact, yBot*mScaleFact, yTop*mScaleFact, mNearVal, mFarVal);
 		// glm::ortho defines the orthogonal projection matrix
 	}
-	else {
+	else 
+	{
+		mNearVal = yTop;
 		mProjMat = frustum(xLeft * mScaleFact, xRight * mScaleFact, yBot * mScaleFact, yTop * mScaleFact, mNearVal, mFarVal);
-
 	}
 }
 
@@ -131,6 +136,22 @@ void Camera::moveUD(GLdouble cs)
 	mLook += mUpward * cs;
 	setVM();
 }
+
+void Camera::pitchReal(GLdouble cs)
+{
+	mViewMat *= rotate(mViewMat, glm::radians(cs), glm::dvec3(1.0, 0, 0));
+}
+
+void Camera::yawReal(GLdouble cs)
+{
+	mViewMat *= rotate(mViewMat, glm::radians(cs), glm::dvec3(0, 1.0, 0));
+}
+
+void Camera::rollReal(GLdouble cs)
+{
+	mViewMat *= rotate(mViewMat, glm::radians(cs), glm::dvec3(0, 0, 1.0));
+}
+
 //-------------------------------------------------------------------------
 
 void Camera::uploadPM() const 
