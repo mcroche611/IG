@@ -142,17 +142,17 @@ void Camera::moveUD(GLdouble cs)
 
 void Camera::pitchReal(GLdouble cs)
 {
-	mViewMat *= rotate(mViewMat, glm::radians(cs), glm::dvec3(1.0, 0, 0));
+	mViewMat = rotate(dmat4(1.0), glm::radians(cs), glm::dvec3(1.0, 0, 0)) * mViewMat;
 }
 
 void Camera::yawReal(GLdouble cs)
 {
-	mViewMat *= rotate(mViewMat, glm::radians(cs), glm::dvec3(0, 1.0, 0));
+	mViewMat = rotate(dmat4(1.0), glm::radians(cs), glm::dvec3(0, 1.0, 0)) * mViewMat;
 }
 
 void Camera::rollReal(GLdouble cs)
 {
-	mViewMat *= rotate(mViewMat, glm::radians(cs), glm::dvec3(0, 0, 1.0));
+	mViewMat = rotate(dmat4(1.0), glm::radians(cs), glm::dvec3(0, 0, 1.0)) * mViewMat;
 }
 
 //-------------------------------------------------------------------------
