@@ -108,11 +108,14 @@ void Camera::setPM()
 		mNearVal = 1;
 		mProjMat = ortho(xLeft*mScaleFact, xRight*mScaleFact, yBot*mScaleFact, yTop*mScaleFact, mNearVal, mFarVal);
 		// glm::ortho defines the orthogonal projection matrix
+
 	}
 	else 
 	{
 		mNearVal = yTop;
 		mProjMat = frustum(xLeft * mScaleFact, xRight * mScaleFact, yBot * mScaleFact, yTop * mScaleFact, mNearVal, mFarVal);
+		//mProjMat = perspective(fovy, , mNearVal, mFarVal);
+
 	}
 }
 

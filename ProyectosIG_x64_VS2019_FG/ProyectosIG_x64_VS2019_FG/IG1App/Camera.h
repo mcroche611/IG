@@ -41,7 +41,7 @@ public:
 	void changePrj();
 
 	void moveLR(GLdouble cs); // A izquierda/A derecha
-	void moveFB(GLdouble cs); // Adelante/Atrás
+	void moveFB(GLdouble cs); // Adelante/Atrï¿½s
 	void moveUD(GLdouble cs); // Arriba/Abajo
 
 	void pitchReal(GLdouble cs);
@@ -75,6 +75,11 @@ protected:
 
 	void setVM();
 	void setPM();
+
+	void moveLR(GLdouble cs); // A izquierda/A derecha
+	void moveFB(GLdouble cs); // Adelante/Atrï¿½s
+	void moveUD(GLdouble cs); // Arriba/Abajo
+	GLdouble fovy = 60.0;   // scale factor
 
 };
 //-------------------------------------------------------------------------
