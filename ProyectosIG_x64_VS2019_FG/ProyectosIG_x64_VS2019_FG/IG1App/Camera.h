@@ -71,6 +71,7 @@ protected:
 	void moveLR(GLdouble cs); // A izquierda/A derecha
 	void moveFB(GLdouble cs); // Adelante/Atrás
 	void moveUD(GLdouble cs); // Arriba/Abajo
+	GLdouble fovy = 60.0;   // scale factor
 
 };
 //-------------------------------------------------------------------------

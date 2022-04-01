@@ -104,9 +104,11 @@ void Camera::setPM()
 	if (bOrto) { //  if orthogonal projection
 		mProjMat = ortho(xLeft*mScaleFact, xRight*mScaleFact, yBot*mScaleFact, yTop*mScaleFact, mNearVal, mFarVal);
 		// glm::ortho defines the orthogonal projection matrix
+
 	}
 	else {
 		mProjMat = frustum(xLeft * mScaleFact, xRight * mScaleFact, yBot * mScaleFact, yTop * mScaleFact, mNearVal, mFarVal);
+		//mProjMat = perspective(fovy, , mNearVal, mFarVal);
 
 	}
 }
