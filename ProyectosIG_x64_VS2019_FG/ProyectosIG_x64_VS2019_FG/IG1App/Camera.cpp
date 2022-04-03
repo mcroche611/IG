@@ -160,6 +160,21 @@ void Camera::orbit(double incAng, double incY)
 	//eye = (rotationMatrixY * (eye - look)) + look;
 	//mEye = eye;
 
+	// Orbit 0.0
+	//glm::dvec4 eye(mEye.x, mEye.y, mEye.z, 1);
+	//glm::dvec4 look(mLook.x, mLook.y, mLook.z, 1);
+
+	//dmat4 rotationMatrixX(1.0f);
+	//rotationMatrixX = rotate(rotationMatrixX, incAng, mUp);
+	//eye = rotationMatrixX * eye;
+	//dmat4 rotationMatrixY(1.0f);
+	// 
+	//rotationMatrixY = rotate(rotationMatrixY, incY, GetRightVector());
+	//eye = (rotationMatrixY * (eye - look)) + look;
+	////eye = rotationMatrixY * eye;
+	//mEye = eye;
+	//setVM();
+
 	setVM();
 }
 
