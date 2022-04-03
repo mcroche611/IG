@@ -74,6 +74,8 @@ void IG1App::iniWinOpenGL()
 	glutSpecialFunc(s_specialKey);
 	glutDisplayFunc(s_display);
 	glutIdleFunc(s_update);
+	glutMouseFunc(s_mouse);
+	glutMouseWheelFunc(s_mouseWheel);
 
 	cout << glGetString(GL_VERSION) << '\n';
 	cout << glGetString(GL_VENDOR) << '\n';
@@ -214,12 +216,12 @@ void IG1App::specialKey(int key, int x, int y)
 	int mdf = glutGetModifiers(); // returns the modifiers (Shift, Ctrl, Alt)
 	
 	switch (key) {
-	case GLUT_RIGHT_BUTTON:
-		mouse(GLUT_RIGHT_BUTTON, mScene->getState(), x, y);
-		break;
-	case GLUT_LEFT_BUTTON:
-		mouse(GLUT_LEFT_BUTTON, mScene->getState(), x, y);
-		break;
+	//case GLUT_RIGHT_BUTTON:
+	//	mouse(GLUT_RIGHT_BUTTON, mScene->getState(), x, y);
+	//	break;
+	//case GLUT_LEFT_BUTTON:
+	//	mouse(GLUT_LEFT_BUTTON, mScene->getState(), x, y);
+	//	break;
 	case GLUT_KEY_RIGHT:
 			//mCamera->moveLR(1);
 			mCamera->pitchReal(1);    // rotates 1 on the X axis
@@ -296,6 +298,25 @@ void IG1App::motion(int x, int y)
 		}
 
 		glutPostRedisplay();
+}
+
+void IG1App::mouseWheel(int n, int d, int x, int y)
+{
+	int num = glutGetModifiers();
+
+	if (num == 0)
+	{
+		mCamera->moveFB(d);
+	}
+	else
+	{
+		if (num == GLUT_ACTIVE_CTRL)
+		{
+			mCamera->setScale(d);
+		}
+	}
+
+	glutPostRedisplay();
 }
 
 //-------------------------------------------------------------------------
