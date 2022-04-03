@@ -137,6 +137,14 @@ void Camera::setPM()
 	}
 }
 
+void Camera::setCenital()
+{
+	mEye = dvec3(0, mRadio, 0);
+	mAng = -90;
+	mUp = dvec3(0, 0, -1);
+	setVM();
+}
+
 void Camera::orbit(double incAng, double incY)
 {
 	mAng = mAng + glm::degrees(incAng);
