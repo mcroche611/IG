@@ -88,6 +88,7 @@ void Scene::init()
 
 		Estrella3D* estrella = new Estrella3D(50, 8, 40);
 		estrella->setTexture(baldosaP);
+		//estrella->setModelMat(translate(estrella->modelMat(), dvec3(200, 200, 200)));
 		gObjects.push_back(estrella);
 
 		Foto* foto = new Foto(200, 100);
