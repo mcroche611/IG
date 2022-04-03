@@ -72,6 +72,9 @@ protected:
 
 	GLuint mLastUpdateTime;
 	bool activeAnim = true;
+
+	bool m2Vistas = false;
+	void setVistas();
 };
 //-------------------------------------------------------------------------
 

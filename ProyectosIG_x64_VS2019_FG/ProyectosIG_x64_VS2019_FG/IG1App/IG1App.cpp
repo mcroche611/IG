@@ -91,9 +91,14 @@ void IG1App::free()
 void IG1App::display() const   
 {  // double buffering
 
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);  // clears the back buffer
-
-	mScene->render(*mCamera);  // uploads the viewport and camera to the GPU
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	if (m2Vistas) 
+	{
+		//mScene->render(*mCamera);
+		//mScene->render(*mCamera); //1 vista
+	}
+	else 
+		mScene->render(*mCamera); //1 vista
 	
 	glutSwapBuffers();	// swaps the front and back buffer
 }
@@ -131,15 +136,15 @@ void IG1App::key(unsigned char key, int x, int y)
 		mCamera->set2D();
 		break;
 	case 'r':
-		//mCamera->orbit(glm::radians(1.0), glm::radians(1.0));
+		//mCamera->orbit(glm::radians(1.0), rglm::radians(1.0));
 		//mCamera->orbit(glm::radians(0.0), glm::radians(1.0));
 		mCamera->orbit(glm::radians(1.0), 500);
 		break;
-	case 'R':
-		//mCamera->orbit(glm::radians(1.0), glm::radians(1.0));
-		mCamera->orbit(glm::radians(0.0), glm::radians(1.0));
-		//mCamera->orbit(glm::radians(1.0), glm::radians(0.0));
-		break;
+	//case 'R':
+	//	//mCamera->orbit(glm::radians(1.0), glm::radians(1.0));
+	//	mCamera->orbit(glm::radians(0.0), glm::radians(1.0));
+	//	//mCamera->orbit(glm::radians(1.0), glm::radians(0.0));
+	//	break;
 	case '0':
 		mScene->setState(0);
 		break;
@@ -159,6 +164,9 @@ void IG1App::key(unsigned char key, int x, int y)
 		break;
 	case 'c':
 		mCamera->setCenital();
+		break;
+	case 'k':
+		setVistas();
 		break;
 	default:
 		need_redisplay = false;
@@ -216,6 +224,11 @@ void IG1App::update()
 		mScene->update();
 		glutPostRedisplay();
 	}
+}
+
+void IG1App::setVistas()
+{
+	m2Vistas = !m2Vistas;
 }
 //-------------------------------------------------------------------------
 

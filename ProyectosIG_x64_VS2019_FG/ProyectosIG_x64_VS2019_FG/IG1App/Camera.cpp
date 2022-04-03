@@ -57,7 +57,7 @@ void Camera::set3D()
 	mLook = dvec3(0, 10, 0);   
 	mUp = dvec3(0, 1, 0);
 
-	mRadio = x;
+	mRadio = 1000;
 
 	if (mEye.x >= 0)
 	{
@@ -147,9 +147,17 @@ void Camera::setCenital()
 
 void Camera::orbit(double incAng, double incY)
 {
-	mAng = mAng + glm::degrees(incAng);
-	glm::dvec4 eye(mLook.x + cos(radians(mAng)) * mRadio, mLook.y + incY, mLook.z - sin(radians(mAng)) * mRadio, 1);
-	mEye = eye;
+	// Orbit pdf
+	mAng += glm::degrees(incAng);
+	mEye.x = mLook.x + cos(radians(mAng)) * mRadio;
+	mEye.z = mLook.z - sin(radians(mAng)) * mRadio;
+	mEye.y = mLook.y + incY;
+	setVM();
+
+	// Orbit 3.0
+	//mAng = mAng + glm::degrees(incAng);
+	//glm::dvec4 eye(mLook.x + cos(radians(mAng)) * mRadio, mLook.y + incY, mLook.z - sin(radians(mAng)) * mRadio, 1);
+	//mEye = eye;
 
 	// Orbit 2.0
 	//mEye.x = mLook.x + cos(radians(mAng)) * mRadio;
@@ -183,7 +191,7 @@ void Camera::orbit(double incAng, double incY)
 	//mEye = eye;
 	//setVM();
 
-	setVM();
+	//setVM();
 }
 
 void Camera::moveLR(GLdouble cs)
