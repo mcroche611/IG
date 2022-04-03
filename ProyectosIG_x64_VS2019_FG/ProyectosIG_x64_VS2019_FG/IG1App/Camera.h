@@ -39,6 +39,7 @@ public:
 	void upload() const { mViewPort->upload();  uploadVM(); uploadPM(); }; 
 
 	void changePrj();
+	void setCenital();
 
 	void moveLR(GLdouble cs); // A izquierda/A derecha
 	void moveFB(GLdouble cs); // Adelante/Atr�s
