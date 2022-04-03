@@ -133,7 +133,7 @@ void IG1App::key(unsigned char key, int x, int y)
 	case 'r':
 		//mCamera->orbit(glm::radians(1.0), glm::radians(1.0));
 		//mCamera->orbit(glm::radians(0.0), glm::radians(1.0));
-		mCamera->orbit(glm::radians(1.0), glm::radians(0.0));
+		mCamera->orbit(glm::radians(1.0), -500);
 		break;
 	case 'R':
 		//mCamera->orbit(glm::radians(1.0), glm::radians(1.0));

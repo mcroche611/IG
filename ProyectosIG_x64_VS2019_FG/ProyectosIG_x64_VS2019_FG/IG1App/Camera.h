@@ -79,10 +79,6 @@ protected:
 
 	void setVM();
 	void setPM();
-
-	//void moveLR(GLdouble cs); // A izquierda/A derecha
-	//void moveFB(GLdouble cs); // Adelante/Atr�s
-	//void moveUD(GLdouble cs); // Arriba/Abajo
 	GLdouble fovy = 60.0;   // scale factor
 
 	glm::dvec3 GetRightVector() const { return glm::transpose(mViewMat)[0]; }

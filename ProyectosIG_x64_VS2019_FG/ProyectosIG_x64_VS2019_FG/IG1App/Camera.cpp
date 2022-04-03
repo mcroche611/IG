@@ -121,8 +121,7 @@ void Camera::setPM()
 
 void Camera::orbit(double incAng, double incY)
 {
-	//mAng += incAng;
-	//mEye.x += incY;
+	mEye.y = incY; //Pone el Eye a la altura determinada
 	glm::dvec4 eye(mEye.x, mEye.y, mEye.z, 1);
 	glm::dvec4 look(mLook.x, mLook.y, mLook.z, 1);
 
@@ -130,11 +129,10 @@ void Camera::orbit(double incAng, double incY)
 	rotationMatrixX = rotate(rotationMatrixX, incAng, mUp);
 
 	eye = rotationMatrixX * eye;
-	dmat4 rotationMatrixY(1.0f);
-	rotationMatrixY = rotate(rotationMatrixY, incY, GetRightVector());
+	//dmat4 rotationMatrixY(1.0f);
+	//rotationMatrixY = translate(rotationMatrixY, { 0.0, incY, 0.0 });
 
-	eye = (rotationMatrixY * (eye - look)) + look;
-	//eye = rotationMatrixY * eye;
+	//eye = (rotationMatrixY * (eye - look)) + look;
 	mEye = eye;
 	setVM();
 }
