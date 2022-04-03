@@ -94,14 +94,44 @@ void IG1App::display() const
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	if (m2Vistas) 
 	{
-		//mScene->render(*mCamera);
-		//mScene->render(*mCamera); //1 vista
+		display2V();
 	}
 	else 
 		mScene->render(*mCamera); //1 vista
 	
 	glutSwapBuffers();	// swaps the front and back buffer
 }
+
+void IG1App::display2V() const
+{ // se llama en display()
+// para renderizar las vistas utilizamos una cámara auxiliar:
+	Camera auxCam = *mCamera; // copiando mCamera
+	// el puerto de vista queda compartido (se copia el puntero)
+	Viewport auxVP = *mViewPort; // lo copiamos en una var. aux. para
+	// el tamaño de los 4 puertos de vista es el mismo, lo configuramos
+
+	mViewPort->setSize(mWinW / 2, mWinH);
+	// igual que en resize, para que no cambie la escala,
+	// tenemos que cambiar el tamaño de la ventana de vista de la cámara
+	auxCam.setSize(mViewPort->width(), mViewPort->height());
+
+	//vista 3D
+	mViewPort->setPos(0, 0);
+	// el tamaño de la ventana de vista es el mismo para las 4 vistas (ya configurado)
+	// pero tenemos que cambiar la posición y orientación de la cámara
+	auxCam.set3D();
+	// renderizamos con la cámara y el puerto de vista configurados
+	mScene->render(auxCam);
+
+	//vista cenital
+	mViewPort->setPos(mWinW / 2, 0);
+	auxCam.setCenital();
+	// renderizamos con la cámara y el puerto de vista configurados
+	mScene->render(auxCam);	
+
+	*mViewPort = auxVP; // restaurar el puerto de vista 
+}
+
 //-------------------------------------------------------------------------
 
 void IG1App::resize(int newWidth, int newHeight) 
@@ -136,7 +166,7 @@ void IG1App::key(unsigned char key, int x, int y)
 		mCamera->set2D();
 		break;
 	case 'r':
-		//mCamera->orbit(glm::radians(1.0), rglm::radians(1.0));
+		//mCamera->orbit(glm::radians(1.0), glm::radians(1.0));
 		//mCamera->orbit(glm::radians(0.0), glm::radians(1.0));
 		mCamera->orbit(glm::radians(1.0), 500);
 		break;
