@@ -60,7 +60,8 @@ protected:
 	glm::dvec3 mUpward;
 	glm::dvec3 mFront;
 
-	double mAng = 0;
+	GLdouble mAng = 0;
+	GLdouble mRadio = 0;
 
 	void setAxes();
 

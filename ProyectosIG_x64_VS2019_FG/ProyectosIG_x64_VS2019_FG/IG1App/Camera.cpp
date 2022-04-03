@@ -40,18 +40,36 @@ void Camera::setVM()
 
 void Camera::set2D() 
 {
-	mEye = dvec3(0, 0, 500);
+	int z = 500;
+	mEye = dvec3(0, 0, z);
 	mLook = dvec3(0, 0, 0);
 	mUp = dvec3(0, 1, 0);
+
+	mAng = -90;
 	setVM();
 }
 //-------------------------------------------------------------------------
 
 void Camera::set3D() 
 {
-	mEye = dvec3(500, 500, 500);  
+	int x = 500;
+	mEye = dvec3(x, x, x);  
 	mLook = dvec3(0, 10, 0);   
 	mUp = dvec3(0, 1, 0);
+
+	mRadio = x;
+
+	if (mEye.x >= 0)
+	{
+		mAng = 0;
+	}
+	else
+	{
+		mAng = 180;
+	}
+
+	mAng = -45;
+
 	setVM();
 }
 //-------------------------------------------------------------------------
@@ -121,19 +139,27 @@ void Camera::setPM()
 
 void Camera::orbit(double incAng, double incY)
 {
-	mEye.y = incY; //Pone el Eye a la altura determinada
-	glm::dvec4 eye(mEye.x, mEye.y, mEye.z, 1);
-	glm::dvec4 look(mLook.x, mLook.y, mLook.z, 1);
+	mAng = mAng + glm::degrees(incAng);
+	glm::dvec4 eye(mLook.x + cos(radians(mAng)) * mRadio, mLook.y + incY, mLook.z - sin(radians(mAng)) * mRadio, 1);
+	mEye = eye;
 
-	dmat4 rotationMatrixX(1.0f);
-	rotationMatrixX = rotate(rotationMatrixX, incAng, mUp);
+	// Orbit 2.0
+	//mEye.x = mLook.x + cos(radians(mAng)) * mRadio;
+	//mEye.z = mLook.z - sin(radians(mAng)) * mRadio;
+	//mEye.y = incY;
 
-	eye = rotationMatrixX * eye;
+	// Orbit 1.0
+	//mEye.y = incY;
+	//glm::dvec4 eye(mEye.x, mEye.y, mEye.z, 1);
+	//glm::dvec4 look(mLook.x, mLook.y, mLook.z, 1);
+	//dmat4 rotationMatrixX(1.0f);
+	//rotationMatrixX = rotate(rotationMatrixX, incAng, mUp);
+	//eye = rotationMatrixX * eye;
 	//dmat4 rotationMatrixY(1.0f);
 	//rotationMatrixY = translate(rotationMatrixY, { 0.0, incY, 0.0 });
-
 	//eye = (rotationMatrixY * (eye - look)) + look;
-	mEye = eye;
+	//mEye = eye;
+
 	setVM();
 }
 
