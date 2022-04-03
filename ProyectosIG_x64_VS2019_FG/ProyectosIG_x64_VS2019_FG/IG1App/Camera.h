@@ -48,6 +48,8 @@ public:
 	void yawReal(GLdouble cs);
 	void rollReal(GLdouble cs);
 
+	void orbit(double incAng, double incY);
+
 protected:
 	
 	glm::dvec3 mEye = { 0.0, 0.0, 500.0 };  // camera's position
@@ -83,7 +85,7 @@ protected:
 	//void moveUD(GLdouble cs); // Arriba/Abajo
 	GLdouble fovy = 60.0;   // scale factor
 
-	void orbit(double incAng, double incY);
+	glm::dvec3 GetRightVector() const { return glm::transpose(mViewMat)[0]; }
 
 };
 //-------------------------------------------------------------------------

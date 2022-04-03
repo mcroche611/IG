@@ -121,8 +121,22 @@ void Camera::setPM()
 
 void Camera::orbit(double incAng, double incY)
 {
-	mAng += incAng;
-	mEye.y += incY;
+	//mAng += incAng;
+	//mEye.x += incY;
+	glm::dvec4 eye(mEye.x, mEye.y, mEye.z, 1);
+	glm::dvec4 look(mLook.x, mLook.y, mLook.z, 1);
+
+	dmat4 rotationMatrixX(1.0f);
+	rotationMatrixX = rotate(rotationMatrixX, incAng, mUp);
+
+	eye = rotationMatrixX * eye;
+	dmat4 rotationMatrixY(1.0f);
+	rotationMatrixY = rotate(rotationMatrixY, incY, GetRightVector());
+
+	eye = (rotationMatrixY * (eye - look)) + look;
+	//eye = rotationMatrixY * eye;
+	mEye = eye;
+	setVM();
 }
 
 void Camera::moveLR(GLdouble cs)

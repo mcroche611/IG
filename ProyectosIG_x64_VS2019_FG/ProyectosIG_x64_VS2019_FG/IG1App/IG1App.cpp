@@ -130,6 +130,16 @@ void IG1App::key(unsigned char key, int x, int y)
 	case 'o':
 		mCamera->set2D();
 		break;
+	case 'r':
+		//mCamera->orbit(glm::radians(1.0), glm::radians(1.0));
+		//mCamera->orbit(glm::radians(0.0), glm::radians(1.0));
+		mCamera->orbit(glm::radians(1.0), glm::radians(0.0));
+		break;
+	case 'R':
+		//mCamera->orbit(glm::radians(1.0), glm::radians(1.0));
+		mCamera->orbit(glm::radians(0.0), glm::radians(1.0));
+		//mCamera->orbit(glm::radians(1.0), glm::radians(0.0));
+		break;
 	case '0':
 		mScene->setState(0);
 		break;
@@ -141,6 +151,8 @@ void IG1App::key(unsigned char key, int x, int y)
 		break;
 	case 'u':
 		activeAnim = !activeAnim;
+		break;
+	case 'U':
 		break;
 	case 'p':
 		mCamera->changePrj();
