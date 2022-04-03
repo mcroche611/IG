@@ -76,6 +76,13 @@ protected:
 
 	bool m2Vistas = false;
 	void setVistas();
+
+	glm::dvec2 mMouseCoord;
+	int mMouseButt;
+
+	void mouse(int button, int state, int x, int y);
+	void motion(int x, int y);
+	glm::dvec2 mp = { 0, 0 };
 };
 //-------------------------------------------------------------------------
 

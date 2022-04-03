@@ -214,6 +214,12 @@ void IG1App::specialKey(int key, int x, int y)
 	int mdf = glutGetModifiers(); // returns the modifiers (Shift, Ctrl, Alt)
 	
 	switch (key) {
+	case GLUT_RIGHT_BUTTON:
+		mouse(GLUT_RIGHT_BUTTON, mScene->getState(), x, y);
+		break;
+	case GLUT_LEFT_BUTTON:
+		mouse(GLUT_LEFT_BUTTON, mScene->getState(), x, y);
+		break;
 	case GLUT_KEY_RIGHT:
 			//mCamera->moveLR(1);
 			mCamera->pitchReal(1);    // rotates 1 on the X axis
@@ -260,5 +266,37 @@ void IG1App::setVistas()
 {
 	m2Vistas = !m2Vistas;
 }
+
+void IG1App::mouse(int button, int state, int x, int y)
+{
+	mMouseButt = state;
+	mMouseCoord = { (float)x, (float)y };
+
+	motion(x, y);
+}
+
+void IG1App::motion(int x, int y)
+{
+		glm::dvec2 newCoord = { x, y };
+	//	1. Guarda en una variable auxiliar mp la diferencia entre mCoord y (x, y)
+		mp = mMouseCoord - newCoord;
+
+	//	2. Guarda en mCoord la posición(x, y) del ratón
+		mMouseCoord = newCoord;
+
+	//	3. Si mBot es el botón izquierdo, la cámara orbita(mp.x * 0.05, mp.y)
+
+		if (mMouseButt == GLUT_LEFT_BUTTON)
+			mCamera->orbit(mp.x * 0.05, mp.y);
+		else if (mMouseButt == GLUT_RIGHT_BUTTON)
+		{
+			//	4. Si mBot es el botón derecho, la cámara se desplaza moveUD() y moveLR() según indique mp
+			mCamera->moveLR(mp.x);
+			mCamera->moveUD(mp.y);
+		}
+
+		glutPostRedisplay();
+}
+
 //-------------------------------------------------------------------------
 

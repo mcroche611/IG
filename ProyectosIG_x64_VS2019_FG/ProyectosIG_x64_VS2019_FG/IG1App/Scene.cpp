@@ -200,6 +200,11 @@ void Scene::setState(int id)
 		init();
 	}
 }
+
+int Scene::getState()
+{
+	return mId;
+}
 //-------------------------------------------------------------------------
 
 

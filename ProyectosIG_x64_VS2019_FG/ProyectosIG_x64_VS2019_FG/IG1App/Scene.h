@@ -28,6 +28,8 @@ public:
 
 	void setState(int id);
 
+	int getState();
+
 	virtual void update();
 	
 protected:
