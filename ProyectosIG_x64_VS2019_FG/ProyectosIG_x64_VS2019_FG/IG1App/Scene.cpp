@@ -156,6 +156,7 @@ void Scene::render(Camera const& cam) const
 	  el->render(cam.viewMat());
 	}
 	glEnable(GL_BLEND);
+	glDepthMask(GL_FALSE);
 
 	if (mId == 2)
 	{
