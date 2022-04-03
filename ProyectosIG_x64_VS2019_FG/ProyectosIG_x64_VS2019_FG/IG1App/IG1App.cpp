@@ -75,6 +75,7 @@ void IG1App::iniWinOpenGL()
 	glutDisplayFunc(s_display);
 	glutIdleFunc(s_update);
 	glutMouseFunc(s_mouse);
+	glutMotionFunc(s_motion);
 	glutMouseWheelFunc(s_mouseWheel);
 
 	cout << glGetString(GL_VERSION) << '\n';
@@ -271,10 +272,10 @@ void IG1App::setVistas()
 
 void IG1App::mouse(int button, int state, int x, int y)
 {
-	mMouseButt = state;
+	mMouseButt = button;
 	mMouseCoord = { (float)x, (float)y };
 
-	motion(x, y);
+	//motion(x, y);
 }
 
 void IG1App::motion(int x, int y)

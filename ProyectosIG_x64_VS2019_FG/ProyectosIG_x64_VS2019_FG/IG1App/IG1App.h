@@ -60,6 +60,7 @@ protected:
 	static void s_update() { s_ig1app.update(); };
 	static void s_mouse(int button, int state, int x, int y) { s_ig1app.mouse(button, state, x, y); };
 	static void s_mouseWheel(int n, int d, int x, int y) { s_ig1app.mouseWheel(n, d, x, y); };
+	static void s_motion(int x, int y) { s_ig1app.motion( x, y); };
 
 	// Viewport position and size
 	Viewport *mViewPort = nullptr;
