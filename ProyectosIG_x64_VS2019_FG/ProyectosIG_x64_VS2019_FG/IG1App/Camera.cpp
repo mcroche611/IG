@@ -132,8 +132,6 @@ void Camera::setPM()
 	{
 		mNearVal = yTop;
 		mProjMat = frustum(xLeft * mScaleFact, xRight * mScaleFact, yBot * mScaleFact, yTop * mScaleFact, mNearVal, mFarVal);
-		//mProjMat = perspective(fovy, , mNearVal, mFarVal);
-
 	}
 }
 
@@ -147,51 +145,11 @@ void Camera::setCenital()
 
 void Camera::orbit(double incAng, double incY)
 {
-	// Orbit pdf
 	mAng += glm::degrees(incAng);
 	mEye.x = mLook.x + cos(radians(mAng)) * mRadio;
 	mEye.z = mLook.z - sin(radians(mAng)) * mRadio;
 	mEye.y = mLook.y + incY;
 	setVM();
-
-	// Orbit 3.0
-	//mAng = mAng + glm::degrees(incAng);
-	//glm::dvec4 eye(mLook.x + cos(radians(mAng)) * mRadio, mLook.y + incY, mLook.z - sin(radians(mAng)) * mRadio, 1);
-	//mEye = eye;
-
-	// Orbit 2.0
-	//mEye.x = mLook.x + cos(radians(mAng)) * mRadio;
-	//mEye.z = mLook.z - sin(radians(mAng)) * mRadio;
-	//mEye.y = incY;
-
-	// Orbit 1.0
-	//mEye.y = incY;
-	//glm::dvec4 eye(mEye.x, mEye.y, mEye.z, 1);
-	//glm::dvec4 look(mLook.x, mLook.y, mLook.z, 1);
-	//dmat4 rotationMatrixX(1.0f);
-	//rotationMatrixX = rotate(rotationMatrixX, incAng, mUp);
-	//eye = rotationMatrixX * eye;
-	//dmat4 rotationMatrixY(1.0f);
-	//rotationMatrixY = translate(rotationMatrixY, { 0.0, incY, 0.0 });
-	//eye = (rotationMatrixY * (eye - look)) + look;
-	//mEye = eye;
-
-	// Orbit 0.0
-	//glm::dvec4 eye(mEye.x, mEye.y, mEye.z, 1);
-	//glm::dvec4 look(mLook.x, mLook.y, mLook.z, 1);
-
-	//dmat4 rotationMatrixX(1.0f);
-	//rotationMatrixX = rotate(rotationMatrixX, incAng, mUp);
-	//eye = rotationMatrixX * eye;
-	//dmat4 rotationMatrixY(1.0f);
-	// 
-	//rotationMatrixY = rotate(rotationMatrixY, incY, GetRightVector());
-	//eye = (rotationMatrixY * (eye - look)) + look;
-	////eye = rotationMatrixY * eye;
-	//mEye = eye;
-	//setVM();
-
-	//setVM();
 }
 
 void Camera::moveLR(GLdouble cs)

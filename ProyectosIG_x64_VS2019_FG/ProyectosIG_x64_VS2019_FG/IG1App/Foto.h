@@ -10,7 +10,7 @@ class Foto : public Abs_Entity
 
 public:
 	Foto(GLdouble w, GLdouble h);
-	void render(dmat4 const& modelViewMat)const override; //No necesita 'override' pq el render de Abs_Entity es virtual
+	void render(dmat4 const& modelViewMat)const override; 
 	void update() override;
 };
 

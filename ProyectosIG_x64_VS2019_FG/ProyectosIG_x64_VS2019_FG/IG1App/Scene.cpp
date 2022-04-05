@@ -19,7 +19,6 @@ using namespace glm;
 void Scene::init()
 { 
 	setGL();  // OpenGL settings
-	//glEnable(GL_DEPTH_TEST);
 	Texture* baldosaC = new Texture();
 	baldosaC->load("..\\Bmps\\baldosaC.bmp");
 	gTextures.push_back(baldosaC);
@@ -88,7 +87,6 @@ void Scene::init()
 
 		Estrella3D* estrella = new Estrella3D(50, 8, 40);
 		estrella->setTexture(baldosaP);
-		//estrella->setModelMat(translate(estrella->modelMat(), dvec3(200, 200, 200)));
 		gObjects.push_back(estrella);
 
 		Foto* foto = new Foto(200, 100);

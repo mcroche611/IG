@@ -62,7 +62,6 @@ void IG1App::iniWinOpenGL()
 	glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_GLUTMAINLOOP_RETURNS);
 
 	glutInitWindowSize(mWinW, mWinH);   // window size
-	//glutInitWindowPosition (140, 140);
 
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH /*| GLUT_STENCIL*/); // RGBA colors, double buffer, depth buffer and stencil buffer   
 	
@@ -169,15 +168,8 @@ void IG1App::key(unsigned char key, int x, int y)
 		mCamera->set2D();
 		break;
 	case 'r':
-		//mCamera->orbit(glm::radians(1.0), glm::radians(1.0));
-		//mCamera->orbit(glm::radians(0.0), glm::radians(1.0));
 		mCamera->orbit(glm::radians(1.0), 500);
 		break;
-	//case 'R':
-	//	//mCamera->orbit(glm::radians(1.0), glm::radians(1.0));
-	//	mCamera->orbit(glm::radians(0.0), glm::radians(1.0));
-	//	//mCamera->orbit(glm::radians(1.0), glm::radians(0.0));
-	//	break;
 	case '0':
 		mScene->setState(0);
 		break;
@@ -204,7 +196,7 @@ void IG1App::key(unsigned char key, int x, int y)
 	default:
 		need_redisplay = false;
 		break;
-	} //switch
+	} 
 
 	if (need_redisplay)
 		glutPostRedisplay(); // marks the window as needing to be redisplayed -> calls to display()
@@ -216,13 +208,8 @@ void IG1App::specialKey(int key, int x, int y)
 	bool need_redisplay = true;
 	int mdf = glutGetModifiers(); // returns the modifiers (Shift, Ctrl, Alt)
 	
-	switch (key) {
-	//case GLUT_RIGHT_BUTTON:
-	//	mouse(GLUT_RIGHT_BUTTON, mScene->getState(), x, y);
-	//	break;
-	//case GLUT_LEFT_BUTTON:
-	//	mouse(GLUT_LEFT_BUTTON, mScene->getState(), x, y);
-	//	break;
+	switch (key) 
+	{
 	case GLUT_KEY_RIGHT:
 			//mCamera->moveLR(1);
 			mCamera->pitchReal(1);    // rotates 1 on the X axis
@@ -251,7 +238,7 @@ void IG1App::specialKey(int key, int x, int y)
 	default:
 		need_redisplay = false;
 		break;
-	}//switch
+	}
 
 	if (need_redisplay)
 		glutPostRedisplay(); // marks the window as needing to be redisplayed -> calls to display()
@@ -274,8 +261,6 @@ void IG1App::mouse(int button, int state, int x, int y)
 {
 	mMouseButt = button;
 	mMouseCoord = { (float)x, (float)y };
-
-	//motion(x, y);
 }
 
 void IG1App::motion(int x, int y)
