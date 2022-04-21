@@ -30,6 +30,8 @@ public:
 
 	int getState();
 
+	void sceneDirLight(Camera const& cam) const;
+
 	virtual void update();
 	
 protected:
@@ -37,7 +39,7 @@ protected:
 	void setGL();
 	void resetGL();
 
-	int mId = 0;
+	int mId = 3;
 
 	std::vector<Abs_Entity*> gObjects;  // Entities (graphic objects) of the scene
 	std::vector<Abs_Entity*> gTranslucidObjects;  // entidades traslucidas
