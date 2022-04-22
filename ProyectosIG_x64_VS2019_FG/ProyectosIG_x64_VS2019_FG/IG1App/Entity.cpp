@@ -29,7 +29,8 @@ EjesRGB::~EjesRGB()
 
 void EjesRGB::render(dmat4 const& modelViewMat) const 
 {
-	if (mMesh != nullptr) {
+	if (mMesh != nullptr) 
+	{
 		dmat4 aMat = modelViewMat * mModelMat;  // glm matrix multiplication
 		upload(aMat);
 		glLineWidth(2);
