@@ -133,6 +133,7 @@
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Pixmap32RGBA.h" />
     <ClInclude Include="Poligono.h" />
+    <ClInclude Include="QuadricEntity.h" />
     <ClInclude Include="RectanguloRGB.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Suelo.h" />
@@ -154,6 +155,7 @@
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Pixmap32RGBA.cpp" />
     <ClCompile Include="Poligono.cpp" />
+    <ClCompile Include="QuadricEntity.cpp" />
     <ClCompile Include="RectanguloRGB.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Suelo.cpp" />

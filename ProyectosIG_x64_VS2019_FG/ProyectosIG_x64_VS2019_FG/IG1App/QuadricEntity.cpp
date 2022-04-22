@@ -1,0 +1,2 @@
+#include "QuadricEntity.h"
+
