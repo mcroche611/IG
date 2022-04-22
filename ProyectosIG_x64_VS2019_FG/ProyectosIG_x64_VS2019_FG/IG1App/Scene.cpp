@@ -12,6 +12,7 @@
 #include "Estrella3D.h"
 #include <gtc/matrix_transform.hpp>  
 #include <gtc/type_ptr.hpp>
+#include "QuadricEntity.h"
 
 using namespace glm;
 //-------------------------------------------------------------------------
@@ -101,7 +102,21 @@ void Scene::init()
 	}
 	else if (mId == 3)
 	{
+		Sphere* esfera = new Sphere(100.0);
+		gObjects.push_back(esfera);
 
+		Cylinder* cono = new Cylinder(50.0, 0, 100.0);
+		glm::dmat4 mAux = cono->modelMat();
+		mAux = translate(mAux, dvec3(0, 85, 0));
+		mAux = rotate(mAux, radians(-90.0), dvec3(1.0, 0, 0));
+		cono->setModelMat(mAux);
+		gObjects.push_back(cono);
+
+		Disk* disco = new Disk(50, 70);
+		gObjects.push_back(disco);
+
+		PartialDisk* arco = new PartialDisk(70, 90, 90, 180);
+		gObjects.push_back(arco);
 	}
 }
 
