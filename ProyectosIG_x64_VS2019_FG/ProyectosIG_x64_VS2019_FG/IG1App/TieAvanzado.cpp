@@ -7,6 +7,9 @@
 
 TieAvanzado::TieAvanzado()
 {
+	Texture* night = new Texture();
+	night->load("..\\Bmps\\noche.bmp", 100);
+
 	addEntity(new EjesRGB(400.0));
 
 	Sphere* esfera = new Sphere(WIDTH_AXIS / 4);
@@ -23,7 +26,8 @@ TieAvanzado::TieAvanzado()
 
 	AlaTieAvanzado* ala1 = new AlaTieAvanzado(125, 300);
 	mAux = ala1->modelMat();
-	//ala1->setTexture(mTexture);
+	ala1->setColor({ 255, 255, 255, 0.5 });
+	ala1->setTexture(night);
 	mAux = translate(mAux, dvec3(WIDTH_AXIS / 3 - 10, 0, 0));
 	mAux = rotate(mAux, radians(-90.0), dvec3(1.0, 0, 0));
 	ala1->setModelMat(mAux);
@@ -31,7 +35,8 @@ TieAvanzado::TieAvanzado()
 
 	AlaTieAvanzado* ala2 = new AlaTieAvanzado(125, 300);
 	mAux = ala2->modelMat();
-	//ala2->setTexture(mTexture);
+	ala2->setColor({ 255.0, 255.0, 255.0, 0.5 });
+	ala2->setTexture(night);
 	mAux = translate(mAux, dvec3(-(WIDTH_AXIS / 3) + 10, 0, 0));
 	mAux = rotate(mAux, radians(-90.0), dvec3(1.0, 0.0, 0.0));
 	mAux = rotate(mAux, radians(180.0), dvec3(0.0, 1.0, 0.0));
@@ -42,7 +47,6 @@ TieAvanzado::TieAvanzado()
 	mAux = cabina->modelMat();
 	cabina->setColor(mColor);
 	mAux = translate(mAux, dvec3(0, 0, WIDTH_AXIS / 5));
-	//mAux = rotate(mAux, radians(-90.0), dvec3(0, 1.0, 0));
 	cabina->setModelMat(mAux);
 	addEntity(cabina);
 }

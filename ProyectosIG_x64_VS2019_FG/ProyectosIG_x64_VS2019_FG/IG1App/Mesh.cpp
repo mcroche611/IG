@@ -40,8 +40,6 @@ void Mesh::render() const
 	glDisableClientState(GL_VERTEX_ARRAY);
     glDisableClientState(GL_TEXTURE_COORD_ARRAY);
   }
-
-
 }
 //-------------------------------------------------------------------------
 
@@ -459,18 +457,18 @@ Mesh* Mesh::generaAla(GLdouble w, GLdouble h)
         mesh->vVertices.emplace_back(w * ala_strip[i], h * ala_strip[i + 1], w * ala_strip[i + 2]);
     }
 
-    //mesh->vTexCoords.reserve(mesh->mNumVertices);
+    mesh->vTexCoords.reserve(mesh->mNumVertices);
 
-    //mesh->vTexCoords.emplace_back(0, 0);
-    //mesh->vTexCoords.emplace_back(0, 1);
-    //mesh->vTexCoords.emplace_back(1, 0);
-    //mesh->vTexCoords.emplace_back(1, 1);
+    mesh->vTexCoords.emplace_back(0, 0);
+    mesh->vTexCoords.emplace_back(0, 1);
+    mesh->vTexCoords.emplace_back(1, 0);
+    mesh->vTexCoords.emplace_back(1, 1);
 
-    //mesh->vTexCoords.emplace_back(2, 0);
-    //mesh->vTexCoords.emplace_back(2, 1);
+    mesh->vTexCoords.emplace_back(2, 0);
+    mesh->vTexCoords.emplace_back(2, 1);
 
-    //mesh->vTexCoords.emplace_back(3, 0);
-    //mesh->vTexCoords.emplace_back(3, 1);
+    mesh->vTexCoords.emplace_back(3, 0);
+    mesh->vTexCoords.emplace_back(3, 1);
 
     return mesh;
 }

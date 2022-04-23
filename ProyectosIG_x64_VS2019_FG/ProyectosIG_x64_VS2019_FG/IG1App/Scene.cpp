@@ -45,6 +45,7 @@ void Scene::init()
 	Texture* fotoTex = new Texture();
 	fotoTex->loadColorBuffer(800, 600);
 	gTextures.push_back(fotoTex);
+
 	// allocate memory and load resources
     // Lights
 
@@ -104,6 +105,7 @@ void Scene::init()
 	}
 	else if (mId == 3)
 	{
+
 		TieAvanzado* tie = new TieAvanzado();
 		gObjects.push_back(tie);
 
@@ -157,7 +159,8 @@ void Scene::free()
 void Scene::setGL() 
 {
 	// OpenGL basic setting
-	glClearColor(0.6, 0.7, 0.8, 1.0);  // background color (alpha=1 -> opaque)
+/*	glClearColor(0.6, 0.7, 0.8, 1.0);*/  // background color (alpha=1 -> opaque)
+	glClearColor(0.0, 0.0, 0.0, 1.0);
 	glEnable(GL_DEPTH_TEST);  // enable Depth test 
 	glEnable(GL_TEXTURE_2D);
 }
