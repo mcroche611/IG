@@ -120,6 +120,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AlaTieAvanzado.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CheckML.h" />
     <ClInclude Include="CompoundEntity.h" />
@@ -144,6 +145,7 @@
     <ClInclude Include="Viewport.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AlaTieAvanzado.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CompoundEntity.cpp" />
     <ClCompile Include="ContornoCaja.cpp" />

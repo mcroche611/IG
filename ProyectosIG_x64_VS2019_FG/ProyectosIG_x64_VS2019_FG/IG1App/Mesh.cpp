@@ -426,3 +426,51 @@ Mesh* Mesh::generaEstrella3DTexCor(GLdouble re, GLuint np, GLdouble h)
 
     return mesh;
 }
+
+static const GLfloat ala_strip[] = 
+{
+                                    -0.5, -0.5, +1.0, // left-bottom-front 
+                                    -0.5, +0.5, +1.0, // left-top-front 
+
+                                    +0.5, -0.5, +0.5, // right-bottom-front
+                                    +0.5, +0.5, +0.5, // right-top-front 
+
+                                    +0.5, -0.5, -0.5, // right-bottom-back 
+                                    +0.5, +0.5, -0.5, // right-top-back 
+
+                                    -0.5, -0.5, -1.0, // left-bottom-back
+                                    -0.5, +0.5, -1.0, // left-top-back 
+
+                                    //-0.5, -0.5, +0.5, // left-bottom-front 
+                                    //-0.5, +0.5, +0.5, // left-top-front
+};
+
+Mesh* Mesh::generaAla(GLdouble w, GLdouble h)
+{
+    Mesh* mesh = new Mesh();
+
+    mesh->mPrimitive = GL_TRIANGLE_STRIP;
+
+    mesh->mNumVertices = sizeof(ala_strip) / sizeof(GLfloat);
+    mesh->vVertices.reserve(mesh->mNumVertices);
+
+    for (int i = 0; i < mesh->mNumVertices; i += 3)
+    {
+        mesh->vVertices.emplace_back(w * ala_strip[i], h * ala_strip[i + 1], w * ala_strip[i + 2]);
+    }
+
+    //mesh->vTexCoords.reserve(mesh->mNumVertices);
+
+    //mesh->vTexCoords.emplace_back(0, 0);
+    //mesh->vTexCoords.emplace_back(0, 1);
+    //mesh->vTexCoords.emplace_back(1, 0);
+    //mesh->vTexCoords.emplace_back(1, 1);
+
+    //mesh->vTexCoords.emplace_back(2, 0);
+    //mesh->vTexCoords.emplace_back(2, 1);
+
+    //mesh->vTexCoords.emplace_back(3, 0);
+    //mesh->vTexCoords.emplace_back(3, 1);
+
+    return mesh;
+}
