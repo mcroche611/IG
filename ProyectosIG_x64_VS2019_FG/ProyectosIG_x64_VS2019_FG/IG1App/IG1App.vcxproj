@@ -139,6 +139,7 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Suelo.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="TieAvanzado.h" />
     <ClInclude Include="TrianguloRGB.h" />
     <ClInclude Include="Viewport.h" />
   </ItemGroup>
@@ -162,6 +163,7 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Suelo.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TieAvanzado.cpp" />
     <ClCompile Include="TrianguloRGB.cpp" />
     <ClCompile Include="Viewport.cpp" />
   </ItemGroup>

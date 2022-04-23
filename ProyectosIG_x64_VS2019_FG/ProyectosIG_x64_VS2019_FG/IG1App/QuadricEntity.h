@@ -1,19 +1,24 @@
 #pragma once
 #include "Entity.h"
+using namespace glm;
 
 class QuadricEntity : public Abs_Entity 
 {
 public:
 	QuadricEntity();
 	~QuadricEntity() { gluDeleteQuadric(q); };
+	void renderColor() const;
+	void setColor(dvec4 color);
 protected:
 	GLUquadricObj* q;
+	dvec4 color = { 0, 65, 100, 1.0 };
 };
 
-class Sphere : public QuadricEntity 
+class Sphere : public QuadricEntity		
 {
 public:
-	Sphere(GLdouble rr); // r es el radio de la esfera
+	Sphere(GLdouble rr);
+	// r es el radio de la esfera
 	void render(glm::dmat4 const& modelViewMat) const;
 	void update() {};
 protected:
@@ -55,13 +60,3 @@ protected:
 	GLdouble startAngle;
 	GLdouble sweepAngle;
 };
-
-//class PartialDisk : public QuadricEntity
-//{
-//public:
-//	PartialDisk(GLdouble r); // r es el radio de la esfera
-//	void render(glm::dmat4 const& modelViewMat) const;
-//protected:
-//	GLdouble r;
-//};
-//
