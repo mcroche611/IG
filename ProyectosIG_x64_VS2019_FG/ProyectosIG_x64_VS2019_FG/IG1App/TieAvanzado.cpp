@@ -37,4 +37,12 @@ TieAvanzado::TieAvanzado()
 	mAux = rotate(mAux, radians(180.0), dvec3(0.0, 1.0, 0.0));
 	ala2->setModelMat(mAux);
 	addEntity(ala2);
+
+	Cylinder* cabina = new Cylinder(50.0, 50.0, 20);
+	mAux = cabina->modelMat();
+	cabina->setColor(mColor);
+	mAux = translate(mAux, dvec3(0, 0, WIDTH_AXIS / 5));
+	//mAux = rotate(mAux, radians(-90.0), dvec3(0, 1.0, 0));
+	cabina->setModelMat(mAux);
+	addEntity(cabina);
 }

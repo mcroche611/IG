@@ -50,7 +50,7 @@ void Cylinder::render(glm::dmat4 const& modelViewMat) const
 	upload(aMat);
 	renderColor();
 	//glutSolidCone(r, h, 100, 100); 
-	gluCylinder(q, baseRadius, topRadius, h, 50, 50);
+	glutSolidCylinder(baseRadius, h, 50, 50);
 	// Aquí se debe recuperar el color:
 	glColor3f(1.0, 1.0, 1.0);
 }
