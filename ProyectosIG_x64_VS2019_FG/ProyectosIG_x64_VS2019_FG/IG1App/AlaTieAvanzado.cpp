@@ -33,8 +33,6 @@ void AlaTieAvanzado::render(glm::dmat4 const& modelViewMat) const
 
         //se renderiza lo de fuera
 
-
-        glLineWidth(1);
         glDisable(GL_CULL_FACE);
         glPolygonMode(GL_FRONT, GL_FILL);
         glPolygonMode(GL_BACK, GL_FILL);

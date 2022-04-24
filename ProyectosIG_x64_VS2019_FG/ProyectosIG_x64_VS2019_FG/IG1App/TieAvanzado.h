@@ -8,6 +8,6 @@ public:
 	TieAvanzado();
 
 protected:
-	dvec4 mColor = { 0.0 / 255.0, 65.0 / 255.0, 106.0 / 255.0, 1.0 };
+	dvec4 mColor = { 0.0, 65.0, 106.0, 1.0 };
 };
 

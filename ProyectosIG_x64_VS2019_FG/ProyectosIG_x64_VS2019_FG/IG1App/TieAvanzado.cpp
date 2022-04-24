@@ -31,7 +31,7 @@ TieAvanzado::TieAvanzado()
 	mAux = translate(mAux, dvec3(WIDTH_AXIS / 3 - 10, 0, 0));
 	mAux = rotate(mAux, radians(-90.0), dvec3(1.0, 0, 0));
 	ala1->setModelMat(mAux);
-	addEntity(ala1);
+	addTranslucidEntity(ala1);
 
 	AlaTieAvanzado* ala2 = new AlaTieAvanzado(125, 300);
 	mAux = ala2->modelMat();
@@ -41,7 +41,7 @@ TieAvanzado::TieAvanzado()
 	mAux = rotate(mAux, radians(-90.0), dvec3(1.0, 0.0, 0.0));
 	mAux = rotate(mAux, radians(180.0), dvec3(0.0, 1.0, 0.0));
 	ala2->setModelMat(mAux);
-	addEntity(ala2);
+	addTranslucidEntity(ala2);
 
 	Cylinder* cabina = new Cylinder(50.0, 50.0, 20);
 	mAux = cabina->modelMat();

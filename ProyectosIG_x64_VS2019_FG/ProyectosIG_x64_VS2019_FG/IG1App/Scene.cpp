@@ -193,9 +193,10 @@ void Scene::render(Camera const& cam) const
 			el->render(cam.viewMat());
 		}
 	}
-
 	glDisable(GL_BLEND);
 	glDepthMask(GLU_TRUE);
+
+	
 }
 
 void Scene::update()
