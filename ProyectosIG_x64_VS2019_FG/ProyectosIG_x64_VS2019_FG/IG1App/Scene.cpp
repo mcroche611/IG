@@ -21,6 +21,9 @@ using namespace glm;
 
 void Scene::init()
 { 
+
+	glEnable(GL_COLOR_MATERIAL);
+
 	setGL();  // OpenGL settings
 	Texture* baldosaC = new Texture();
 	baldosaC->load("..\\Bmps\\baldosaC.bmp");

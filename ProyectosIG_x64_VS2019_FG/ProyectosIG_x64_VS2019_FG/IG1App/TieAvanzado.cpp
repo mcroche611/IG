@@ -8,7 +8,7 @@
 TieAvanzado::TieAvanzado()
 {
 	Texture* night = new Texture();
-	night->load("..\\Bmps\\noche.bmp", 100);
+	night->load("..\\Bmps\\noche.bmp", 160);
 
 	addEntity(new EjesRGB(400.0));
 
@@ -24,9 +24,17 @@ TieAvanzado::TieAvanzado()
 	eje->setModelMat(mAux);
 	addEntity(eje);
 
+
+	Cylinder* cabina = new Cylinder(50.0, 50.0, 20);
+	mAux = cabina->modelMat();
+	cabina->setColor(mColor);
+	mAux = translate(mAux, dvec3(0, 0, WIDTH_AXIS / 5));
+	cabina->setModelMat(mAux);
+	addEntity(cabina);
+
 	AlaTieAvanzado* ala1 = new AlaTieAvanzado(125, 300);
 	mAux = ala1->modelMat();
-	ala1->setColor({ 255, 255, 255, 0.5 });
+	//ala1->setColor({ 255, 255, 255, 0.5 });
 	ala1->setTexture(night);
 	mAux = translate(mAux, dvec3(WIDTH_AXIS / 3 - 10, 0, 0));
 	mAux = rotate(mAux, radians(-90.0), dvec3(1.0, 0, 0));
@@ -35,18 +43,11 @@ TieAvanzado::TieAvanzado()
 
 	AlaTieAvanzado* ala2 = new AlaTieAvanzado(125, 300);
 	mAux = ala2->modelMat();
-	ala2->setColor({ 255.0, 255.0, 255.0, 0.5 });
+	//ala2->setColor({ 255.0, 255.0, 255.0, 0.8 });
 	ala2->setTexture(night);
 	mAux = translate(mAux, dvec3(-(WIDTH_AXIS / 3) + 10, 0, 0));
 	mAux = rotate(mAux, radians(-90.0), dvec3(1.0, 0.0, 0.0));
 	mAux = rotate(mAux, radians(180.0), dvec3(0.0, 1.0, 0.0));
 	ala2->setModelMat(mAux);
 	addTranslucidEntity(ala2);
-
-	Cylinder* cabina = new Cylinder(50.0, 50.0, 20);
-	mAux = cabina->modelMat();
-	cabina->setColor(mColor);
-	mAux = translate(mAux, dvec3(0, 0, WIDTH_AXIS / 5));
-	cabina->setModelMat(mAux);
-	addEntity(cabina);
 }
