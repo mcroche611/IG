@@ -110,6 +110,7 @@ void Scene::init()
 		gObjects.push_back(tie);
 
 		//Sphere* esfera = new Sphere(100.0);
+		//gObjects.push_back(esfera);
 		//tie->addEntity(esfera);
 
 		//Cylinder* cono = new Cylinder(50.0, 0, 100.0);
@@ -159,8 +160,8 @@ void Scene::free()
 void Scene::setGL() 
 {
 	// OpenGL basic setting
-/*	glClearColor(0.6, 0.7, 0.8, 1.0);*/  // background color (alpha=1 -> opaque)
-	glClearColor(0.0, 0.0, 0.0, 1.0);
+    glClearColor(0.6, 0.7, 0.8, 1.0);  // background color (alpha=1 -> opaque)
+	//glClearColor(0.0, 0.0, 0.0, 1.0); //fondo negro
 	glEnable(GL_DEPTH_TEST);  // enable Depth test 
 	glEnable(GL_TEXTURE_2D);
 }
