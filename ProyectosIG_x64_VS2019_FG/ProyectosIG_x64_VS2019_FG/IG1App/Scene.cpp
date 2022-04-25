@@ -15,7 +15,7 @@
 #include "QuadricEntity.h"
 #include "CompoundEntity.h"
 #include "TieAvanzado.h"
-
+#include "CuboIndexado.h"
 using namespace glm;
 //-------------------------------------------------------------------------
 
@@ -109,8 +109,11 @@ void Scene::init()
 	else if (mId == 3)
 	{
 
-		TieAvanzado* tie = new TieAvanzado();
-		gObjects.push_back(tie);
+		/*TieAvanzado* tie = new TieAvanzado();
+		gObjects.push_back(tie);*/
+
+		CuboIndexado* cuboIndex = new CuboIndexado(500);
+		gObjects.push_back(cuboIndex);
 
 		//Sphere* esfera = new Sphere(100.0);
 		//gObjects.push_back(esfera);

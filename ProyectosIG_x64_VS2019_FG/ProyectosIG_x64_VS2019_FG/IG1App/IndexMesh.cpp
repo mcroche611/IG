@@ -5,6 +5,16 @@ void IndexMesh::draw() const {
 		GL_UNSIGNED_INT, vIndices);
 }
 
+static const GLdouble cube_strip[] = { -0.5, 0.5, 0.5,
+									 -0.5, -0.5, 0.5,
+									 0.5, 0.5, 0.5,
+									  0.5, -0.5, 0.5,
+
+									  0.5, 0.5, -0.5,
+									  0.5, -0.5, -0.5,
+									 -0.5, 0.5, -0.5,
+									 -0.5, -0.5, -0.5,
+};
 IndexMesh* IndexMesh::generaCuboConTapasIndexado(GLdouble l)
 {
 	IndexMesh* indexMesh = new IndexMesh();
@@ -15,18 +25,15 @@ IndexMesh* IndexMesh::generaCuboConTapasIndexado(GLdouble l)
 	indexMesh->vColors.reserve(indexMesh->mNumVertices);
 	indexMesh->vVertices.reserve(indexMesh->mNumVertices);
 
-	indexMesh->vVertices.emplace_back(-0.5, 0.5, 0.5);
-	indexMesh->vVertices.emplace_back(-0.5, -0.5, 0.5);
-	indexMesh->vVertices.emplace_back(0.5, 0.5, 0.5);
-	indexMesh->vVertices.emplace_back(0.5, -0.5, 0.5);
+	
 
-	indexMesh->vVertices.emplace_back(0.5, 0.5, -0.5);
-	indexMesh->vVertices.emplace_back(0.5, -0.5, -0.5);
-	indexMesh->vVertices.emplace_back(-0.5, 0.5, -0.5);
-	indexMesh->vVertices.emplace_back(-0.5, -0.5, -0.5);
+	for (int i = 0; i < indexMesh->mNumVertices; i += 3)
+	{
+		indexMesh->vVertices.emplace_back(l * cube_strip[i], l * cube_strip[i + 1], l * cube_strip[i + 2]);
+	}
 
 	for (int i = 0; i < indexMesh->mNumVertices; i++) {
-		indexMesh->vColors.emplace_back(0.0, 1.0, 0.0, 1.0);
+		indexMesh->vColors.emplace_back(0.0, 0.0, 1.0, 1.0);
 	}
 
 	indexMesh->vIndices = new GLuint[indexMesh->nNumIndices]  { 0,1,2, 2,1,3,
@@ -37,7 +44,6 @@ IndexMesh* IndexMesh::generaCuboConTapasIndexado(GLdouble l)
 																1,7,3, 3,7,5};
 
 	//falta indexmesh->buildnormalvectors
-
 
 	return indexMesh;
 }

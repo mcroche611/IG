@@ -127,6 +127,7 @@
     <ClInclude Include="ContornoCaja.h" />
     <ClInclude Include="Cristalera.h" />
     <ClInclude Include="Cubo.h" />
+    <ClInclude Include="CuboIndexado.h" />
     <ClInclude Include="CuboRGB.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Estrella3D.h" />
@@ -152,6 +153,7 @@
     <ClCompile Include="ContornoCaja.cpp" />
     <ClCompile Include="Cristalera.cpp" />
     <ClCompile Include="Cubo.cpp" />
+    <ClCompile Include="CuboIndexado.cpp" />
     <ClCompile Include="CuboRGB.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Estrella3D.cpp" />
