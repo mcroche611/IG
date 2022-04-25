@@ -1,39 +1,39 @@
 #include "IndexMesh.h"
 
-void IndexMesh::buildNormalVectors()
-{
-	dvec3 normals[8] = { dvec3(0, 0, 0),  dvec3(0, 0, 0), dvec3(0, 0, 0), dvec3(0, 0, 0), dvec3(0, 0, 0), dvec3(0, 0, 0), dvec3(0, 0, 0), dvec3(0, 0, 0) };    //vector de normales
-
-}
 
 void IndexMesh::draw() const {
+	
 	glDrawElements(mPrimitive, nNumIndices,
 		GL_UNSIGNED_INT, vIndices);
 }
+void IndexMesh::buildNormalVectors()
+{
+	
+	vNormals.assign(mNumVertices, dvec3(0.0, 0.0, 0.0));
 
-static const GLdouble cube_strip[] = { -0.5, 0.5, 0.5,
-									 -0.5, -0.5, 0.5,
-									 0.5, 0.5, 0.5,
-									  0.5, -0.5, 0.5,
+	for (int i = 0; i < nNumIndices; i += 3) {
 
-									  0.5, 0.5, -0.5,
-									  0.5, -0.5, -0.5,
-									 -0.5, 0.5, -0.5,
-									 -0.5, -0.5, -0.5,
-};
-static const GLdouble cube_strip2[] = { 0.5, 0.5, -0.5,
-									    0.5, -0.5, -0.5,
-									    0.5, 0.5, 0.5,
-									    0.5, -0.5, 0.5,
+		/*Extrae los vértices de índices i, i + 1, i + 2. Recuerda que el vértice
+			correspondiente al índice k es vVertices.at(vIndices[k])*/
 
-									    -0.5, 0.5, 0.5,
-									    -0.5, -0.5, 0.5,
-									     -0.5, 0.5, -0.5,
-									      -0.5, -0.5, -0.5,
-};
+		dvec3 v0 = vVertices[vIndices[i]];
+		dvec3 v1 = vVertices[vIndices[i + 1]];
+		dvec3 v2 = vVertices[vIndices[i + 2]];
 
-unsigned int stripIndices[] =
-{ 0, 1, 2, 3, 4, 5, 6, 7, 0, 1 };
+		dvec3 n = normalize(cross((v1 - v0), (v2 - v0)));
+
+		vNormals[vIndices[i]] += n;
+		vNormals[vIndices[i+1]] += n;
+		vNormals[vIndices[i+2]] += n;
+
+	}
+
+	for (auto i : vNormals) {
+		i = normalize(i);
+	}
+}
+
+
 IndexMesh* IndexMesh::generaCuboConTapasIndexado(GLdouble l)
 {
 	IndexMesh* indexMesh = new IndexMesh();
@@ -67,6 +67,30 @@ IndexMesh* IndexMesh::generaCuboConTapasIndexado(GLdouble l)
 																1,7,3, 3,7,5};
 
 	//falta indexmesh->buildnormalvectors
-
+	indexMesh->buildNormalVectors();
 	return indexMesh;
 }
+
+static const GLdouble cube_strip[] = { -0.5, 0.5, 0.5,
+									 -0.5, -0.5, 0.5,
+									 0.5, 0.5, 0.5,
+									  0.5, -0.5, 0.5,
+
+									  0.5, 0.5, -0.5,
+									  0.5, -0.5, -0.5,
+									 -0.5, 0.5, -0.5,
+									 -0.5, -0.5, -0.5,
+};
+static const GLdouble cube_strip2[] = { 0.5, 0.5, -0.5,
+										0.5, -0.5, -0.5,
+										0.5, 0.5, 0.5,
+										0.5, -0.5, 0.5,
+
+										-0.5, 0.5, 0.5,
+										-0.5, -0.5, 0.5,
+										 -0.5, 0.5, -0.5,
+										  -0.5, -0.5, -0.5,
+};
+
+unsigned int stripIndices[] =
+{ 0, 1, 2, 3, 4, 5, 6, 7, 0, 1 };

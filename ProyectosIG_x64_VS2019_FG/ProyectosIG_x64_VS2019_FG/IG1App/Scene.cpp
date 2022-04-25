@@ -111,6 +111,7 @@ void Scene::init()
 
 		/*TieAvanzado* tie = new TieAvanzado();
 		gObjects.push_back(tie);*/
+		gObjects.push_back(new EjesRGB(400.0));
 
 		CuboIndexado* cuboIndex = new CuboIndexado(100);
 		gObjects.push_back(cuboIndex);
