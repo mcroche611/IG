@@ -44,6 +44,8 @@ void Mesh::render() const
     glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_VERTEX_ARRAY);
     glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+    glDisableClientState(GL_NORMAL_ARRAY);
+
   }
 }
 //-------------------------------------------------------------------------
