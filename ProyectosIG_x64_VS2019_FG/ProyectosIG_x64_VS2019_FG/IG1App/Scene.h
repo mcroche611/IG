@@ -8,7 +8,23 @@
 #include "Camera.h"
 #include "Entity.h"
 #include "Texture.h"
-
+#include "CheckML.h"
+#include "Poligono.h"
+#include "TrianguloRGB.h"
+#include "RectanguloRGB.h"
+#include "Cubo.h"
+#include "CuboRGB.h"
+#include "Suelo.h"
+#include "ContornoCaja.h"
+#include "Cristalera.h"
+#include "Foto.h"
+#include "Estrella3D.h"
+#include <gtc/matrix_transform.hpp>  
+#include <gtc/type_ptr.hpp>
+#include "QuadricEntity.h"
+#include "CompoundEntity.h"
+#include "TieAvanzado.h"
+#include "CuboIndexado.h"
 #include <vector>
 
 //-------------------------------------------------------------------------
@@ -39,6 +55,9 @@ protected:
 	void setGL();
 	void resetGL();
 
+	CompoundEntity* nodoFicticio;
+	TrianguloRGB* tr;
+	
 	int mId = 3;
 
 	std::vector<Abs_Entity*> gObjects;  // Entities (graphic objects) of the scene

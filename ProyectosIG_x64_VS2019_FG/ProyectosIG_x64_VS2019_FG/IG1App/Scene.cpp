@@ -108,14 +108,20 @@ void Scene::init()
 	}
 	else if (mId == 3)
 	{
+		nodoFicticio = new CompoundEntity();
+		tr = new TrianguloRGB(100);
+		nodoFicticio->addEntity(tr);
 
+		gObjects.push_back(nodoFicticio);
+		tr->setModelMat(translate(nodoFicticio->modelMat(),
+			dvec3(200, 0, 0)));
 		/*TieAvanzado* tie = new TieAvanzado();
 		gObjects.push_back(tie);*/
-		gObjects.push_back(new EjesRGB(400.0));
+		/*gObjects.push_back(new EjesRGB(400.0));
 
 		CuboIndexado* cuboIndex = new CuboIndexado(100);
-		gObjects.push_back(cuboIndex);
-
+		gObjects.push_back(cuboIndex);*/
+		
 		//Sphere* esfera = new Sphere(100.0);
 		//gObjects.push_back(esfera);
 		//tie->addEntity(esfera);
@@ -221,6 +227,10 @@ void Scene::update()
 			el->update();
 		}
 	}
+	glm::dmat4 mAux = nodoFicticio->modelMat();
+	mAux = rotate(mAux, radians(3.0), dvec3(0.0, 0.0, 1.0));
+	nodoFicticio->setModelMat(mAux);
+	//nodoFicticio->setModelMat(rotate(nodoFicticio->modelMat(), radians(3.0), dvec3(0, 0, 1)));
 
 }
 

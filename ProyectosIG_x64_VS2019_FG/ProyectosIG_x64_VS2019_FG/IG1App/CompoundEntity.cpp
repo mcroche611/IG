@@ -26,16 +26,16 @@ void CompoundEntity::addTranslucidEntity(Abs_Entity* ae)
 
 void CompoundEntity::render(dmat4 const& modelViewMat) const
 {
-	
+	glm::dmat4 mAux = modelViewMat* mModelMat;
 	for (Abs_Entity* el : gObjects)
 	{
-		el->render(modelViewMat);
+		el->render(mAux);
 	}
 	glEnable(GL_BLEND);
 	glDepthMask(GL_FALSE);
 	for (Abs_Entity* el : tObjects)
 	{
-		el->render(modelViewMat);
+		el->render(mAux);
 	}
 	glDisable(GL_BLEND);
 	glDepthMask(GLU_TRUE);
