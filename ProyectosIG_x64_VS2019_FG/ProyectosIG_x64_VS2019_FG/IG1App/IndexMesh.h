@@ -6,6 +6,7 @@ using namespace glm;
 
 class IndexMesh : public Mesh
 {
+	void buildNormalVectors();
 protected:
 	GLuint* vIndices = nullptr; // tabla de índices
 	GLuint nNumIndices = 0;

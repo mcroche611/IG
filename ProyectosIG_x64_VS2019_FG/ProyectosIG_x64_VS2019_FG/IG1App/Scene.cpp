@@ -112,7 +112,7 @@ void Scene::init()
 		/*TieAvanzado* tie = new TieAvanzado();
 		gObjects.push_back(tie);*/
 
-		CuboIndexado* cuboIndex = new CuboIndexado(500);
+		CuboIndexado* cuboIndex = new CuboIndexado(100);
 		gObjects.push_back(cuboIndex);
 
 		//Sphere* esfera = new Sphere(100.0);
