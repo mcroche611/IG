@@ -13,12 +13,12 @@ TieAvanzado::TieAvanzado()
 	addEntity(new EjesRGB(400.0));
 
 	Sphere* esfera = new Sphere(WIDTH_AXIS / 4);
-	esfera->setColor(mColor);
+	esfera->setColor(miColor);
 	addEntity(esfera);
 
 	Cylinder* eje = new Cylinder(20.0, 20.0, WIDTH_AXIS);
 	glm::dmat4 mAux = eje->modelMat();
-	eje->setColor(mColor);
+	eje->setColor(miColor);
 	mAux = translate(mAux, dvec3(WIDTH_AXIS / 2, 0, 0));
 	mAux = rotate(mAux, radians(-90.0), dvec3(0, 1.0, 0));
 	eje->setModelMat(mAux);
@@ -27,11 +27,11 @@ TieAvanzado::TieAvanzado()
 
 	Cylinder* cabina = new Cylinder(50.0, 50.0, 20);
 	mAux = cabina->modelMat();
-	cabina->setColor(mColor);
+	cabina->setColor(miColor);
 	mAux = translate(mAux, dvec3(0, 0, WIDTH_AXIS / 5));
 	cabina->setModelMat(mAux);
 	addEntity(cabina);
-
+	
 	AlaTieAvanzado* ala1 = new AlaTieAvanzado(125, 300);
 	mAux = ala1->modelMat();
 	//ala1->setColor({ 255, 255, 255, 0.5 });
@@ -50,4 +50,6 @@ TieAvanzado::TieAvanzado()
 	mAux = rotate(mAux, radians(180.0), dvec3(0.0, 1.0, 0.0));
 	ala2->setModelMat(mAux);
 	addTranslucidEntity(ala2);
+
+	
 }

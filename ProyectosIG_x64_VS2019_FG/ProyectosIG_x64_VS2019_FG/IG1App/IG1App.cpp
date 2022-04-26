@@ -193,6 +193,12 @@ void IG1App::key(unsigned char key, int x, int y)
 	case 'k':
 		setVistas();
 		break;
+	case 'f':
+		orbit();
+		break;
+	case 'g':
+		rotation();
+		break;
 	default:
 		need_redisplay = false;
 		break;
@@ -242,6 +248,14 @@ void IG1App::specialKey(int key, int x, int y)
 
 	if (need_redisplay)
 		glutPostRedisplay(); // marks the window as needing to be redisplayed -> calls to display()
+}
+void IG1App::orbit()
+{
+	mScene->orbit();
+}
+void IG1App::rotation()
+{
+	mScene->rotation();
 }
 void IG1App::update()
 {

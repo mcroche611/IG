@@ -109,11 +109,16 @@ void Scene::init()
 	else if (mId == 3)
 	{
 		nodoFicticio = new CompoundEntity();
-		tr = new TrianguloRGB(100);
-		nodoFicticio->addEntity(tr);
+		//tr = new TrianguloRGB(100);
+		//nodoFicticio->addEntity(tr);
+
+		tie = new TieAvanzado();
+		nodoFicticio->addEntity(tie);
 
 		gObjects.push_back(nodoFicticio);
-		tr->setModelMat(translate(nodoFicticio->modelMat(),
+		//tr->setModelMat(translate(nodoFicticio->modelMat(),
+		//	dvec3(200, 0, 0)));
+		tie->setModelMat(translate(nodoFicticio->modelMat(),
 			dvec3(200, 0, 0)));
 		/*TieAvanzado* tie = new TieAvanzado();
 		gObjects.push_back(tie);*/
@@ -138,6 +143,42 @@ void Scene::init()
 
 		//PartialDisk* arco = new PartialDisk(70, 90, 90, 180);
 		//gObjects.push_back(arco);
+	}
+	else if (mId == 4)
+	{
+		nodoFicticio = new CompoundEntity();
+		TieAvanzado* tie = new TieAvanzado();
+		nodoFicticio->addEntity(tie);
+		gObjects.push_back(nodoFicticio);
+		//nodoFicticio->addEntity(tie);
+		tie->setModelMat(translate(nodoFicticio->modelMat(), dvec3(200, 0, 0)));
+		//tie->setModelMat(rotate(tie->modelMat(),
+		//	radians(80.0), dvec3(0, 0, 1)));
+
+		//nodoFicticio->setModelMat(rotate(nodoFicticio->modelMat(),
+		//	radians(70.0), dvec3(0, 0, 1)));
+	}
+	else if (mId == 5)
+	{
+		nodoFicticio = new CompoundEntity();
+		TieAvanzado* tie = new TieAvanzado();
+		nodoFicticio->addEntity(tie);
+		tie->setModelMat(translate(tie->modelMat(), dvec3(0, 500, 0)));
+		gObjects.push_back(nodoFicticio);
+		
+		//gObjects.push_back(tie);
+
+		dvec4 c = { 250.0, 200.0, 0.0, 1.0 };
+		Sphere* esfera = new Sphere(400.0);
+		esfera->setColor(c);
+		//esfera->setColor(mColor);
+		gObjects.push_back(esfera);
+
+		//CuboIndexado* cuboIndex = new CuboIndexado(100);
+		//gObjects.push_back(cuboIndex);
+		
+		
+		
 	}
 }
 
@@ -173,8 +214,10 @@ void Scene::free()
 void Scene::setGL() 
 {
 	// OpenGL basic setting
-    glClearColor(0.6, 0.7, 0.8, 1.0);  // background color (alpha=1 -> opaque)
-	//glClearColor(0.0, 0.0, 0.0, 1.0); //fondo negro
+	if (mId!= 9)
+		glClearColor(0.6, 0.7, 0.8, 1.0);  // background color (alpha=1 -> opaque)
+	else
+		glClearColor(0.0, 0.0, 0.0, 1.0); //fondo negro
 	glEnable(GL_DEPTH_TEST);  // enable Depth test 
 	glEnable(GL_TEXTURE_2D);
 }
@@ -227,13 +270,41 @@ void Scene::update()
 			el->update();
 		}
 	}
-	glm::dmat4 mAux = nodoFicticio->modelMat();
-	mAux = rotate(mAux, radians(3.0), dvec3(0.0, 0.0, 1.0));
-	nodoFicticio->setModelMat(mAux);
+	if (mId == 4)
+	{
+		if (nodoFicticio)
+		{
+			glm::dmat4 mAux = nodoFicticio->modelMat();
+			mAux = rotate(mAux, radians(3.0), dvec3(0.0, 0.0, 1.0));
+			nodoFicticio->setModelMat(mAux);
+		}
+
+	}
+	
 	//nodoFicticio->setModelMat(rotate(nodoFicticio->modelMat(), radians(3.0), dvec3(0, 0, 1)));
 
 }
 
+void Scene::orbit()
+{
+	if (nodoFicticio)
+	{
+		glm::dmat4 mAux = nodoFicticio->modelMat();
+		mAux = rotate(mAux, radians(3.0), dvec3(0.0, 0.0, 1.0));
+		nodoFicticio->setModelMat(mAux);
+	}
+
+}
+void Scene::rotation()
+{
+	if (nodoFicticio)
+	{
+		glm::dmat4 mAux = nodoFicticio->modelMat();
+		mAux = rotate(mAux, radians(3.0), dvec3(0.0, 1.0, 0.0));
+		nodoFicticio->setModelMat(mAux);
+	}
+
+}
 void Scene::setState(int id)
 {
 	if (mId != id)

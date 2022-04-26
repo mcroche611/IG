@@ -49,6 +49,9 @@ public:
 	void sceneDirLight(Camera const& cam) const;
 
 	virtual void update();
+
+	void orbit(); 
+	void rotation();
 	
 protected:
 	void free();
@@ -57,8 +60,9 @@ protected:
 
 	CompoundEntity* nodoFicticio;
 	TrianguloRGB* tr;
+	TieAvanzado* tie;
 	
-	int mId = 3;
+	int mId = 5;
 
 	std::vector<Abs_Entity*> gObjects;  // Entities (graphic objects) of the scene
 	std::vector<Abs_Entity*> gTranslucidObjects;  // entidades traslucidas

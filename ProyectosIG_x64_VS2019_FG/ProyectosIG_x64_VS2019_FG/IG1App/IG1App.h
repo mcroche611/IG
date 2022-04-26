@@ -44,7 +44,8 @@ protected:
 	void resize(int newWidth, int newHeight);   // the viewport (without changing the scale) 
 	void key(unsigned char key, int x, int y);  // keypress event
 	void specialKey(int key, int x, int y);     // keypress event for special characters
-
+	void orbit();
+	void rotation();
 	void update();
 
 	// static callbacks 
