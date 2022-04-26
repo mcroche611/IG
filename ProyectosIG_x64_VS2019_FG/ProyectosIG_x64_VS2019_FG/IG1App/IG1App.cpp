@@ -188,6 +188,9 @@ void IG1App::key(unsigned char key, int x, int y)
 	case '5':
 		mScene->setState(5);
 		break;
+	case '6':
+		mScene->setState(6);
+		break;
 	case 'u':
 		activeAnim = !activeAnim;
 		break;

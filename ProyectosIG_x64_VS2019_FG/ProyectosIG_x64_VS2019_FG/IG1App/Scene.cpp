@@ -109,16 +109,12 @@ void Scene::init()
 	else if (mId == 3)
 	{
 		nodoFicticio = new CompoundEntity();
-		//tr = new TrianguloRGB(100);
-		//nodoFicticio->addEntity(tr);
+		tr = new TrianguloRGB(100);
+		nodoFicticio->addEntity(tr);
 
-		tie = new TieAvanzado();
-		nodoFicticio->addEntity(tie);
-
+		
 		gObjects.push_back(nodoFicticio);
-		//tr->setModelMat(translate(nodoFicticio->modelMat(),
-		//	dvec3(200, 0, 0)));
-		tie->setModelMat(translate(nodoFicticio->modelMat(),
+		tr->setModelMat(translate(nodoFicticio->modelMat(),
 			dvec3(200, 0, 0)));
 		/*TieAvanzado* tie = new TieAvanzado();
 		gObjects.push_back(tie);*/
@@ -176,9 +172,14 @@ void Scene::init()
 
 		//CuboIndexado* cuboIndex = new CuboIndexado(100);
 		//gObjects.push_back(cuboIndex);
-		
-		
-		
+
+
+
+	}
+	else if (mId == 6)
+	{
+		CuboIndexado* cuboIndex = new CuboIndexado(100);
+		gObjects.push_back(cuboIndex);
 	}
 }
 
@@ -287,8 +288,10 @@ void Scene::update()
 		}
 
 	}
-	
-	//nodoFicticio->setModelMat(rotate(nodoFicticio->modelMat(), radians(3.0), dvec3(0, 0, 1)));
+	else if (mId==3)
+	{
+		nodoFicticio->setModelMat(rotate(nodoFicticio->modelMat(), radians(3.0), dvec3(0, 0, 1)));
+	}
 
 }
 
