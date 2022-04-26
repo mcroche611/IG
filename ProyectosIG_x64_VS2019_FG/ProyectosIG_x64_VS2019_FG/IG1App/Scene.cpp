@@ -190,31 +190,36 @@ void Scene::free()
 	{
 		delete el;  el = nullptr;
 	}
+	gObjects.clear();
 
-	if (mId == 2)
+	//if (mId == 2)
 	{
-		for (Texture* e : gTextures)
-		{
-
-			{
-				delete e;  e = nullptr;
-			}
-		}
-
 		for (Abs_Entity* elem : gTranslucidObjects)
 		{
 
-			{
-				delete elem;  elem = nullptr;
-			}
+
+			delete elem;  elem = nullptr;
+
 		}
+		gTranslucidObjects.clear();
+
+		for (Texture* e : gTextures)
+		{
+
+
+			delete e;  e = nullptr;
+
+		}
+		gTextures.clear();
+
+
 	}
 }
 //-------------------------------------------------------------------------
 void Scene::setGL() 
 {
 	// OpenGL basic setting
-	if (mId!= 9)
+	if (mId!= 5)
 		glClearColor(0.6, 0.7, 0.8, 1.0);  // background color (alpha=1 -> opaque)
 	else
 		glClearColor(0.0, 0.0, 0.0, 1.0); //fondo negro
@@ -232,6 +237,8 @@ void Scene::resetGL()
 
 void Scene::render(Camera const& cam) const 
 {
+	glColorMaterial(GL_FRONT, GL_AMBIENT);
+	glEnable(GL_COLOR_MATERIAL);
 	sceneDirLight(cam);
 
 	cam.upload();
@@ -313,6 +320,7 @@ void Scene::setState(int id)
 
 		//vaciar gObjects
 		gObjects.clear();
+		gTranslucidObjects.clear();
 
 		mId = id;
 
