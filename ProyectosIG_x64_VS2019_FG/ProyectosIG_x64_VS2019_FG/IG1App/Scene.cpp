@@ -142,12 +142,10 @@ void Scene::init()
 	}
 	else if (mId == 4)
 	{
-		nodoFicticio = new CompoundEntity();
 		TieAvanzado* tie = new TieAvanzado();
 		nodoFicticio->addEntity(tie);
-		gObjects.push_back(nodoFicticio);
+		gObjects.push_back(tie);
 		//nodoFicticio->addEntity(tie);
-		tie->setModelMat(translate(nodoFicticio->modelMat(), dvec3(200, 0, 0)));
 		//tie->setModelMat(rotate(tie->modelMat(),
 		//	radians(80.0), dvec3(0, 0, 1)));
 

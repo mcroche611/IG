@@ -78,7 +78,7 @@ void Disk::render(glm::dmat4 const& modelViewMat) const
 	gluQuadricDrawStyle(q, GL_FILL);
 	gluDisk(q, innerRadius, outerRadius, 50, 50);
 	// Aquí se debe recuperar el color:
-	glColor3f(1.0, 1.0, 1.0);
+	glColor4d(1.0, 1.0, 1.0, 1.0);
 }
 
 PartialDisk::PartialDisk(GLdouble innerRadius, GLdouble outerRadius, GLdouble startAngle, GLdouble sweepAngle)
@@ -97,5 +97,5 @@ void PartialDisk::render(glm::dmat4 const& modelViewMat) const
 	gluQuadricDrawStyle(q, GL_FILL);
 	gluPartialDisk(q, innerRadius, outerRadius, 50, 50, startAngle, sweepAngle);
 	// Aquí se debe recuperar el color:
-	glColor3f(1.0, 1.0, 1.0);
+	glColor4d(1.0, 1.0, 1.0, 1.0);
 }

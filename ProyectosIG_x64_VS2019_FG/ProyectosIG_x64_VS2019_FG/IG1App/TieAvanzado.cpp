@@ -10,7 +10,6 @@ TieAvanzado::TieAvanzado()
 	Texture* night = new Texture();
 	night->load("..\\Bmps\\noche.bmp", 160);
 
-	addEntity(new EjesRGB(400.0));
 
 	Sphere* esfera = new Sphere(WIDTH_AXIS / 4);
 	esfera->setColor(miColor);
