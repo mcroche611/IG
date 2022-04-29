@@ -16,6 +16,7 @@
 #include "CompoundEntity.h"
 #include "TieAvanzado.h"
 #include "CuboIndexado.h"
+#include "MbR.h"
 using namespace glm;
 //-------------------------------------------------------------------------
 
@@ -173,13 +174,15 @@ void Scene::init()
 		//CuboIndexado* cuboIndex = new CuboIndexado(100);
 		//gObjects.push_back(cuboIndex);
 
-
-
 	}
 	else if (mId == 6)
 	{
 		CuboIndexado* cuboIndex = new CuboIndexado(100);
 		gObjects.push_back(cuboIndex);
+	}
+	else if (mId == 7)
+	{
+
 	}
 }
 

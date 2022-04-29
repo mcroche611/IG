@@ -124,6 +124,7 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CheckML.h" />
     <ClInclude Include="CompoundEntity.h" />
+    <ClInclude Include="Cone.h" />
     <ClInclude Include="ContornoCaja.h" />
     <ClInclude Include="Cristalera.h" />
     <ClInclude Include="Cubo.h" />
@@ -134,6 +135,7 @@
     <ClInclude Include="Foto.h" />
     <ClInclude Include="IG1App.h" />
     <ClInclude Include="IndexMesh.h" />
+    <ClInclude Include="MbR.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Pixmap32RGBA.h" />
     <ClInclude Include="Poligono.h" />
@@ -150,6 +152,7 @@
     <ClCompile Include="AlaTieAvanzado.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CompoundEntity.cpp" />
+    <ClCompile Include="Cone.cpp" />
     <ClCompile Include="ContornoCaja.cpp" />
     <ClCompile Include="Cristalera.cpp" />
     <ClCompile Include="Cubo.cpp" />
@@ -161,6 +164,7 @@
     <ClCompile Include="IG1App.cpp" />
     <ClCompile Include="IndexMesh.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MbR.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Pixmap32RGBA.cpp" />
     <ClCompile Include="Poligono.cpp" />
