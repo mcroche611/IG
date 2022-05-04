@@ -38,6 +38,8 @@ MbR* MbR::generaIndexMbR(int mm, int nn, glm::dvec3* perfil)
 		mesh->vVertices.push_back(vertices[i]);
 	}
 
+	mesh->vIndices = new GLuint[mesh->mNumVertices * 6];
+
 	int indiceMayor = 0;
 	// El contador i recorre las muestras alrededor del eje Y
 	for (int i = 0; i < nn; i++)
@@ -69,6 +71,7 @@ MbR* MbR::generaIndexMbR(int mm, int nn, glm::dvec3* perfil)
 		}
 	}
 		
+	mesh->buildNormalVectors();
 	return mesh;
 }
 

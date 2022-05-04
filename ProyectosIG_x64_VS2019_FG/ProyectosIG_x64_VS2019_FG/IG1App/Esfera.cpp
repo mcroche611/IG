@@ -15,8 +15,9 @@ Esfera::Esfera(GLdouble h, GLdouble r, GLuint n) {
 
 		ang += 180 / n;
 	}
-	this->mesh = MbR::generaIndexMbR(n, 32, perfil);
+	this->mesh = MbR::generaIndexMbR(32, n, perfil);
 }
+
 void Esfera::render(dmat4 const& modelViewMat) const
 {
 
