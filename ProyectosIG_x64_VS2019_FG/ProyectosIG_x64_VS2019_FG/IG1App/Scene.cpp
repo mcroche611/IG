@@ -23,10 +23,9 @@ using namespace glm;
 
 void Scene::init()
 { 
-
-	glEnable(GL_COLOR_MATERIAL);
-
 	setGL();  // OpenGL settings
+
+	// allocate memory and load resources
 	Texture* baldosaC = new Texture();
 	baldosaC->load("..\\Bmps\\baldosaC.bmp");
 	gTextures.push_back(baldosaC);
@@ -51,8 +50,8 @@ void Scene::init()
 	fotoTex->loadColorBuffer(800, 600);
 	gTextures.push_back(fotoTex);
 
-	// allocate memory and load resources
     // Lights
+	glEnable(GL_COLOR_MATERIAL);
 
 	if (mId == 0)
 	{
@@ -105,7 +104,7 @@ void Scene::init()
 		Cristalera* cristalera = new Cristalera(500);
 		cristalera->setTexture(windowV);
 		cristalera->setModelMat(translate(cristalera->modelMat(), dvec3(0, 230, 0)));
-		gTranslucidObjects.push_back(cristalera);
+		tObjects.push_back(cristalera);
 		
 	}
 	else if (mId == 3)
@@ -118,29 +117,6 @@ void Scene::init()
 		gObjects.push_back(nodoFicticio);
 		tr->setModelMat(translate(nodoFicticio->modelMat(),
 			dvec3(200, 0, 0)));
-		/*TieAvanzado* tie = new TieAvanzado();
-		gObjects.push_back(tie);*/
-		/*gObjects.push_back(new EjesRGB(400.0));
-
-		CuboIndexado* cuboIndex = new CuboIndexado(100);
-		gObjects.push_back(cuboIndex);*/
-		
-		//Sphere* esfera = new Sphere(100.0);
-		//gObjects.push_back(esfera);
-		//tie->addEntity(esfera);
-
-		//Cylinder* cono = new Cylinder(50.0, 0, 100.0);
-		//glm::dmat4 mAux = cono->modelMat();
-		//mAux = translate(mAux, dvec3(0, 85, 0));
-		//mAux = rotate(mAux, radians(-90.0), dvec3(1.0, 0, 0));
-		//cono->setModelMat(mAux);
-		//tie->addEntity(cono);
-
-		//Disk* disco = new Disk(50, 70);
-		//gObjects.push_back(disco);
-
-		//PartialDisk* arco = new PartialDisk(70, 90, 90, 180);
-		//gObjects.push_back(arco);
 	}
 	else if (mId == 4)
 	{
@@ -148,12 +124,6 @@ void Scene::init()
 		TieAvanzado* tie = new TieAvanzado();
 		nodoFicticio->addEntity(tie);
 		gObjects.push_back(nodoFicticio);
-		//nodoFicticio->addEntity(tie);
-		//tie->setModelMat(rotate(tie->modelMat(),
-		//	radians(80.0), dvec3(0, 0, 1)));
-
-		//nodoFicticio->setModelMat(rotate(nodoFicticio->modelMat(),
-		//	radians(70.0), dvec3(0, 0, 1)));
 	}
 	else if (mId == 5)
 	{
@@ -162,17 +132,11 @@ void Scene::init()
 		nodoFicticio->addEntity(tie);
 		tie->setModelMat(translate(tie->modelMat(), dvec3(0, 500, 0)));
 		gObjects.push_back(nodoFicticio);
-		
-		//gObjects.push_back(tie);
 
 		dvec4 c = { 250.0, 200.0, 0.0, 1.0 };
 		Sphere* esfera = new Sphere(400.0);
 		esfera->setColor(c);
-		//esfera->setColor(mColor);
 		gObjects.push_back(esfera);
-
-		//CuboIndexado* cuboIndex = new CuboIndexado(100);
-		//gObjects.push_back(cuboIndex);
 
 	}
 	else if (mId == 6)
@@ -199,14 +163,14 @@ void Scene::free()
 
 	//if (mId == 2)
 	{
-		for (Abs_Entity* elem : gTranslucidObjects)
+		for (Abs_Entity* elem : tObjects)
 		{
 
 
 			delete elem;  elem = nullptr;
 
 		}
-		gTranslucidObjects.clear();
+		tObjects.clear();
 
 		for (Texture* e : gTextures)
 		{
@@ -228,8 +192,15 @@ void Scene::setGL()
 		glClearColor(0.6, 0.7, 0.8, 1.0);  // background color (alpha=1 -> opaque)
 	else
 		glClearColor(0.0, 0.0, 0.0, 1.0); //fondo negro
-	glEnable(GL_DEPTH_TEST);  // enable Depth test 
+
+	// Se activa el test de profundidad
+	glEnable(GL_DEPTH_TEST);
+	// Se activan las texturas, por si las hay
 	glEnable(GL_TEXTURE_2D);
+	// Se activa la iluminación
+	glEnable(GL_LIGHTING);
+	// Se activa la normalización de los vectores normales
+	glEnable(GL_NORMALIZE);
 }
 //-------------------------------------------------------------------------
 void Scene::resetGL() 
@@ -242,28 +213,27 @@ void Scene::resetGL()
 
 void Scene::render(Camera const& cam) const 
 {
-	glColorMaterial(GL_FRONT, GL_AMBIENT);
-	glEnable(GL_COLOR_MATERIAL);
+	//glColorMaterial(GL_FRONT, GL_AMBIENT);
+	//glEnable(GL_COLOR_MATERIAL);
 	sceneDirLight(cam);
-
 	cam.upload();
 
 	for (Abs_Entity* el : gObjects)
 	{
 	  el->render(cam.viewMat());
 	}
-	glEnable(GL_BLEND);
 	glDepthMask(GL_FALSE);
-
-	if (mId == 2)
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	//if (mId == 2)
 	{
-		for (Abs_Entity* el : gTranslucidObjects)
+		for (Abs_Entity* el : tObjects)
 		{
 			el->render(cam.viewMat());
 		}
 	}
-	glDisable(GL_BLEND);
 	glDepthMask(GLU_TRUE);
+	glDisable(GL_BLEND);
 
 	
 }
@@ -277,7 +247,7 @@ void Scene::update()
 
 	if (mId == 2)
 	{
-		for (Abs_Entity* el : gTranslucidObjects)
+		for (Abs_Entity* el : tObjects)
 		{
 			el->update();
 		}
@@ -327,7 +297,7 @@ void Scene::setState(int id)
 
 		//vaciar gObjects
 		gObjects.clear();
-		gTranslucidObjects.clear();
+		tObjects.clear();
 
 		mId = id;
 

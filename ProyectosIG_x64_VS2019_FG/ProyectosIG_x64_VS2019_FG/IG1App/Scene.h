@@ -29,7 +29,7 @@
 
 //-------------------------------------------------------------------------
 
-class Scene	
+class Scene	: public CompoundEntity
 { 
 public:
 	Scene() {};
@@ -64,8 +64,8 @@ protected:
 	
 	int mId = 4;
 
-	std::vector<Abs_Entity*> gObjects;  // Entities (graphic objects) of the scene
-	std::vector<Abs_Entity*> gTranslucidObjects;  // entidades traslucidas
+	//std::vector<Abs_Entity*> gObjects;  // Entities (graphic objects) of the scene
+	//std::vector<Abs_Entity*> tObjects;  // entidades traslucidas
 	std::vector<Texture*> gTextures; //to manage objects texture
 
 };

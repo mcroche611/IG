@@ -29,7 +29,7 @@ public:
 
 	//atributo color
 	glm::dvec4 const& color() { return mColor; };
-	void setColor(glm::dvec4 const& aColor) { mColor = aColor; };
+	void setColor(glm::dvec4 const& aColor) { mColor.r = aColor.r / 255; mColor.g = aColor.g / 255; mColor.b = aColor.b / 255; };
 	
 	void setTexture(Texture* tex) { mTexture = tex; };
 protected:
