@@ -2,14 +2,13 @@
 #include "Entity.h"
 using namespace glm;
 
-class CuboIndexado : public Abs_Entity
+class Esfera : public Abs_Entity
 {
-	GLdouble l_;
-	Mesh* myMesh;
-
-
+protected:
+	Mesh* mesh;
 public:
-	CuboIndexado(GLdouble longitud);
+	Esfera(GLdouble h, GLdouble r, GLuint n);
 	void render(dmat4 const& modelViewMat)const override;
 	void update() override;
+
 };

@@ -131,6 +131,7 @@
     <ClInclude Include="CuboIndexado.h" />
     <ClInclude Include="CuboRGB.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="Esfera.h" />
     <ClInclude Include="Estrella3D.h" />
     <ClInclude Include="Foto.h" />
     <ClInclude Include="IG1App.h" />
@@ -159,6 +160,7 @@
     <ClCompile Include="CuboIndexado.cpp" />
     <ClCompile Include="CuboRGB.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="Esfera.cpp" />
     <ClCompile Include="Estrella3D.cpp" />
     <ClCompile Include="Foto.cpp" />
     <ClCompile Include="IG1App.cpp" />

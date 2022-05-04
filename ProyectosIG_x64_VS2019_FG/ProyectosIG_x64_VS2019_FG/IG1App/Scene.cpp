@@ -17,6 +17,7 @@
 #include "TieAvanzado.h"
 #include "CuboIndexado.h"
 #include "MbR.h"
+#include "Esfera.h"
 using namespace glm;
 //-------------------------------------------------------------------------
 
@@ -180,7 +181,8 @@ void Scene::init()
 	}
 	else if (mId == 7)
 	{
-
+	Esfera* esfera = new Esfera(20, 100, 6);
+	gObjects.push_back(esfera);
 	}
 }
 
