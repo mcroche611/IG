@@ -62,7 +62,7 @@ protected:
 	TrianguloRGB* tr;
 	TieAvanzado* tie;
 	
-	int mId = 7;
+	int mId = 4;
 
 	std::vector<Abs_Entity*> gObjects;  // Entities (graphic objects) of the scene
 	std::vector<Abs_Entity*> gTranslucidObjects;  // entidades traslucidas

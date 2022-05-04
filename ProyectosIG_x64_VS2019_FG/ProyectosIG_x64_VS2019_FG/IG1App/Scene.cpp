@@ -144,9 +144,10 @@ void Scene::init()
 	}
 	else if (mId == 4)
 	{
+		nodoFicticio = new CompoundEntity();
 		TieAvanzado* tie = new TieAvanzado();
 		nodoFicticio->addEntity(tie);
-		gObjects.push_back(tie);
+		gObjects.push_back(nodoFicticio);
 		//nodoFicticio->addEntity(tie);
 		//tie->setModelMat(rotate(tie->modelMat(),
 		//	radians(80.0), dvec3(0, 0, 1)));
@@ -303,7 +304,7 @@ void Scene::orbit()
 	if (nodoFicticio)
 	{
 		glm::dmat4 mAux = nodoFicticio->modelMat();
-		mAux = rotate(mAux, radians(3.0), dvec3(0.0, 0.0, 1.0));
+		mAux = rotate(mAux, radians(3.0), dvec3(1.0, 0.0, 0.0));
 		nodoFicticio->setModelMat(mAux);
 	}
 
