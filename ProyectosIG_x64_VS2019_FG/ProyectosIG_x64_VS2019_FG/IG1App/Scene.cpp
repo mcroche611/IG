@@ -146,7 +146,7 @@ void Scene::init()
 	}
 	else if (mId == 7)
 	{
-		Esfera* esfera = new Esfera(20, 100, 6);
+		Esfera* esfera = new Esfera(50, 100, 50);
 		gObjects.push_back(esfera);
 	}
 }
