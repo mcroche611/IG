@@ -20,7 +20,6 @@ Esfera::Esfera(GLdouble n, GLdouble r, GLuint m) {
 
 void Esfera::render(dmat4 const& modelViewMat) const
 {
-
 	if (this->mesh != nullptr)
 	{
 		

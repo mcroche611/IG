@@ -18,6 +18,7 @@
 #include "CuboIndexado.h"
 #include "MbR.h"
 #include "Esfera.h"
+#include "Material.h"
 using namespace glm;
 //-------------------------------------------------------------------------
 
@@ -147,6 +148,9 @@ void Scene::init()
 	else if (mId == 7)
 	{
 		Esfera* esfera = new Esfera(50, 100, 50);
+		Material* m = new Material();
+		m->setCopper();
+		esfera->setMaterial(m);
 		gObjects.push_back(esfera);
 	}
 }

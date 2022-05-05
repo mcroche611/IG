@@ -1,8 +1,8 @@
 #pragma once
-#include "Entity.h"
+#include "EntityWithMaterial.h"
 using namespace glm;
 
-class Esfera : public Abs_Entity
+class Esfera : public EntityWithMaterial
 {
 protected:
 	Mesh* mesh;
