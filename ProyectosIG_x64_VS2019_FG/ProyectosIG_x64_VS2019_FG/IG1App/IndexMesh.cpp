@@ -4,7 +4,7 @@
 void IndexMesh::draw() const {
 	
 	glDrawElements(mPrimitive, nNumIndices,
-		GL_UNSIGNED_INT, vIndices);
+		GL_UNSIGNED_INT, vIndices.data());
 }
 void IndexMesh::buildNormalVectors()
 {
@@ -59,12 +59,17 @@ IndexMesh* IndexMesh::generaCuboConTapasIndexado(GLdouble l)
 		indexMesh->vColors.emplace_back(0.0, 1.0, 0.0, 1.0);
 	}
 
-	indexMesh->vIndices = new GLuint[indexMesh->nNumIndices]  { 0,1,2, 2,1,3,
-																2,3,4, 4,3,5,
-																4,5,6, 6,5,7,
-																6,7,0, 0,7,1,
-																4,6,2, 2,6,0,
-																1,7,3, 3,7,5};
+	indexMesh->vIndices.reserve(indexMesh->nNumIndices);
+
+	vector<GLuint> aux = { 0, 1, 2, 2, 1, 3,
+		2, 3, 4, 4, 3, 5,
+		4, 5, 6, 6, 5, 7,
+		6, 7, 0, 0, 7, 1,
+		4, 6, 2, 2, 6, 0,
+		1, 7, 3, 3, 7, 5 };
+
+	for (GLuint i : aux)
+		indexMesh->vIndices.push_back(i);
 
 	//falta indexmesh->buildnormalvectors
 	indexMesh->buildNormalVectors();

@@ -10,10 +10,26 @@ MbR::MbR(int m, int n, dvec3* perfil)
 MbR* MbR::generaIndexMbR(int mm, int nn, glm::dvec3* perfil)
 {
 	MbR* mesh = new MbR(mm, nn, perfil);
+
+	int indiceMayor = 0;
 	// Definir la primitiva como GL_TRIANGLES
 	mesh->mPrimitive = GL_TRIANGLES;
 	// Definir el número de vértices como nn*mm
-	mesh->mNumVertices = nn * mm;
+	mesh->mNumVertices = nn * mm + mm;
+	mesh->vVertices.reserve(mesh->mNumVertices);
+	mesh->nNumIndices = nn * mm * 6;
+	mesh->vIndices.reserve(mesh->nNumIndices);
+
+	for (int i = 0; i < mesh->mNumVertices; i++)
+	{
+		mesh->vVertices.push_back(dvec3(0));
+	}
+
+	for (int i = 0; i < mesh->nNumIndices; i++)
+	{
+		mesh->vIndices.push_back(0);
+	}
+
 	// Usar un vector auxiliar de vértices
 	dvec3* vertices = new dvec3[mesh->mNumVertices];
 
@@ -29,19 +45,18 @@ MbR* MbR::generaIndexMbR(int mm, int nn, glm::dvec3* perfil)
 			int indice = i * mm + j;
 			GLdouble x = c * perfil[j].x + s * perfil[j].z;
 			GLdouble z = -s * perfil[j].x + c * perfil[j].z;
-			vertices[indice] = dvec3(x, perfil[j].y, z);
+			mesh->vVertices[indice] = dvec3(x, perfil[j].y, z);
 		}
 	}
 
-	for (int i = 0; i < mesh->mNumVertices; i++)
-	{
-		mesh->vVertices.push_back(vertices[i]);
-	}
+	//for (int i = 0; i < mesh->mNumVertices; i++)
+	//{
+	//	mesh->vVertices.push_back(vertices[i]);
+	//}
 
 	//mesh->nNumIndices = nn * (mm - 1) * 6;
-	mesh->vIndices = new GLuint[nn * (mm - 1) * 6];
+	//mesh->vIndices = new GLuint[nn * (mm - 1) * 6];
 
-	int indiceMayor = 0;
 	// El contador i recorre las muestras alrededor del eje Y
 	for (int i = 0; i < nn; i++)
 	{

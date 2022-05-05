@@ -8,11 +8,11 @@ class IndexMesh : public Mesh
 {
 
 protected:
-	GLuint* vIndices = nullptr; // tabla de índices
+	vector<GLuint> vIndices; // tabla de índices
 	GLuint nNumIndices = 15000;
 public:
 	IndexMesh() { mPrimitive = GL_TRIANGLES; }
-	~IndexMesh() { delete[] vIndices; }
+	~IndexMesh() { /*delete[] vIndices;*/ }
 	virtual void draw() const;
 	void buildNormalVectors();
 
