@@ -158,17 +158,25 @@ void Scene::init()
 	}
 	else if (mId == 7)
 	{
-		Esfera* esfera = new Esfera(500, 100, 100);
-		Material* m = new Material();
-		m->setCopper();
-		esfera->setMaterial(m);
-		gObjects.push_back(esfera);
-
-		//Sphere* esfera = new Sphere(400.0);
-		//Material* m = new Material();
-		//m->setCopper();
-		//esfera->setMaterial(m);
-		//gObjects.push_back(esfera);
+		bool rev = true;
+		if (rev)
+		{
+			Esfera* esfera = new Esfera(50, 300, 50);
+			//dvec4 c = { 150.0, 100.0, 0.0, 1.0 };
+			//esfera->setColor(c);
+			Material* m = new Material();
+			m->setGold();
+			esfera->setMaterial(m);
+			gObjects.push_back(esfera);
+		}
+		else
+		{
+			Sphere* esfera = new Sphere(400.0);
+			Material* m = new Material();
+			m->setGold();
+			esfera->setMaterial(m);
+			gObjects.push_back(esfera);
+		}
 	}
 	else if (mId == 8)
 	{

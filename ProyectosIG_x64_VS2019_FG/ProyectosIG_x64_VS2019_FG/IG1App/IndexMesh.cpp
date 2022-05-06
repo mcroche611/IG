@@ -20,7 +20,7 @@ void IndexMesh::buildNormalVectors()
 		dvec3 v1 = vVertices[vIndices[i + 1]];
 		dvec3 v2 = vVertices[vIndices[i + 2]];
 
-		dvec3 n = normalize(cross((v1 - v0), (v2 - v0)));
+		dvec3 n = (cross((v1 - v0), (v2 - v0)));
 
 		vNormals[vIndices[i]] += n;
 		vNormals[vIndices[i+1]] += n;

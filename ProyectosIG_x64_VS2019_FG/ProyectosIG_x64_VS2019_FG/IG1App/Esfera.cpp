@@ -23,6 +23,7 @@ void Esfera::render(dmat4 const& modelViewMat) const
 	if (this->mesh != nullptr)
 	{
 		dmat4 aMat = modelViewMat * mModelMat;
+
 		if (this->material != nullptr)
 		{
 			material->upload();
