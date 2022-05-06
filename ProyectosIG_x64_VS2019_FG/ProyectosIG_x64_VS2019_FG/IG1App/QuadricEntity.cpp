@@ -28,6 +28,18 @@ void QuadricEntity::renderColor() const
 
 void Sphere::render(glm::dmat4 const& modelViewMat) const
 {
+	//glColorMaterial(GL_FRONT, GL_);
+	//glEnable(GL_COLOR_MATERIAL);
+	//dmat4 aMat = modelViewMat * mModelMat;
+	//upload(aMat);
+	//glColor4dv(value_ptr(mColor));
+	////gluQuadricDrawStyle(q, GLU_FILL);
+
+	////renderColor();
+	//gluSphere(q, r, 50, 50);
+	//// Aquí se debe recuperar el color:
+	//glColor4d(1.0, 1.0, 1.0,1.0);
+
 	dmat4 aMat = modelViewMat * mModelMat;
 	upload(aMat);
 

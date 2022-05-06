@@ -154,26 +154,17 @@ void Scene::init()
 	}
 	else if (mId == 7)
 	{
-		bool rev = false;
+		Esfera* esfera = new Esfera(500, 100, 100);
+		Material* m = new Material();
+		m->setCopper();
+		esfera->setMaterial(m);
+		gObjects.push_back(esfera);
 
-		if (rev)
-		{
-			Esfera* esfera = new Esfera(500, 300, 100);
-			dvec4 c = { 150.0, 100.0, 0.0, 1.0 };
-			esfera->setColor(c);
-			//Material* m = new Material();
-			//m->setCopper();
-			//esfera->setMaterial(m);
-			gObjects.push_back(esfera);
-		}
-		else
-		{
-			Sphere* esfera = new Sphere(400.0);
-			Material* m = new Material();
-			m->setCopper();
-			esfera->setMaterial(m);
-			gObjects.push_back(esfera);
-		}
+		//Sphere* esfera = new Sphere(400.0);
+		//Material* m = new Material();
+		//m->setCopper();
+		//esfera->setMaterial(m);
+		//gObjects.push_back(esfera);
 	}
 }
 
@@ -243,7 +234,6 @@ void Scene::render(Camera const& cam) const
 	//glEnable(GL_COLOR_MATERIAL);
 	//sceneDirLight(cam);
 	uploadLights(cam);
-	sceneDirLight(cam);
 	cam.upload();
 
 	for (Abs_Entity* el : gObjects)
