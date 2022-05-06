@@ -25,6 +25,7 @@ using namespace glm;
 
 void Scene::init()
 { 
+	setLights();
 	setGL();  // OpenGL settings
 
 	// allocate memory and load resources
@@ -143,8 +144,13 @@ void Scene::init()
 	}
 	else if (mId == 6)
 	{
-		CuboIndexado* cuboIndex = new CuboIndexado(100);
-		gObjects.push_back(cuboIndex);
+		/*CuboIndexado* cuboIndex = new CuboIndexado(100);
+		gObjects.push_back(cuboIndex);*/
+		Sphere* esfera = new Sphere(200);
+		Material* m = new Material();
+		m->setCopper();
+		esfera->setMaterial(m);
+		gObjects.push_back(esfera);
 	}
 	else if (mId == 7)
 	{
@@ -226,7 +232,8 @@ void Scene::render(Camera const& cam) const
 {
 	//glColorMaterial(GL_FRONT, GL_AMBIENT);
 	//glEnable(GL_COLOR_MATERIAL);
-	sceneDirLight(cam);
+	//sceneDirLight(cam);
+	uploadLights(cam);
 	cam.upload();
 
 	for (Abs_Entity* el : gObjects)
@@ -299,6 +306,28 @@ void Scene::rotation()
 		nodoFicticio->setModelMat(mAux);
 	}
 
+}
+void Scene::setLights()
+{
+
+	glEnable(GL_LIGHT0);
+	glm::fvec4 posDir = { 1, 1, 1, 0 };
+	glm::fvec4 ambient = { 0, 0, 0, 1 };
+	glm::fvec4 diffuse = { 1, 1, 1, 1 };
+	glm::fvec4 specular = { 0.5, 0.5, 0.5, 1 };
+	if (dirLight == nullptr) {
+		dirLight = new DirLight();
+		dirLight->setAmb(ambient);
+		dirLight->setDiff(diffuse);
+		dirLight->setSpec(specular);
+	}
+}
+void Scene::uploadLights(Camera const& cam) const
+{
+	if (dirLight != nullptr) {
+		dirLight->upload(cam.viewMat());
+
+	}
 }
 void Scene::setState(int id)
 {
