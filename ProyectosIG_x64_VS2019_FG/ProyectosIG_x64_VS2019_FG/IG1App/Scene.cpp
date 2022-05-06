@@ -56,6 +56,7 @@ void Scene::init()
 
     // Lights
 	dL = new DirLight();
+	
 	//dL->setPosDir();
 	//glEnable(GL_COLOR_MATERIAL);
 
@@ -328,24 +329,49 @@ void Scene::rotation()
 }
 void Scene::setLights()
 {
-
 	glEnable(GL_LIGHT0);
 	glm::fvec4 posDir = { 1, 1, 1, 0 };
 	glm::fvec4 ambient = { 0, 0, 0, 1 };
 	glm::fvec4 diffuse = { 1, 1, 1, 1 };
 	glm::fvec4 specular = { 0.5, 0.5, 0.5, 1 };
-	if (dirLight == nullptr) {
+	if (dirLight == nullptr) 
+	{
 		dirLight = new DirLight();
 		dirLight->setAmb(ambient);
 		dirLight->setDiff(diffuse);
 		dirLight->setSpec(specular);
+		//dirLight->setPosDir(posDir);
+	}
+
+	glEnable(GL_LIGHT1);
+	 posDir = { 450, 450, 0, 0 };
+	 ambient = { 0, 0, 0, 1 };
+	 diffuse = { 1.0, 1.0, 0.0, 1.0};
+	 specular = { 0.5, 0.5, 0.5, 1 };
+	if (posLight == nullptr)
+	{
+		posLight = new PosLight();
+		posLight->setAmb(ambient);
+		posLight->setDiff(diffuse);
+		posLight->setSpec(specular);
+		posLight->setPosDir(posDir);
 	}
 }
 void Scene::uploadLights(Camera const& cam) const
 {
-	if (dirLight != nullptr) {
+	if (dirLight != nullptr) 
+	{
 		dirLight->upload(cam.viewMat());
+	}
 
+	if (spotLight != nullptr)
+	{
+		spotLight->upload(cam.viewMat());
+	}
+
+	if (posLight != nullptr)
+	{
+		posLight->upload(cam.viewMat());
 	}
 }
 void Scene::setState(int id)

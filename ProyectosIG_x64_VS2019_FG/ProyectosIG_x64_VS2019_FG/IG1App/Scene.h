@@ -56,6 +56,8 @@ public:
 	void uploadLights(Camera const& cam) const;
 	void enableDirLight() { dirLight->enable(); };
 	void disableDirLight() { dirLight->disable(); };
+	void enablePosLight() { posLight->enable(); };
+	void disablePosLight() { posLight->disable(); };
 protected:
 	void free();
 	void setGL();
