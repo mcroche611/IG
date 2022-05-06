@@ -302,16 +302,6 @@ void Scene::update()
 			el->update();
 		}
 	}
-	if (mId == 4)
-	{
-		if (nodoFicticio)
-		{
-			glm::dmat4 mAux = nodoFicticio->modelMat();
-			mAux = rotate(mAux, radians(3.0), dvec3(0.0, 0.0, 1.0));
-			nodoFicticio->setModelMat(mAux);
-		}
-
-	}
 	else if (mId==3)
 	{
 		nodoFicticio->setModelMat(rotate(nodoFicticio->modelMat(), radians(3.0), dvec3(0, 0, 1)));
@@ -341,6 +331,7 @@ void Scene::rotation()
 }
 void Scene::setLights()
 {
+	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, amb);
 
 	glm::fvec4 posDir = { 1, 1, 1, 0 };
 	glm::fvec4 ambient = { 0, 0, 0, 1 };
@@ -355,23 +346,24 @@ void Scene::setLights()
 		dirLight->setSpec(specular);
 	}
 	if (posLight == nullptr) {
+		posDir = { 450, 450, 0, 0 };
 		posLight = new PosLight();
 		glEnable(GL_LIGHT1);
 		posLight->setAmb(ambient);
 		diffuse = { 1,1,0,1 };
 		posLight->setDiff(diffuse);
 		posLight->setSpec(specular);
-		posLight->setPosDir(glm::fvec4(0, 0, 1, 0));
+		posLight->setPosDir(posDir);
 	}
 	if (spotLight == nullptr) {
 		spotLight = new SpotLight();
 		glEnable(GL_LIGHT2);
-
+		posDir = {500, 1, 1, 0 };
 		spotLight->setAmb(ambient);
 		spotLight->setDiff(diffuse);
 	
 		spotLight->setSpec(specular);
-		spotLight->setPosDir(glm::fvec4(500, 0, 0, 0));
+		spotLight->setPosDir(posDir);
 		spotLight->setSpot(glm::fvec3(-1,0,0), 45, 0);
 	}
 }

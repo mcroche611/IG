@@ -1,5 +1,6 @@
 #pragma once
 #include "CompoundEntity.h"
+#include "Light.h"
 using namespace glm;
 
 class TieAvanzado : public CompoundEntity
