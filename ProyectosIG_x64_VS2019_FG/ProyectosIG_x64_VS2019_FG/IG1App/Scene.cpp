@@ -147,7 +147,13 @@ void Scene::init()
 	}
 	else if (mId == 7)
 	{
-		Esfera* esfera = new Esfera(50, 100, 50);
+		//Esfera* esfera = new Esfera(50, 100, 50);
+		//Material* m = new Material();
+		//m->setCopper();
+		//esfera->setMaterial(m);
+		//gObjects.push_back(esfera);
+
+		Sphere* esfera = new Sphere(400.0);
 		Material* m = new Material();
 		m->setCopper();
 		esfera->setMaterial(m);

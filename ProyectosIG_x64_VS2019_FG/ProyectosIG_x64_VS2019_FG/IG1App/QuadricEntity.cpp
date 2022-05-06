@@ -106,7 +106,11 @@ void PartialDisk::render(glm::dmat4 const& modelViewMat) const
 {
 	dmat4 aMat = modelViewMat * mModelMat;
 	upload(aMat);
-	glColor4dv(value_ptr(mColor));
+
+	if (this->material != nullptr)
+		this->material->upload();
+	else
+		glColor4dv(value_ptr(mColor));
 	gluQuadricDrawStyle(q, GL_FILL);
 	gluPartialDisk(q, innerRadius, outerRadius, 50, 50, startAngle, sweepAngle);
 	// Aquí se debe recuperar el color:

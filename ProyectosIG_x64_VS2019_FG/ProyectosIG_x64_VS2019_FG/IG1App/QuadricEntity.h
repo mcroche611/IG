@@ -1,8 +1,8 @@
 #pragma once
-#include "Entity.h"
+#include "EntityWithMaterial.h"
 using namespace glm;
 
-class QuadricEntity : public Abs_Entity 
+class QuadricEntity : public EntityWithMaterial
 {
 public:
 	QuadricEntity();
