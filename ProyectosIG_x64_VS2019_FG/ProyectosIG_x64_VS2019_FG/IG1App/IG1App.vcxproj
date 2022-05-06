@@ -137,6 +137,7 @@
     <ClInclude Include="Foto.h" />
     <ClInclude Include="IG1App.h" />
     <ClInclude Include="IndexMesh.h" />
+    <ClInclude Include="Light.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="MbR.h" />
     <ClInclude Include="Mesh.h" />
@@ -168,6 +169,7 @@
     <ClCompile Include="Foto.cpp" />
     <ClCompile Include="IG1App.cpp" />
     <ClCompile Include="IndexMesh.cpp" />
+    <ClCompile Include="Light.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="MbR.cpp" />

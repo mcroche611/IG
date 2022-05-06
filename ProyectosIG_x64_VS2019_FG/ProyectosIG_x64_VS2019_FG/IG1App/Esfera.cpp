@@ -8,7 +8,7 @@ Esfera::Esfera(GLdouble n, GLdouble r, GLuint m) {
 	// r=radio de la esfera
 	// m=número de muestras, n=número de puntos del perfil
 	dvec3* perfil = new dvec3[n + 1];
-	float ang = 180;
+	float ang = 270;
 	for (int i = 0; i < n + 1 && ang >= 0; i++) {
 		perfil[i] = { r * cos(radians(ang)), r * sin(radians(ang)), 0.0 };
 		//radio * cos(ang), radio * sen(ang)
