@@ -183,7 +183,7 @@ void Scene::init()
 	if (mId == 9)
 	{
 		Esfera* esfera = new Esfera(50, 100, 50);
-		dvec4 c = { 250.0, 200.0, 0.0, 1.0 };
+		dvec4 c = { 255, 233, 0, 1.0 };
 		esfera->setColor(c);
 		esfera->setModelMat((translate(esfera->modelMat(), dvec3(250, 0, 0))));
 		gObjects.push_back(esfera);
