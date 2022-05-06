@@ -1,7 +1,7 @@
 #include "Esfera.h"
 #include "MbR.h"
-
 #include "IndexMesh.h"
+#include <gtc/type_ptr.hpp>
 using namespace glm;
 
 Esfera::Esfera(GLdouble n, GLdouble r, GLuint m) {
@@ -31,10 +31,13 @@ void Esfera::render(dmat4 const& modelViewMat) const
 		else
 		{
 			glEnable(GL_COLOR_MATERIAL);
+			glm::dvec3 color = glm::dvec3(1,1,0);
+			glColor4dv(value_ptr(color));
 		}
 		upload(aMat);
 
 		this->mesh->render();
+		glDisable(GL_COLOR_MATERIAL);
 	}
 }
 

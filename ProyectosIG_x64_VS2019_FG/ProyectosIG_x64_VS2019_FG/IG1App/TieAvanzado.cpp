@@ -50,5 +50,13 @@ TieAvanzado::TieAvanzado()
 	ala2->setModelMat(mAux);
 	addTranslucidEntity(ala2);
 
-	
+	spotLight = new SpotLight();
+	glm::fvec4 ambient = { 0, 0, 0, 1 };
+	glm::fvec4 diffuse = { 1, 1, 1, 1 };
+	glm::fvec4 specular = { 0.5, 0.5, 0.5, 1 };
+	spotLight->setAmb(ambient);
+	spotLight->setDiff(diffuse);
+	spotLight->setSpec(specular);
+	spotLight->setSpot(glm::fvec3(0,-1,0),90,0); 
+	spotLight->setPosDir(glm::fvec3(0,490,0));
 }

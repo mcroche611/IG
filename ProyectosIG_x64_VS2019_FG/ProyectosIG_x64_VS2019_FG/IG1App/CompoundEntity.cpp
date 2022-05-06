@@ -38,6 +38,7 @@ void CompoundEntity::render(dmat4 const& modelViewMat) const
 	{
 		el->render(aMat);
 	}
+	if (spotLight != nullptr)spotLight->upload(modelViewMat);
 	glDepthMask(GL_TRUE);
 	glDisable(GL_BLEND);
 }

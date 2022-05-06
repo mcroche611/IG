@@ -28,7 +28,7 @@ public:
 	void setModelMat(glm::dmat4 const& aMat) { mModelMat = aMat; };
 
 	//atributo color
-	glm::dvec4 const& color() { return mColor; };
+	glm::dvec4& color() { return mColor; };
 	void setColor(glm::dvec4 const& aColor) { mColor.r = aColor.r / 255; mColor.g = aColor.g / 255; mColor.b = aColor.b / 255; };
 	
 	void setTexture(Texture* tex) { mTexture = tex; };

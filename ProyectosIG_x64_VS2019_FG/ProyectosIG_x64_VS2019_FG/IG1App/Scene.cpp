@@ -26,6 +26,7 @@ using namespace glm;
 
 void Scene::init()
 { 
+	GLfloat amb[] = { 0, 0, 0, 1.0 }; glLightModelfv(GL_LIGHT_MODEL_AMBIENT, amb);
 	setLights();
 	setGL();  // OpenGL settings
 
@@ -150,11 +151,23 @@ void Scene::init()
 	{
 		/*CuboIndexado* cuboIndex = new CuboIndexado(100);
 		gObjects.push_back(cuboIndex);*/
-		Sphere* esfera = new Sphere(200);
-		Material* m = new Material();
-		m->setCopper();
-		esfera->setMaterial(m);
+		Esfera* esfera = new Esfera(50, 100, 50);
+		dvec4 c = { 0,1,1,1 };
+
+		esfera->setColor(c);
+		esfera->setModelMat((translate(esfera->modelMat(), dvec3(250, 0, 0))));
+
 		gObjects.push_back(esfera);
+
+		Esfera* esfera2 = new Esfera(50, 100, 50);
+
+		Material* m2 = new Material();
+		m2->setGold();
+		esfera2->setMaterial(m2);
+		esfera2->setModelMat((translate(esfera2->modelMat(), dvec3(-250, 0, 0))));
+
+		gObjects.push_back(esfera2);
+
 	}
 	else if (mId == 7)
 	{
@@ -329,22 +342,51 @@ void Scene::rotation()
 void Scene::setLights()
 {
 
-	glEnable(GL_LIGHT0);
 	glm::fvec4 posDir = { 1, 1, 1, 0 };
 	glm::fvec4 ambient = { 0, 0, 0, 1 };
 	glm::fvec4 diffuse = { 1, 1, 1, 1 };
 	glm::fvec4 specular = { 0.5, 0.5, 0.5, 1 };
 	if (dirLight == nullptr) {
 		dirLight = new DirLight();
+		glEnable(GL_LIGHT0);
+
 		dirLight->setAmb(ambient);
 		dirLight->setDiff(diffuse);
 		dirLight->setSpec(specular);
+	}
+	if (posLight == nullptr) {
+		posLight = new PosLight();
+		glEnable(GL_LIGHT1);
+		posLight->setAmb(ambient);
+		diffuse = { 1,1,0,1 };
+		posLight->setDiff(diffuse);
+		posLight->setSpec(specular);
+		posLight->setPosDir(glm::fvec4(0, 0, 1, 0));
+	}
+	if (spotLight == nullptr) {
+		spotLight = new SpotLight();
+		glEnable(GL_LIGHT2);
+
+		spotLight->setAmb(ambient);
+		spotLight->setDiff(diffuse);
+	
+		spotLight->setSpec(specular);
+		spotLight->setPosDir(glm::fvec4(500, 0, 0, 0));
+		spotLight->setSpot(glm::fvec3(-1,0,0), 45, 0);
 	}
 }
 void Scene::uploadLights(Camera const& cam) const
 {
 	if (dirLight != nullptr) {
 		dirLight->upload(cam.viewMat());
+
+	}
+	if (posLight != nullptr) {
+		posLight->upload(cam.viewMat());
+
+	}
+	if (spotLight != nullptr) {
+		spotLight->upload(cam.viewMat());
 
 	}
 }
@@ -373,6 +415,7 @@ void Scene::sceneDirLight(Camera const& cam) const
 {
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
+
 	glm::fvec4 posDir = { 1, 1, 1, 0 };
 	glMatrixMode(GL_MODELVIEW);
 	glLoadMatrixd(value_ptr(cam.viewMat()));
