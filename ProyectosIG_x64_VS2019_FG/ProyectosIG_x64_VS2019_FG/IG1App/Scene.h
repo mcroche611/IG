@@ -28,6 +28,7 @@
 #include <vector>
 
 //-------------------------------------------------------------------------
+class DirLight;
 
 class Scene	: public CompoundEntity
 { 
@@ -61,8 +62,9 @@ protected:
 	CompoundEntity* nodoFicticio;
 	TrianguloRGB* tr;
 	TieAvanzado* tie;
+	DirLight* dL;
 	
-	int mId = 7;
+	int mId = 8;
 
 	//std::vector<Abs_Entity*> gObjects;  // Entities (graphic objects) of the scene
 	//std::vector<Abs_Entity*> tObjects;  // entidades traslucidas

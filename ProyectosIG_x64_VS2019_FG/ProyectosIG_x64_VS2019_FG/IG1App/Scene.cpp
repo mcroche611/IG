@@ -20,6 +20,7 @@
 #include "Esfera.h"
 #include "Material.h"
 #include "Light.h"
+#include "Torus.h"
 using namespace glm;
 //-------------------------------------------------------------------------
 
@@ -53,7 +54,10 @@ void Scene::init()
 	gTextures.push_back(fotoTex);
 
     // Lights
-	glEnable(GL_COLOR_MATERIAL);
+	dL = new DirLight();
+	//dL->setPosDir();
+	//glEnable(GL_COLOR_MATERIAL);
+
 
 	if (mId == 0)
 	{
@@ -168,6 +172,13 @@ void Scene::init()
 			esfera->setMaterial(m);
 			gObjects.push_back(esfera);
 		}
+	}
+	else if (mId == 8)
+	{
+		Torus* torus = new Torus(500, 50, 100, 140);
+		dvec4 c = { 0.0, 200.0, 0.0, 1.0 };
+		torus->setColor(c);
+		gObjects.push_back(torus);
 	}
 }
 
