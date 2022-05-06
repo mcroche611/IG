@@ -13,7 +13,7 @@ MbR* MbR::generaIndexMbR(int mm, int nn, glm::dvec3* perfil)
 
 	int indiceMayor = 0;
 	// Definir la primitiva como GL_TRIANGLES
-	mesh->mPrimitive = GL_TRIANGLES;
+	mesh->mPrimitive = GL_LINE_LOOP;
 	// Definir el n�mero de v�rtices como nn*mm
 	mesh->mNumVertices = nn * mm + mm;
 	mesh->vVertices.reserve(mesh->mNumVertices);
