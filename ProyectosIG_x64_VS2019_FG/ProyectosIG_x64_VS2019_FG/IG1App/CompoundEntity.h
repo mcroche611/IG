@@ -15,9 +15,10 @@ public:
 
 	virtual void render(dmat4 const& modelViewMat) const override;
 
+	SpotLight* spotLight = nullptr;
+
 protected:
 	std::vector<Abs_Entity*> gObjects;
 	std::vector<Abs_Entity*> tObjects;
-	SpotLight* spotLight = nullptr;
 };
 

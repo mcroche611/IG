@@ -2,6 +2,7 @@
 #include "QuadricEntity.h"
 #include <gtc/matrix_transform.hpp>  
 #include "AlaTieAvanzado.h"
+#include "Light.h"
 
 #define WIDTH_AXIS 300
 
@@ -33,7 +34,6 @@ TieAvanzado::TieAvanzado()
 	
 	AlaTieAvanzado* ala1 = new AlaTieAvanzado(125, 300);
 	mAux = ala1->modelMat();
-	//ala1->setColor({ 255, 255, 255, 0.5 });
 	ala1->setTexture(night);
 	mAux = translate(mAux, dvec3(WIDTH_AXIS / 3 - 10, 0, 0));
 	mAux = rotate(mAux, radians(-90.0), dvec3(1.0, 0, 0));
@@ -42,7 +42,6 @@ TieAvanzado::TieAvanzado()
 
 	AlaTieAvanzado* ala2 = new AlaTieAvanzado(125, 300);
 	mAux = ala2->modelMat();
-	//ala2->setColor({ 255.0, 255.0, 255.0, 0.8 });
 	ala2->setTexture(night);
 	mAux = translate(mAux, dvec3(-(WIDTH_AXIS / 3) + 10, 0, 0));
 	mAux = rotate(mAux, radians(-90.0), dvec3(1.0, 0.0, 0.0));
@@ -51,6 +50,7 @@ TieAvanzado::TieAvanzado()
 	addTranslucidEntity(ala2);
 
 	spotLight = new SpotLight();
+	//glEnable(GL_LIGHT3);
 	glm::fvec4 ambient = { 0, 0, 0, 1 };
 	glm::fvec4 diffuse = { 1, 1, 1, 1 };
 	glm::fvec4 specular = { 0.5, 0.5, 0.5, 1 };

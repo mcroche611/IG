@@ -27,7 +27,9 @@ using namespace glm;
 void Scene::init()
 { 
 	GLfloat amb[] = { 0, 0, 0, 1.0 }; glLightModelfv(GL_LIGHT_MODEL_AMBIENT, amb);
+
 	setLights();
+
 	setGL();  // OpenGL settings
 
 	// allocate memory and load resources
@@ -56,9 +58,6 @@ void Scene::init()
 	gTextures.push_back(fotoTex);
 
     // Lights
-	dL = new DirLight();
-	//dL->setPosDir();
-	//glEnable(GL_COLOR_MATERIAL);
 
 
 	if (mId == 0)
@@ -129,14 +128,14 @@ void Scene::init()
 	else if (mId == 4)
 	{
 		nodoFicticio = new CompoundEntity();
-		TieAvanzado* tie = new TieAvanzado();
+		tie = new TieAvanzado();
 		nodoFicticio->addEntity(tie);
 		gObjects.push_back(nodoFicticio);
 	}
 	else if (mId == 5)
 	{
 		nodoFicticio = new CompoundEntity();
-		TieAvanzado* tie = new TieAvanzado();
+		tie = new TieAvanzado();
 		nodoFicticio->addEntity(tie);
 		tie->setModelMat(translate(tie->modelMat(), dvec3(0, 500, 0)));
 		gObjects.push_back(nodoFicticio);
@@ -149,24 +148,9 @@ void Scene::init()
 	}
 	else if (mId == 6)
 	{
-		/*CuboIndexado* cuboIndex = new CuboIndexado(100);
-		gObjects.push_back(cuboIndex);*/
-		Esfera* esfera = new Esfera(50, 100, 50);
-		dvec4 c = { 0,1,1,1 };
-
-		esfera->setColor(c);
-		esfera->setModelMat((translate(esfera->modelMat(), dvec3(250, 0, 0))));
-
-		gObjects.push_back(esfera);
-
-		Esfera* esfera2 = new Esfera(50, 100, 50);
-
-		Material* m2 = new Material();
-		m2->setGold();
-		esfera2->setMaterial(m2);
-		esfera2->setModelMat((translate(esfera2->modelMat(), dvec3(-250, 0, 0))));
-
-		gObjects.push_back(esfera2);
+		CuboIndexado* cuboIndex = new CuboIndexado(100);
+		cuboIndex->setColor({ 0, 200, 0, 1.0 });
+		gObjects.push_back(cuboIndex);
 
 	}
 	else if (mId == 7)
@@ -175,8 +159,6 @@ void Scene::init()
 		if (rev)
 		{
 			Esfera* esfera = new Esfera(50, 300, 50);
-			//dvec4 c = { 150.0, 100.0, 0.0, 1.0 };
-			//esfera->setColor(c);
 			Material* m = new Material();
 			m->setGold();
 			esfera->setMaterial(m);
@@ -198,6 +180,22 @@ void Scene::init()
 		torus->setColor(c);
 		gObjects.push_back(torus);
 	}
+	if (mId == 9)
+	{
+		Esfera* esfera = new Esfera(50, 100, 50);
+		dvec4 c = { 250.0, 200.0, 0.0, 1.0 };
+		esfera->setColor(c);
+		esfera->setModelMat((translate(esfera->modelMat(), dvec3(250, 0, 0))));
+		gObjects.push_back(esfera);
+
+		Esfera* esfera2 = new Esfera(50, 100, 50);
+		Material* m2 = new Material();
+		m2->setGold();
+		esfera2->setMaterial(m2);
+		esfera2->setModelMat((translate(esfera2->modelMat(), dvec3(-250, 0, 0))));
+
+		gObjects.push_back(esfera2);
+	}
 }
 
 //-------------------------------------------------------------------------
@@ -214,10 +212,7 @@ void Scene::free()
 	{
 		for (Abs_Entity* elem : tObjects)
 		{
-
-
 			delete elem;  elem = nullptr;
-
 		}
 		tObjects.clear();
 
@@ -229,8 +224,6 @@ void Scene::free()
 
 		}
 		gTextures.clear();
-
-
 	}
 }
 //-------------------------------------------------------------------------
@@ -262,9 +255,6 @@ void Scene::resetGL()
 
 void Scene::render(Camera const& cam) const 
 {
-	//glColorMaterial(GL_FRONT, GL_AMBIENT);
-	//glEnable(GL_COLOR_MATERIAL);
-	//sceneDirLight(cam);
 	uploadLights(cam);
 	cam.upload();
 
@@ -355,6 +345,7 @@ void Scene::setLights()
 		posLight->setSpec(specular);
 		posLight->setPosDir(posDir);
 	}
+	
 	if (spotLight == nullptr) {
 		spotLight = new SpotLight();
 		glEnable(GL_LIGHT2);

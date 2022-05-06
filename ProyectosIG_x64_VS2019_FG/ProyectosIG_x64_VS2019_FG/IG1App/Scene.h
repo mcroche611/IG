@@ -63,6 +63,9 @@ public:
 	void enableSpotLight() { spotLight->enable(); };
 	void disableSpotLight() { spotLight->disable(); };
 
+	void enableFoco() { if (tie != nullptr) tie->spotLight->enable(); };
+	void disableFoco() { if (tie != nullptr) tie->spotLight->disable(); };
+
 protected:
 	void free();
 	void setGL();
@@ -70,11 +73,11 @@ protected:
 
 
 	CompoundEntity* nodoFicticio;
-	TrianguloRGB* tr;
+	TrianguloRGB* tr = nullptr;
 	TieAvanzado* tie;
 	DirLight* dL;
 	
-	int mId = 8;
+	int mId = 5;
 
 	//std::vector<Abs_Entity*> gObjects;  // Entities (graphic objects) of the scene
 	//std::vector<Abs_Entity*> tObjects;  // entidades traslucidas
