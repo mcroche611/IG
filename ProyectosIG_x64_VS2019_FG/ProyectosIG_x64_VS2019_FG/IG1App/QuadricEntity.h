@@ -8,10 +8,8 @@ public:
 	QuadricEntity();
 	~QuadricEntity() { gluDeleteQuadric(q); };
 	void renderColor() const;
-	//void setColor(dvec4 color) {};
 protected:
 	GLUquadricObj* q;
-	//dvec4 color = { 0, 65, 100, 1.0 };
 };
 
 class Sphere : public QuadricEntity		

@@ -191,6 +191,15 @@ void IG1App::key(unsigned char key, int x, int y)
 	case '6':
 		mScene->setState(6);
 		break;
+	case '7':
+		mScene->setState(7);
+		break;
+	case '8':
+		mScene->setState(8);
+		break;
+	case '9':
+		mScene->setState(9);
+		break;
 	case 'u':
 		activeAnim = !activeAnim;
 		break;
@@ -228,6 +237,12 @@ void IG1App::key(unsigned char key, int x, int y)
 		break;
 	case 'x':
 		mScene->disableSpotLight();
+		break;
+	case 'v':
+		mScene->enableFoco();
+		break;
+	case 'b':
+		mScene->disableFoco();
 		break;
 	default:
 		need_redisplay = false;

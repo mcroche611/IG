@@ -8,7 +8,6 @@ void Material::upload()
 	glMaterialfv(face, GL_SPECULAR, value_ptr(specular));
 	glMaterialf(face, GL_SHININESS, expF);
 	glShadeModel(sh);
-	//glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_FALSE); // Defecto
 }
 
 void Material::setCopper()
@@ -21,7 +20,6 @@ void Material::setCopper()
 
 void Material::setGold()
 {
-	//	0.24725	0.1995	0.0745 //	0.75164 	0.60648	 0.22648 //	0.628281	0.555802	0.366065	0.4
 	ambient = { 0.24725, 0.1995, 0.0745, 1 };
 	diffuse = { 0.75164, 0.60648, 0.22648, 1 };
 	specular = { 0.628281, 0.555802, 0.366065, 1 };

@@ -31,8 +31,8 @@ void Esfera::render(dmat4 const& modelViewMat) const
 		else
 		{
 			glEnable(GL_COLOR_MATERIAL);
-			glm::dvec3 color = glm::dvec3(1,1,0);
-			glColor4dv(value_ptr(color));
+			//glm::dvec3 color = glm::dvec3(0,1,0);
+			glColor4dv(value_ptr(this->mColor));
 		}
 		upload(aMat);
 
