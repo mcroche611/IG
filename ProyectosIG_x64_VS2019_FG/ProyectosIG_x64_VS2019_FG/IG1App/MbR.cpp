@@ -13,8 +13,8 @@ MbR* MbR::generaIndexMbR(int mm, int nn, glm::dvec3* perfil)
 
 	int indiceMayor = 0;
 	// Definir la primitiva como GL_TRIANGLES
-	mesh->mPrimitive = GL_LINES;
-	// Definir el número de vértices como nn*mm
+	mesh->mPrimitive = GL_TRIANGLES;
+	// Definir el nï¿½mero de vï¿½rtices como nn*mm
 	mesh->mNumVertices = nn * mm + mm;
 	mesh->vVertices.reserve(mesh->mNumVertices);
 	mesh->nNumIndices = nn * mm * 6;
@@ -30,16 +30,16 @@ MbR* MbR::generaIndexMbR(int mm, int nn, glm::dvec3* perfil)
 		mesh->vIndices.push_back(0);
 	}
 
-	// Usar un vector auxiliar de vértices
+	// Usar un vector auxiliar de vï¿½rtices
 	dvec3* vertices = new dvec3[mesh->mNumVertices];
 
 	for (int i = 0; i < nn; i++)
 	{
-		// Generar la muestra i-ésima de vértices
+		// Generar la muestra i-ï¿½sima de vï¿½rtices
 		GLdouble theta = i * 360 / nn;
 		GLdouble c = cos(radians(theta));
 		GLdouble s = sin(radians(theta));
-		// R_y(theta) es la matriz de rotación alrededor del eje Y
+		// R_y(theta) es la matriz de rotaciï¿½n alrededor del eje Y
 		for (int j = 0; j < mm; j++) 
 		{
 			int indice = i * mm + j;
@@ -60,17 +60,17 @@ MbR* MbR::generaIndexMbR(int mm, int nn, glm::dvec3* perfil)
 	// El contador i recorre las muestras alrededor del eje Y
 	for (int i = 0; i < nn; i++)
 	{
-		// El contador j recorre los vértices del perfil,
+		// El contador j recorre los vï¿½rtices del perfil,
 		// de abajo arriba. Las caras cuadrangulares resultan
-		// al unir la muestra i-ésima con la (i+1)%nn-ésima
+		// al unir la muestra i-ï¿½sima con la (i+1)%nn-ï¿½sima
 		for (int j = 0; j < mm - 1; j++)
 		{
 			// El contador indice sirve para llevar cuenta
-			// de los índices generados hasta ahora. Se recorre
+			// de los ï¿½ndices generados hasta ahora. Se recorre
 			// la cara desde la esquina inferior izquierda
 			int indice = i * mm + j;
 
-			// Los cuatro índices son entonces:
+			// Los cuatro ï¿½ndices son entonces:
 			//(indice, (indice + mm) % (nn * mm), (indice + mm + 1) % (nn * mm), indice + 1)
 			mesh->vIndices[indiceMayor] = indice;
 			indiceMayor++;

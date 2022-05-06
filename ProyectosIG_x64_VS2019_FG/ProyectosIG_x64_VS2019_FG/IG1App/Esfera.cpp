@@ -23,21 +23,17 @@ void Esfera::render(dmat4 const& modelViewMat) const
 	if (this->mesh != nullptr)
 	{
 		dmat4 aMat = modelViewMat * mModelMat;
-		upload(aMat);
-
 		if (this->material != nullptr)
 		{
 			material->upload();
-			this->mesh->render();
 		}
 		else
 		{
 			glEnable(GL_COLOR_MATERIAL);
-			glColor3f(mColor.r, mColor.g, mColor.b);
-			this->mesh->render();
-			glColor3f(1.0, 1.0, 1.0);
-			glDisable(GL_COLOR_MATERIAL);
 		}
+		upload(aMat);
+
+		this->mesh->render();
 	}
 }
 

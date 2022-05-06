@@ -211,6 +211,12 @@ void IG1App::key(unsigned char key, int x, int y)
 	case 'g':
 		rotation();
 		break;
+	case 'q':
+		mScene->enableDirLight();
+		break;
+	case 'w':
+		mScene->disableDirLight();
+		break;
 	default:
 		need_redisplay = false;
 		break;
