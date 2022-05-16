@@ -21,6 +21,7 @@
 #include "Material.h"
 #include "Light.h"
 #include "Torus.h"
+#include "Hierba.h"
 using namespace glm;
 //-------------------------------------------------------------------------
 
@@ -57,6 +58,10 @@ void Scene::init()
 	fotoTex->loadColorBuffer(800, 600);
 	gTextures.push_back(fotoTex);
 
+	Texture* grass = new Texture();
+	grass->load("..\\Bmps\\grass.bmp", 0, { 0,0,0 });
+	gTextures.push_back(grass);
+
     // Lights
 
 
@@ -92,26 +97,32 @@ void Scene::init()
 		suelo->setTexture(baldosaC);
 		suelo->setModelMat(translate(suelo->modelMat(), dvec3(0, 0, 20)));
 		gObjects.push_back(suelo);
+
+		Hierba* hierba = new Hierba(100, 100);
+		hierba->setTexture(grass);
+		hierba->setModelMat(rotate(hierba->modelMat(), radians(90.0), dvec3(1, 0, 0)));
+		hierba->setModelMat(translate(hierba->modelMat(), dvec3(0, -50, 0)));
+		tObjects.push_back(hierba);
 		
-		ContornoCaja* caja = new ContornoCaja(100);
-		caja->setTexture(container);
-		caja->setTexture2(papelE);
-		caja->setModelMat(translate(caja->modelMat(), dvec3(195, 30, 195)));
-		gObjects.push_back(caja);
+		//ContornoCaja* caja = new ContornoCaja(100);
+		//caja->setTexture(container);
+		//caja->setTexture2(papelE);
+		//caja->setModelMat(translate(caja->modelMat(), dvec3(195, 30, 195)));
+		//gObjects.push_back(caja);
 
 
-		Estrella3D* estrella = new Estrella3D(50, 8, 40);
-		estrella->setTexture(baldosaP);
-		gObjects.push_back(estrella);
+		//Estrella3D* estrella = new Estrella3D(50, 8, 40);
+		//estrella->setTexture(baldosaP);
+		//gObjects.push_back(estrella);
 
-		Foto* foto = new Foto(200, 100);
-		foto->setTexture(fotoTex);
-		gObjects.push_back(foto);
+		//Foto* foto = new Foto(200, 100);
+		//foto->setTexture(fotoTex);
+		//gObjects.push_back(foto);
 
-		Cristalera* cristalera = new Cristalera(500);
-		cristalera->setTexture(windowV);
-		cristalera->setModelMat(translate(cristalera->modelMat(), dvec3(0, 230, 0)));
-		tObjects.push_back(cristalera);
+		//Cristalera* cristalera = new Cristalera(500);
+		//cristalera->setTexture(windowV);
+		//cristalera->setModelMat(translate(cristalera->modelMat(), dvec3(0, 230, 0)));
+		//tObjects.push_back(cristalera);
 		
 	}
 	else if (mId == 3)

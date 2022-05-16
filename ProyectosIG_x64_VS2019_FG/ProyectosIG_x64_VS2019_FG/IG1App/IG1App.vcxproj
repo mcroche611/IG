@@ -135,6 +135,7 @@
     <ClInclude Include="Esfera.h" />
     <ClInclude Include="Estrella3D.h" />
     <ClInclude Include="Foto.h" />
+    <ClInclude Include="Hierba.h" />
     <ClInclude Include="IG1App.h" />
     <ClInclude Include="IndexMesh.h" />
     <ClInclude Include="Light.h" />
@@ -168,6 +169,7 @@
     <ClCompile Include="Esfera.cpp" />
     <ClCompile Include="Estrella3D.cpp" />
     <ClCompile Include="Foto.cpp" />
+    <ClCompile Include="Hierba.cpp" />
     <ClCompile Include="IG1App.cpp" />
     <ClCompile Include="IndexMesh.cpp" />
     <ClCompile Include="Light.cpp" />
