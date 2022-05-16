@@ -21,6 +21,12 @@ void Hierba::render(dmat4 const& modelViewMat)const
 		upload(aMat);
 		mTexture->bind(GL_MODULATE);
 		myMesh->render();
+		aMat = aMat * rotate(dmat4(1.0), radians(120.0), dvec3(0, 1, 0));
+		upload(aMat);
+		myMesh->render();
+		aMat = aMat * rotate(dmat4(1.0), radians(120.0), dvec3(0, 1, 0));
+		upload(aMat);
+		myMesh->render();
 		mTexture->unbind();
 	}
 
