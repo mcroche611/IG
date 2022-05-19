@@ -121,10 +121,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AlaTieAvanzado.h" />
+    <ClInclude Include="Bolido.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CheckML.h" />
     <ClInclude Include="CompoundEntity.h" />
-    <ClInclude Include="Cone.h" />
+    <ClInclude Include="HalfTorus.h" />
+    <ClInclude Include="RevCone.h" />
     <ClInclude Include="ContornoCaja.h" />
     <ClInclude Include="Cristalera.h" />
     <ClInclude Include="Cubo.h" />
@@ -156,9 +158,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AlaTieAvanzado.cpp" />
+    <ClCompile Include="Bolido.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CompoundEntity.cpp" />
-    <ClCompile Include="Cone.cpp" />
+    <ClCompile Include="HalfTorus.cpp" />
+    <ClCompile Include="RevCone.cpp" />
     <ClCompile Include="ContornoCaja.cpp" />
     <ClCompile Include="Cristalera.cpp" />
     <ClCompile Include="Cubo.cpp" />

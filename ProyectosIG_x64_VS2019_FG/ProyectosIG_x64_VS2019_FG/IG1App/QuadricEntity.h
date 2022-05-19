@@ -35,6 +35,28 @@ protected:
 	GLdouble h;
 };
 
+class MyCone : public QuadricEntity
+{
+public:
+	MyCone(GLdouble baseRadius, GLdouble h);
+	void render(glm::dmat4 const& modelViewMat) const;
+	void update() {};
+protected:
+	GLdouble baseRadius;
+	GLdouble h;
+};
+
+class RevCone : public QuadricEntity
+{
+public:
+	RevCone(GLdouble baseRadius, GLdouble h);
+	void render(glm::dmat4 const& modelViewMat) const;
+	void update() {};
+protected:
+	GLdouble baseRadius;
+	GLdouble h;
+};
+
 class Disk : public QuadricEntity
 {
 public:

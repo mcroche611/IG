@@ -22,6 +22,8 @@
 #include "Light.h"
 #include "Torus.h"
 #include "Hierba.h"
+#include "Bolido.h"
+#include "HalfTorus.h"
 using namespace glm;
 //-------------------------------------------------------------------------
 
@@ -139,9 +141,20 @@ void Scene::init()
 	else if (mId == 4)
 	{
 		nodoFicticio = new CompoundEntity();
-		tie = new TieAvanzado();
-		nodoFicticio->addEntity(tie);
-		gObjects.push_back(nodoFicticio);
+		Bolido* bolido = new Bolido();
+		bolido->setModelMat(translate(bolido->modelMat(), dvec3(500, 0, 0)));
+		//bolido->setModelMat(rotate(bolido->modelMat(), radians(-90.0), dvec3(0, 1, 0)));
+		//bolido->setModelMat(translate(bolido->modelMat(), dvec3(500, 0, 0)));
+		nodoFicticio->addEntity(bolido);
+		//tie = new TieAvanzado();
+		//nodoFicticio->addEntity(tie);
+		gObjects.push_back(nodoFicticio); 
+
+		XTorus* hTorus = new XTorus(1000, 200, 500, 500, 180, 360);
+		hTorus->setModelMat(translate(hTorus->modelMat(), dvec3(-250, 0, 0)));
+		hTorus->setModelMat(rotate(hTorus->modelMat(), radians(180.0), dvec3(0, 0, 1)));
+		hTorus->setColor({ 255, 220, 120, 1 });
+		gObjects.push_back(hTorus);
 	}
 	else if (mId == 5)
 	{
@@ -316,10 +329,11 @@ void Scene::orbit()
 	{
 		glm::dmat4 mAux = nodoFicticio->modelMat();
 		mAux = rotate(mAux, radians(3.0), dvec3(1.0, 0.0, 0.0));
+		//mAux = translate(mAux, dvec3(4.0, 0.0, 0.0));
 		nodoFicticio->setModelMat(mAux);
 	}
-
 }
+
 void Scene::rotation()
 {
 	if (nodoFicticio)
@@ -330,6 +344,17 @@ void Scene::rotation()
 	}
 
 }
+
+void Scene::rotation2()
+{
+	if (nodoFicticio)
+	{
+		glm::dmat4 mAux = nodoFicticio->modelMat();
+		mAux = rotate(mAux, radians(3.0), dvec3(0.0, 1.0, 0.0));
+		nodoFicticio->setModelMat(mAux);
+	}
+}
+
 void Scene::setLights()
 {
 	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, amb);

@@ -217,6 +217,9 @@ void IG1App::key(unsigned char key, int x, int y)
 	case 'f':
 		orbit();
 		break;
+	case 'y':
+		rotation2();
+		break;
 	case 'g':
 		rotation();
 		break;
@@ -302,6 +305,12 @@ void IG1App::rotation()
 {
 	mScene->rotation();
 }
+
+void IG1App::rotation2()
+{
+	mScene->rotation2();
+}
+
 void IG1App::update()
 {
 	if (activeAnim)

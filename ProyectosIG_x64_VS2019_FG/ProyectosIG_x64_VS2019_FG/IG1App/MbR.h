@@ -12,5 +12,6 @@ public:
 	MbR(int m, int n, dvec3* perfil);
 
 	static MbR* generaIndexMbR(int mm, int nn, glm::dvec3* perfil);
+	static MbR* generaIndexMbRCortado(int mm, int nn, glm::dvec3* perfil, float angulo);
 };
 

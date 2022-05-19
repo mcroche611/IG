@@ -46,6 +46,7 @@ protected:
 	void specialKey(int key, int x, int y);     // keypress event for special characters
 	void orbit();
 	void rotation();
+	void rotation2();
 	void update();
 
 	// static callbacks 

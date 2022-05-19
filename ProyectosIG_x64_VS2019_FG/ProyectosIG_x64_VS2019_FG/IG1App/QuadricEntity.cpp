@@ -82,7 +82,12 @@ void Disk::render(glm::dmat4 const& modelViewMat) const
 {
 	dmat4 aMat = modelViewMat * mModelMat;
 	upload(aMat);
-	glColor4dv(value_ptr(mColor));
+
+	if (this->material != nullptr)
+		this->material->upload();
+	else
+		glColor4dv(value_ptr(mColor));
+
 	gluQuadricDrawStyle(q, GL_FILL);
 	gluDisk(q, innerRadius, outerRadius, 50, 50);
 	// Aquí se debe recuperar el color:
@@ -110,4 +115,45 @@ void PartialDisk::render(glm::dmat4 const& modelViewMat) const
 	gluPartialDisk(q, innerRadius, outerRadius, 50, 50, startAngle, sweepAngle);
 	// Aquí se debe recuperar el color:
 	glColor4d(1.0, 1.0, 1.0, 1.0);
+}
+
+RevCone::RevCone(GLdouble baseRadius, GLdouble h)
+{
+	this->baseRadius = baseRadius;
+	this->h = h;
+}
+
+void RevCone::render(glm::dmat4 const& modelViewMat) const
+{
+	//dmat4 aMat = modelViewMat * mModelMat;
+	//upload(aMat);
+
+	//if (this->material != nullptr)
+	//	this->material->upload();
+	//else
+	//	glColor4dv(value_ptr(mColor));
+	//gluQuadricDrawStyle(q, GL_FILL);
+	//glutSolidCone(baseRadius, h, 50, 50);
+	//// Aquí se debe recuperar el color:
+	//glColor4d(1.0, 1.0, 1.0, 1.0);
+
+}
+
+MyCone::MyCone(GLdouble baseRadius, GLdouble h)
+{
+	this->baseRadius = baseRadius;
+	this->h = h;
+}
+
+void MyCone::render(glm::dmat4 const& modelViewMat) const
+{
+	dmat4 aMat = modelViewMat * mModelMat;
+	upload(aMat);
+	glEnable(GL_COLOR_MATERIAL);
+
+	glColor3f(mColor.r, mColor.g, mColor.b);
+	gluQuadricDrawStyle(q, GLU_FILL);
+	glutSolidCone(baseRadius, h, 50, 50);
+	// Aquí se debe recuperar el color:
+	glColor3f(1.0, 1.0, 1.0);
 }

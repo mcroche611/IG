@@ -52,6 +52,7 @@ public:
 
 	void orbit(); 
 	void rotation();
+	void rotation2();
 	void setLights();
 	void uploadLights(Camera const& cam) const;
 	void enableDirLight() { dirLight->enable(); };
@@ -77,7 +78,7 @@ protected:
 	TieAvanzado* tie;
 	DirLight* dL;
 	
-	int mId = 5;
+	int mId = 4;
 
 	//std::vector<Abs_Entity*> gObjects;  // Entities (graphic objects) of the scene
 	//std::vector<Abs_Entity*> tObjects;  // entidades traslucidas

@@ -1,9 +1,9 @@
-#include "Cone.h"
+#include "RevCone.h"
 #include "MbR.h"
 
 using namespace glm;
 
-Cone::Cone(GLdouble h, GLdouble r, GLuint n) {
+RevCone::RevCone(GLdouble h, GLdouble r, GLuint n) {
 	// h=altura del cono, r=radio de la base
 	// n=número de muestras, m=número de puntos del perfil
 	int m = 3;
