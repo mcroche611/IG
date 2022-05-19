@@ -168,7 +168,7 @@ void IG1App::key(unsigned char key, int x, int y)
 		mCamera->set2D();
 		break;
 	case 'r':
-		mCamera->orbit(glm::radians(1.0), mp.y);
+		mCamera->orbit(glm::radians(1.0), orbitHeight);
 		break;
 	case '0':
 		mScene->setState(0);

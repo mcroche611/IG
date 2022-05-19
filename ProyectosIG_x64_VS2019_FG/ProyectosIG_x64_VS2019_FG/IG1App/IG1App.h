@@ -69,6 +69,7 @@ protected:
 	int mWinId = 0;	    // window's identifier
 	int mWinW = 800;    // window's width 
 	int mWinH = 600;    // window's height
+	int orbitHeight = 700;
 
 	GLuint mLastUpdateTime;
 	bool activeAnim = true;

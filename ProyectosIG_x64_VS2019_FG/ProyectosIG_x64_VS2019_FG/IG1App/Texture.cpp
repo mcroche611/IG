@@ -41,7 +41,7 @@ void Texture::load(const std::string & BMP_Name, GLubyte alpha)
     pixMap.load_bmp24BGR(BMP_Name);
 
     if (alpha != 255)
-       pixMap.set_alpha(alpha);
+       pixMap.set_alpha(alpha); 
 
 	mWidth = pixMap.width();
 	mHeight = pixMap.height();
@@ -54,6 +54,7 @@ void Texture::load(const std::string & BMP_Name, GLubyte alpha)
 		
     glBindTexture(GL_TEXTURE_2D, 0); 
 }
+
 void Texture::loadColorBuffer(GLsizei width, GLsizei height, GLuint buffer)
 {
 	if (mId == 0) init();

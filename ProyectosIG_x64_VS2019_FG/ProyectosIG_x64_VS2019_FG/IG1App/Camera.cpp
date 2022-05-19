@@ -148,7 +148,7 @@ void Camera::orbit(double incAng, double incY)
 	mAng += glm::degrees(incAng);
 	mEye.x = mLook.x + cos(radians(mAng)) * mRadio;
 	mEye.z = mLook.z - sin(radians(mAng)) * mRadio;
-	//mEye.y = mLook.y + incY;
+	mEye.y = mLook.y + incY;
 	setVM();
 }
 
