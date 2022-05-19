@@ -168,7 +168,7 @@ void IG1App::key(unsigned char key, int x, int y)
 		mCamera->set2D();
 		break;
 	case 'r':
-		mCamera->orbit(glm::radians(1.0), 500);
+		mCamera->orbit(glm::radians(1.0), mp.y);
 		break;
 	case '0':
 		mScene->setState(0);
@@ -339,7 +339,7 @@ void IG1App::motion(int x, int y)
 		{
 			//	4. Si mBot es el botón derecho, la cámara se desplaza moveUD() y moveLR() según indique mp
 			mCamera->moveLR(mp.x);
-			mCamera->moveUD(mp.y);
+			mCamera->moveUD(-mp.y);
 		}
 
 		glutPostRedisplay();
