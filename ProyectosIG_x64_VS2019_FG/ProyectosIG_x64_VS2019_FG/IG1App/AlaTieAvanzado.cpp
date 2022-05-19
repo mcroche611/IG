@@ -13,7 +13,7 @@ AlaTieAvanzado::~AlaTieAvanzado()
 
 void AlaTieAvanzado::render(glm::dmat4 const& modelViewMat) const
 {
-
+	glDisable(GL_LIGHTING);
 	glColor3d(mColor.r, mColor.g, mColor.b);
 
 	if (alas != nullptr)
@@ -21,6 +21,8 @@ void AlaTieAvanzado::render(glm::dmat4 const& modelViewMat) const
 
 		dmat4 aMat = modelViewMat * mModelMat;  // glm matrix multiplication
 		upload(aMat);
+
+		
 		mTexture->bind(GL_MODULATE);
 		alas->render();
 		mTexture->unbind();
@@ -28,4 +30,5 @@ void AlaTieAvanzado::render(glm::dmat4 const& modelViewMat) const
 	}
 
 	glColor3d(255, 255, 255);
+	glEnable(GL_LIGHTING);
 }

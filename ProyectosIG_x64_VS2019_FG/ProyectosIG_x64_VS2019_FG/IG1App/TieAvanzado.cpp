@@ -9,7 +9,7 @@
 TieAvanzado::TieAvanzado()
 {
 	Texture* night = new Texture();
-	night->load("..\\Bmps\\noche.bmp", 160);
+	night->load("..\\Bmps\\noche.bmp", 200);
 
 
 	Sphere* esfera = new Sphere(WIDTH_AXIS / 4);
