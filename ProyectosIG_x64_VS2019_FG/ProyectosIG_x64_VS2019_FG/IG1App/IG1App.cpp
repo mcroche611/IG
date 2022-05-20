@@ -334,7 +334,12 @@ void IG1App::motion(int x, int y)
 	//	3. Si mBot es el botón izquierdo, la cámara orbita(mp.x * 0.05, mp.y)
 
 		if (mMouseButt == GLUT_LEFT_BUTTON)
-			mCamera->orbit(mp.x * 0.05, mp.y);
+		{
+			/*mCamera->orbit(mp.x * 0.05, mp.y);*/
+			mCamera->yawReal(-mp.x);
+			mCamera->pitchReal(-mp.y);
+		}
+
 		else if (mMouseButt == GLUT_RIGHT_BUTTON)
 		{
 			//	4. Si mBot es el botón derecho, la cámara se desplaza moveUD() y moveLR() según indique mp
