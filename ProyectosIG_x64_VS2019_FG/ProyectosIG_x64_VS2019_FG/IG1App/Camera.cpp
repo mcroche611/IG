@@ -154,7 +154,7 @@ void Camera::orbit(double incAng, double incY)
 
 void Camera::moveLR(GLdouble cs)
 {
-	mEye += mRight * cs;
+	mEye += mRight * cs; /*sin(radians(cs));*/
 	mLook += mRight * cs;
 	setVM();
 }
@@ -168,7 +168,7 @@ void Camera::moveFB(GLdouble cs)
 
 void Camera::moveUD(GLdouble cs)
 {
-	mEye += mUpward * cs;
+	mEye += mUpward * cs; /*sin(radians(cs));*/
 	mLook += mUpward * cs;
 	setVM();
 }

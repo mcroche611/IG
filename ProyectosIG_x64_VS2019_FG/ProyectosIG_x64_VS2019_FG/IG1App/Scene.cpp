@@ -158,16 +158,17 @@ void Scene::init()
 	}
 	else if (mId == 5)
 	{
-		nodoFicticio = new CompoundEntity();
-		tie = new TieAvanzado();
-		nodoFicticio->addEntity(tie);
-		tie->setModelMat(translate(tie->modelMat(), dvec3(0, 500, 0)));
-		gObjects.push_back(nodoFicticio);
 
 		dvec4 c = { 250.0, 200.0, 0.0, 1.0 };
 		Sphere* esfera = new Sphere(400.0);
 		esfera->setColor(c);
 		gObjects.push_back(esfera);
+
+		nodoFicticio = new CompoundEntity();
+		tie = new TieAvanzado();
+		nodoFicticio->addEntity(tie);
+		tie->setModelMat(translate(tie->modelMat(), dvec3(0, 600, 0)));
+		gObjects.push_back(nodoFicticio);
 
 	}
 	else if (mId == 6)
@@ -286,6 +287,9 @@ void Scene::render(Camera const& cam) const
 	{
 	  el->render(cam.viewMat());
 	}
+
+	glDisable(GL_LIGHTING);
+
 	glDepthMask(GL_FALSE);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -299,7 +303,7 @@ void Scene::render(Camera const& cam) const
 	glDepthMask(GLU_TRUE);
 	glDisable(GL_BLEND);
 
-	
+	glEnable(GL_LIGHTING);
 }
 
 void Scene::update()
@@ -361,7 +365,7 @@ void Scene::setLights()
 
 	glm::fvec4 posDir = { 1, 1, 1, 0 };
 	glm::fvec4 ambient = { 0, 0, 0, 1 };
-	glm::fvec4 diffuse = { 1, 1, 1, 1 };
+	glm::fvec4 diffuse = { 0, 0, 1, 1 };
 	glm::fvec4 specular = { 0.5, 0.5, 0.5, 1 };
 	if (dirLight == nullptr) {
 		dirLight = new DirLight();
@@ -370,6 +374,7 @@ void Scene::setLights()
 		dirLight->setAmb(ambient);
 		dirLight->setDiff(diffuse);
 		dirLight->setSpec(specular);
+		dirLight->setPosDir(posDir);
 	}
 	if (posLight == nullptr) {
 		posDir = { 450, 450, 0, 0 };
@@ -394,6 +399,7 @@ void Scene::setLights()
 		spotLight->setSpot(glm::fvec3(-1,0,0), 45, 0);
 	}
 }
+
 void Scene::uploadLights(Camera const& cam) const
 {
 	if (dirLight != nullptr) {

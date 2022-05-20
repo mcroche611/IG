@@ -41,7 +41,7 @@ void Texture::load(const std::string & BMP_Name, GLubyte alpha)
     pixMap.load_bmp24BGR(BMP_Name);
 
     if (alpha != 255)
-       pixMap.set_alpha(alpha);
+       pixMap.set_alpha(alpha); 
 
 	mWidth = pixMap.width();
 	mHeight = pixMap.height();
