@@ -194,7 +194,6 @@ void Scene::init()
 		m2->setGold();
 		esfera2->setMaterial(m2);
 		esfera2->setModelMat((translate(esfera2->modelMat(), dvec3(-250, 0, 0))));
-
 		gObjects.push_back(esfera2);
 	}
 }

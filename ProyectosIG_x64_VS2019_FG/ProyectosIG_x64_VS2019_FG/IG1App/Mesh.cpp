@@ -274,7 +274,7 @@ Mesh* Mesh::generaPoligonoRegular(GLuint num, GLdouble r)
 {
     Mesh* mesh = new Mesh();
 
-    mesh->mPrimitive = GL_TRIANGLES;
+    mesh->mPrimitive = GL_LINE_LOOP;
 
     mesh->mNumVertices = num;
     mesh->vVertices.reserve(mesh->mNumVertices);
